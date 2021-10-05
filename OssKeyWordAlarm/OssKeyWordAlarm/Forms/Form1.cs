@@ -39,28 +39,6 @@ namespace OssKeyWordAlarm
             makeKeyword.BackColor = Color.FromArgb(37, 75, 76);
  
         }
-
-        public void example()
-        {
-            string url = "https://www.kw.ac.kr/ko/life/notice.jsp";
-
-            HtmlWeb web = new HtmlWeb();
-
-            HtmlAgilityPack.HtmlDocument htmlDoc = web.Load(url);
-
-            HtmlNode bodynode = htmlDoc.DocumentNode.SelectSingleNode("//body");
-            HtmlNodeCollection divNodes = htmlDoc.DocumentNode.SelectNodes("div");
-
-            foreach(HtmlNode node in divNodes)
-            {
-                HtmlNode span = node.SelectSingleNode("span[@class='name']");
-                string data = span.InnerText;
-
-                HtmlNode href = node.SelectSingleNode("a");
-                string link = href.GetAttributeValue("href", "");
-            }
-        }
-
         private void showDialog()
         {
             Forms.Alert art = new Forms.Alert();
@@ -71,7 +49,7 @@ namespace OssKeyWordAlarm
         {
 
         }
-
+        
         private void OpenChildForm(Form childForm, object btnSender)
         {
             if (activeForm != null)

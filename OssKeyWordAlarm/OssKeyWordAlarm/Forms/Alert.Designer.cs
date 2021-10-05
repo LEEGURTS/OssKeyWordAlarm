@@ -30,25 +30,33 @@ namespace OssKeyWordAlarm.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.testTxt = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("아리따-돋움4.0(OTF)-SemiBold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(209, 46);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(205, 21);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "테스트알림문구입니다";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // timer1
             // 
-            this.timer1.Interval = 3000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timer1.Interval = 40;
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 2000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // timer3
+            // 
+            this.timer3.Interval = 5000;
+            // 
+            // testTxt
+            // 
+            this.testTxt.AutoSize = true;
+            this.testTxt.Location = new System.Drawing.Point(278, 52);
+            this.testTxt.Name = "testTxt";
+            this.testTxt.Size = new System.Drawing.Size(129, 16);
+            this.testTxt.TabIndex = 0;
+            this.testTxt.Text = "테스트문구입니다.";
             // 
             // Alert
             // 
@@ -56,11 +64,11 @@ namespace OssKeyWordAlarm.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.ClientSize = new System.Drawing.Size(440, 120);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.testTxt);
             this.Font = new System.Drawing.Font("아리따-돋움4.0(OTF)-SemiBold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Alert";
             this.Load += new System.EventHandler(this.Alert_Load);
             this.ResumeLayout(false);
@@ -69,8 +77,9 @@ namespace OssKeyWordAlarm.Forms
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Timer timer3;
+        private System.Windows.Forms.Label testTxt;
     }
 }
