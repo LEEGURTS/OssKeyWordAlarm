@@ -29,38 +29,28 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.testbutton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.pnlNav = new System.Windows.Forms.Panel();
+            this.Multi_Panel = new System.Windows.Forms.Panel();
+            this.TitleBox = new System.Windows.Forms.TextBox();
+            this.Minimize = new System.Windows.Forms.Button();
+            this.Maximize = new System.Windows.Forms.Button();
             this.Exit_Button = new System.Windows.Forms.Button();
             this.makeKeyword = new System.Windows.Forms.Button();
             this.changeAlarm = new System.Windows.Forms.Button();
             this.recordAlarm = new System.Windows.Forms.Button();
             this.addLink = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Maximize = new System.Windows.Forms.Button();
-            this.Minimize = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // testbutton
-            // 
-            this.testbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.testbutton.Location = new System.Drawing.Point(495, 170);
-            this.testbutton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.testbutton.Name = "testbutton";
-            this.testbutton.Size = new System.Drawing.Size(250, 250);
-            this.testbutton.TabIndex = 0;
-            this.testbutton.Text = "누르면 url 연결돼서 콘솔열림";
-            this.testbutton.UseVisualStyleBackColor = true;
-            this.testbutton.Click += new System.EventHandler(this.button1_Click);
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.panel1.Controls.Add(this.pnlNav);
             this.panel1.Controls.Add(this.makeKeyword);
             this.panel1.Controls.Add(this.changeAlarm);
             this.panel1.Controls.Add(this.recordAlarm);
@@ -101,10 +91,52 @@
             // pnlNav
             // 
             this.pnlNav.BackColor = System.Drawing.Color.White;
-            this.pnlNav.Location = new System.Drawing.Point(282, 41);
+            this.pnlNav.Location = new System.Drawing.Point(12, 12);
             this.pnlNav.Name = "pnlNav";
             this.pnlNav.Size = new System.Drawing.Size(3, 60);
             this.pnlNav.TabIndex = 2;
+            // 
+            // Multi_Panel
+            // 
+            this.Multi_Panel.Location = new System.Drawing.Point(188, 68);
+            this.Multi_Panel.Name = "Multi_Panel";
+            this.Multi_Panel.Size = new System.Drawing.Size(750, 470);
+            this.Multi_Panel.TabIndex = 6;
+            // 
+            // TitleBox
+            // 
+            this.TitleBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.TitleBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TitleBox.Font = new System.Drawing.Font("본고딕 Heavy", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TitleBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.TitleBox.Location = new System.Drawing.Point(212, 25);
+            this.TitleBox.Name = "TitleBox";
+            this.TitleBox.Size = new System.Drawing.Size(120, 31);
+            this.TitleBox.TabIndex = 7;
+            this.TitleBox.Text = "Title";
+            this.TitleBox.TextChanged += new System.EventHandler(this.TitleBox_TextChanged);
+            // 
+            // Minimize
+            // 
+            this.Minimize.FlatAppearance.BorderSize = 0;
+            this.Minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Minimize.Image = global::OssKeyWordAlarm.Properties.Resources.minus_24px;
+            this.Minimize.Location = new System.Drawing.Point(844, 15);
+            this.Minimize.Name = "Minimize";
+            this.Minimize.Size = new System.Drawing.Size(27, 23);
+            this.Minimize.TabIndex = 5;
+            this.Minimize.UseVisualStyleBackColor = true;
+            // 
+            // Maximize
+            // 
+            this.Maximize.FlatAppearance.BorderSize = 0;
+            this.Maximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Maximize.Image = global::OssKeyWordAlarm.Properties.Resources.icons8_application_window_24px;
+            this.Maximize.Location = new System.Drawing.Point(877, 15);
+            this.Maximize.Name = "Maximize";
+            this.Maximize.Size = new System.Drawing.Size(28, 23);
+            this.Maximize.TabIndex = 4;
+            this.Maximize.UseVisualStyleBackColor = true;
             // 
             // Exit_Button
             // 
@@ -213,39 +245,17 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // Maximize
-            // 
-            this.Maximize.FlatAppearance.BorderSize = 0;
-            this.Maximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Maximize.Image = global::OssKeyWordAlarm.Properties.Resources.icons8_application_window_24px;
-            this.Maximize.Location = new System.Drawing.Point(877, 15);
-            this.Maximize.Name = "Maximize";
-            this.Maximize.Size = new System.Drawing.Size(28, 23);
-            this.Maximize.TabIndex = 4;
-            this.Maximize.UseVisualStyleBackColor = true;
-            // 
-            // Minimize
-            // 
-            this.Minimize.FlatAppearance.BorderSize = 0;
-            this.Minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Minimize.Image = global::OssKeyWordAlarm.Properties.Resources.minus_24px;
-            this.Minimize.Location = new System.Drawing.Point(844, 15);
-            this.Minimize.Name = "Minimize";
-            this.Minimize.Size = new System.Drawing.Size(27, 23);
-            this.Minimize.TabIndex = 5;
-            this.Minimize.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(950, 550);
+            this.Controls.Add(this.TitleBox);
+            this.Controls.Add(this.Multi_Panel);
             this.Controls.Add(this.Minimize);
             this.Controls.Add(this.Maximize);
             this.Controls.Add(this.Exit_Button);
-            this.Controls.Add(this.pnlNav);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.testbutton);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(130)))), ((int)(((byte)(138)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -257,12 +267,11 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button testbutton;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox textBox1;
@@ -275,6 +284,8 @@
         private System.Windows.Forms.Button Exit_Button;
         private System.Windows.Forms.Button Maximize;
         private System.Windows.Forms.Button Minimize;
+        private System.Windows.Forms.Panel Multi_Panel;
+        private System.Windows.Forms.TextBox TitleBox;
     }
 }
 

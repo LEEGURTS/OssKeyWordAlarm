@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OssKeyWordAlarm
+namespace OssKeyWordAlarm.Forms
 {
-    public partial class Form2 : Form
+    public partial class recordAlar : Form
     {
-        public Form2()
+        public recordAlar()
         {
             InitializeComponent();
+        }
+
+        private void recordAlar_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -17,16 +17,17 @@ namespace OssKeyWordAlarm
 {
     public partial class Form1 : Form
     {
+        private Form activeForm;
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
         private static extern IntPtr CreateRoundRectRgn
             (
-       int nLeftRect,
-       int nTopRect,
-       int nRightRect,
-       int nBottomRect,
-       int nWidthEllipse,
-       int nHeightEllipse);
+        int nLeftRect,
+        int nTopRect,
+        int nRightRect,
+        int nBottomRect,
+        int nWidthEllipse,
+        int nHeightEllipse);
 
         public Form1()
         {
@@ -35,8 +36,6 @@ namespace OssKeyWordAlarm
             pnlNav.Top = makeKeyword.Top;
             pnlNav.Left = makeKeyword.Left;
             makeKeyword.BackColor = Color.FromArgb(37, 75, 76);
-
-
         }
 
         public void example()
@@ -62,7 +61,20 @@ namespace OssKeyWordAlarm
 
         }
 
-
+        private void OpenChildForm(Form childForm, object btnSender)
+        {
+            if (activeForm != null)
+                activeForm.Close();
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            this.Multi_Panel.Controls.Add(childForm);
+            this.Multi_Panel.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+            Multi_Panel.Text = childForm.Text;
+        }
         private void makeKeyword_Leave(object sender, EventArgs e)
         {
             makeKeyword.BackColor = Color.FromArgb(24,30,54);
@@ -89,6 +101,8 @@ namespace OssKeyWordAlarm
             pnlNav.Top = makeKeyword.Top;
             pnlNav.Left = makeKeyword.Left;
             makeKeyword.BackColor = Color.FromArgb(37, 75, 76);
+            TitleBox.Text = "KEYWORD";
+            OpenChildForm(new makeKey(), sender);
         }
 
         private void recordAlarm_MouseDown(object sender, MouseEventArgs e)
@@ -98,6 +112,8 @@ namespace OssKeyWordAlarm
             pnlNav.Left = recordAlarm.Left;
             recordAlarm.BackColor = Color.FromArgb(37, 75, 76);
             makeKeyword.BackColor = Color.FromArgb(24, 30, 54);
+            TitleBox.Text = "KEYWORD";
+            OpenChildForm(new Forms.recordAlar(), sender);
         }
 
         private void addLink_MouseDown(object sender, MouseEventArgs e)
@@ -107,6 +123,8 @@ namespace OssKeyWordAlarm
             pnlNav.Left = addLink.Left;
             addLink.BackColor = Color.FromArgb(37, 75, 76);
             makeKeyword.BackColor = Color.FromArgb(24, 30, 54);
+            TitleBox.Text = "KEYWORD";
+            OpenChildForm(new Forms.addLin(), sender);
         }
 
         private void changeAlarm_MouseDown(object sender, MouseEventArgs e)
@@ -116,6 +134,8 @@ namespace OssKeyWordAlarm
             pnlNav.Left = changeAlarm.Left;
             changeAlarm.BackColor = Color.FromArgb(37, 75, 76);
             makeKeyword.BackColor = Color.FromArgb(24, 30, 54);
+            TitleBox.Text = "KEYWORD";
+            OpenChildForm(new Forms.changeAlar(), sender);
         }
 
         private void Program_Exit_Click(object sender, EventArgs e)
@@ -132,6 +152,11 @@ namespace OssKeyWordAlarm
         {
 
             Application.Exit();
+        }
+
+        private void TitleBox_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
