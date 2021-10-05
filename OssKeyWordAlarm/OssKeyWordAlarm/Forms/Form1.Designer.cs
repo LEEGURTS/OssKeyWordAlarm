@@ -268,6 +268,7 @@
             this.Multi_Panel.Name = "Multi_Panel";
             this.Multi_Panel.Size = new System.Drawing.Size(770, 489);
             this.Multi_Panel.TabIndex = 7;
+            this.Multi_Panel.Paint += new System.Windows.Forms.PaintEventHandler(this.Multi_Panel_Paint);
             // 
             // button1
             // 
