@@ -35,26 +35,36 @@ namespace OssKeyWordAlarm
             pnlNav.Height = makeKeyword.Height;
             pnlNav.Top = makeKeyword.Top;
             pnlNav.Left = makeKeyword.Left;
+            Form_Title.Text = "KEYWORD";
             makeKeyword.BackColor = Color.FromArgb(37, 75, 76);
  
         }
 
         public void example()
         {
-            var url = @"https://www.kw.ac.kr/ko/life/notice.jsp";
+            string url = "https://www.kw.ac.kr/ko/life/notice.jsp";
 
             HtmlWeb web = new HtmlWeb();
 
-            var htmlDoc = web.Load(url);
+            HtmlAgilityPack.HtmlDocument htmlDoc = web.Load(url);
 
-            var node = htmlDoc.DocumentNode.SelectSingleNode("//body");
+            HtmlNode bodynode = htmlDoc.DocumentNode.SelectSingleNode("//body");
+            HtmlNodeCollection divNodes = htmlDoc.DocumentNode.SelectNodes("div");
 
-            Console.WriteLine("Node Name :" + node.Name);
+            foreach(HtmlNode node in divNodes)
+            {
+                HtmlNode span = node.SelectSingleNode("span[@class='name']");
+                string data = span.InnerText;
+
+                HtmlNode href = node.SelectSingleNode("a");
+                string link = href.GetAttributeValue("href", "");
+            }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void showDialog()
         {
-            example();
+            Forms.Alert art = new Forms.Alert();
+            art.Show();          
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -102,11 +112,8 @@ namespace OssKeyWordAlarm
             pnlNav.Top = makeKeyword.Top;
             pnlNav.Left = makeKeyword.Left;
             makeKeyword.BackColor = Color.FromArgb(37, 75, 76);
-            TitleBox.Text = "KEYWORD";
-            OpenChildForm(new makeKey(), sender);
-           
-            TitleBox.BringToFront();
-            
+            Form_Title.Text = "KEYWORD";
+            OpenChildForm(new makeKey(), sender);         
         }
 
         private void recordAlarm_MouseDown(object sender, MouseEventArgs e)
@@ -116,10 +123,8 @@ namespace OssKeyWordAlarm
             pnlNav.Left = recordAlarm.Left;
             recordAlarm.BackColor = Color.FromArgb(37, 75, 76);
             makeKeyword.BackColor = Color.FromArgb(24, 30, 54);
-            TitleBox.Text = "ALARM LIST";
+            Form_Title.Text = "ALARM LIST";
             OpenChildForm(new Forms.recordAlar(), sender);
-            TitleBox.BringToFront();
-            JustForWindow.BringToFront();
         }
 
         private void addLink_MouseDown(object sender, MouseEventArgs e)
@@ -129,10 +134,8 @@ namespace OssKeyWordAlarm
             pnlNav.Left = addLink.Left;
             addLink.BackColor = Color.FromArgb(37, 75, 76);
             makeKeyword.BackColor = Color.FromArgb(24, 30, 54);
-            TitleBox.Text = "ADD LINK";
+            Form_Title.Text = "ADD LINK";
             OpenChildForm(new Forms.addLin(), sender);
-            TitleBox.BringToFront();
-            JustForWindow.BringToFront();
         }
 
         private void changeAlarm_MouseDown(object sender, MouseEventArgs e)
@@ -142,30 +145,16 @@ namespace OssKeyWordAlarm
             pnlNav.Left = changeAlarm.Left;
             changeAlarm.BackColor = Color.FromArgb(37, 75, 76);
             makeKeyword.BackColor = Color.FromArgb(24, 30, 54);
-            TitleBox.Text = "CHANGE ALARM";
+            Form_Title.Text = "CHANGE ALARM";
             OpenChildForm(new Forms.changeAlar(), sender);
-            TitleBox.BringToFront();
-            JustForWindow.BringToFront();
-        }
-
-        private void Program_Exit_Click(object sender, EventArgs e)
-        {
 
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void Exit_Button_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void TitleBox_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void Maximize_Click(object sender, EventArgs e)
@@ -179,6 +168,11 @@ namespace OssKeyWordAlarm
         private void Minimize_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
+        }
+
+        private void testButton_Click(object sender, EventArgs e)
+        {
+            showDialog();
         }
     }
 }

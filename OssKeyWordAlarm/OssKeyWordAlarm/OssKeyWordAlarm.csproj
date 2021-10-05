@@ -58,6 +58,12 @@
     <Compile Include="Forms\addLin.Designer.cs">
       <DependentUpon>addLin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Alert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Alert.Designer.cs">
+      <DependentUpon>Alert.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\changeAlar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\addLin.resx">
       <DependentUpon>addLin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Alert.resx">
+      <DependentUpon>Alert.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\changeAlar.resx">
       <DependentUpon>changeAlar.cs</DependentUpon>
@@ -155,6 +164,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\181026-11-Hoyeon-0182.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bamboo.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
