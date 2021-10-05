@@ -33,7 +33,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlNav = new System.Windows.Forms.Panel();
-            this.makeKeyword = new System.Windows.Forms.Button();
+            this.btnMakeKeyword = new System.Windows.Forms.Button();
             this.changeAlarm = new System.Windows.Forms.Button();
             this.recordAlarm = new System.Windows.Forms.Button();
             this.addLink = new System.Windows.Forms.Button();
@@ -57,7 +57,7 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pnlNav);
-            this.panel1.Controls.Add(this.makeKeyword);
+            this.panel1.Controls.Add(this.btnMakeKeyword);
             this.panel1.Controls.Add(this.changeAlarm);
             this.panel1.Controls.Add(this.recordAlarm);
             this.panel1.Controls.Add(this.addLink);
@@ -71,11 +71,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("본고딕 KR", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(18, 134);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(146, 17);
+            this.label2.Size = new System.Drawing.Size(157, 15);
             this.label2.TabIndex = 16;
             this.label2.Text = "광운대학교 공지사항 알리미";
             // 
@@ -97,26 +97,26 @@
             this.pnlNav.Size = new System.Drawing.Size(3, 60);
             this.pnlNav.TabIndex = 1;
             // 
-            // makeKeyword
+            // btnMakeKeyword
             // 
-            this.makeKeyword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.makeKeyword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.makeKeyword.FlatAppearance.BorderSize = 0;
-            this.makeKeyword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.makeKeyword.Font = new System.Drawing.Font("아리따-돋움4.0(OTF)-Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.makeKeyword.ForeColor = System.Drawing.Color.White;
-            this.makeKeyword.Image = global::OssKeyWordAlarm.Properties.Resources.pencil_24px;
-            this.makeKeyword.Location = new System.Drawing.Point(0, 188);
-            this.makeKeyword.Margin = new System.Windows.Forms.Padding(0);
-            this.makeKeyword.Name = "makeKeyword";
-            this.makeKeyword.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.makeKeyword.Size = new System.Drawing.Size(180, 60);
-            this.makeKeyword.TabIndex = 14;
-            this.makeKeyword.Text = "키워드 등록";
-            this.makeKeyword.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.makeKeyword.UseVisualStyleBackColor = false;
-            this.makeKeyword.Leave += new System.EventHandler(this.makeKeyword_Leave);
-            this.makeKeyword.MouseDown += new System.Windows.Forms.MouseEventHandler(this.makeKeyword_MouseDown);
+            this.btnMakeKeyword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.btnMakeKeyword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnMakeKeyword.FlatAppearance.BorderSize = 0;
+            this.btnMakeKeyword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMakeKeyword.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnMakeKeyword.ForeColor = System.Drawing.Color.White;
+            this.btnMakeKeyword.Image = global::OssKeyWordAlarm.Properties.Resources.pencil_24px;
+            this.btnMakeKeyword.Location = new System.Drawing.Point(0, 188);
+            this.btnMakeKeyword.Margin = new System.Windows.Forms.Padding(0);
+            this.btnMakeKeyword.Name = "btnMakeKeyword";
+            this.btnMakeKeyword.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnMakeKeyword.Size = new System.Drawing.Size(180, 60);
+            this.btnMakeKeyword.TabIndex = 14;
+            this.btnMakeKeyword.Text = "키워드 등록";
+            this.btnMakeKeyword.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnMakeKeyword.UseVisualStyleBackColor = false;
+            this.btnMakeKeyword.Leave += new System.EventHandler(this.makeKeyword_Leave);
+            this.btnMakeKeyword.MouseDown += new System.Windows.Forms.MouseEventHandler(this.makeKeyword_MouseDown);
             // 
             // changeAlarm
             // 
@@ -124,7 +124,7 @@
             this.changeAlarm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.changeAlarm.FlatAppearance.BorderSize = 0;
             this.changeAlarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.changeAlarm.Font = new System.Drawing.Font("아리따-돋움4.0(OTF)-Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.changeAlarm.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.changeAlarm.ForeColor = System.Drawing.Color.White;
             this.changeAlarm.Image = ((System.Drawing.Image)(resources.GetObject("changeAlarm.Image")));
             this.changeAlarm.Location = new System.Drawing.Point(0, 368);
@@ -145,7 +145,7 @@
             this.recordAlarm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.recordAlarm.FlatAppearance.BorderSize = 0;
             this.recordAlarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.recordAlarm.Font = new System.Drawing.Font("아리따-돋움4.0(OTF)-Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.recordAlarm.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.recordAlarm.ForeColor = System.Drawing.Color.White;
             this.recordAlarm.Image = global::OssKeyWordAlarm.Properties.Resources.alarm_30px;
             this.recordAlarm.Location = new System.Drawing.Point(0, 248);
@@ -166,7 +166,7 @@
             this.addLink.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.addLink.FlatAppearance.BorderSize = 0;
             this.addLink.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addLink.Font = new System.Drawing.Font("아리따-돋움4.0(OTF)-Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.addLink.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.addLink.ForeColor = System.Drawing.Color.White;
             this.addLink.Image = global::OssKeyWordAlarm.Properties.Resources.link_30px;
             this.addLink.Location = new System.Drawing.Point(0, 308);
@@ -209,11 +209,11 @@
             // Form_Title
             // 
             this.Form_Title.AutoSize = true;
-            this.Form_Title.Font = new System.Drawing.Font("아리따-돋움4.0(OTF)-Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Form_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Form_Title.ForeColor = System.Drawing.Color.White;
             this.Form_Title.Location = new System.Drawing.Point(27, 20);
             this.Form_Title.Name = "Form_Title";
-            this.Form_Title.Size = new System.Drawing.Size(111, 21);
+            this.Form_Title.Size = new System.Drawing.Size(114, 25);
             this.Form_Title.TabIndex = 6;
             this.Form_Title.Text = "Form_Title";
             // 
@@ -263,12 +263,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Multi_Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.Multi_Panel.BackgroundImage = global::OssKeyWordAlarm.Properties.Resources._181026_11_Hoyeon_0182;
+            this.Multi_Panel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Multi_Panel.Controls.Add(this.button1);
             this.Multi_Panel.Location = new System.Drawing.Point(180, 60);
             this.Multi_Panel.Name = "Multi_Panel";
             this.Multi_Panel.Size = new System.Drawing.Size(770, 489);
             this.Multi_Panel.TabIndex = 7;
-            this.Multi_Panel.Paint += new System.Windows.Forms.PaintEventHandler(this.Multi_Panel_Paint);
             // 
             // button1
             // 
@@ -280,7 +280,7 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.testButton_Click);
             // 
-            // Form1
+            // newName
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
@@ -292,7 +292,7 @@
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(130)))), ((int)(((byte)(138)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "Form1";
+            this.Name = "newName";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
@@ -312,7 +312,7 @@
         private System.Windows.Forms.Button addLink;
         private System.Windows.Forms.Button changeAlarm;
         private System.Windows.Forms.Button recordAlarm;
-        private System.Windows.Forms.Button makeKeyword;
+        private System.Windows.Forms.Button btnMakeKeyword;
         private System.Windows.Forms.Button Exit_Button;
         private System.Windows.Forms.Button Maximize;
         private System.Windows.Forms.Button Minimize;

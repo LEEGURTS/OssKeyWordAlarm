@@ -9,14 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using HtmlAgilityPack;
-
 using System.Xml;
 
 
 namespace OssKeyWordAlarm
 {
-    public partial class Form1 : Form
+    public partial class Form1: Form
     {
+        User user = new User();
+   
         private Form activeForm;
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
@@ -32,11 +33,11 @@ namespace OssKeyWordAlarm
         public Form1()
         {
             InitializeComponent();
-            pnlNav.Height = makeKeyword.Height;
-            pnlNav.Top = makeKeyword.Top;
-            pnlNav.Left = makeKeyword.Left;
+            pnlNav.Height = btnMakeKeyword.Height;
+            pnlNav.Top = btnMakeKeyword.Top;
+            pnlNav.Left = btnMakeKeyword.Left;
             Form_Title.Text = "KEYWORD";
-            makeKeyword.BackColor = Color.FromArgb(37, 75, 76); //초기 강조선 설정
+            btnMakeKeyword.BackColor = Color.FromArgb(37, 75, 76); //초기 강조선 설정
  
         }
         private void showDialog() //알람울림
@@ -47,7 +48,7 @@ namespace OssKeyWordAlarm
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
         
         private void OpenChildForm(Form childForm, object btnSender) //새로운 폼 형성 함수
@@ -66,7 +67,7 @@ namespace OssKeyWordAlarm
         }
         private void makeKeyword_Leave(object sender, EventArgs e) //키워드 설정 나올때
         {
-            makeKeyword.BackColor = Color.FromArgb(24,30,54);
+            btnMakeKeyword.BackColor = Color.FromArgb(24,30,54);
         }
 
         private void addLink_Leave(object sender, EventArgs e) //링크 추가 나올때
@@ -86,10 +87,10 @@ namespace OssKeyWordAlarm
 
         private void makeKeyword_MouseDown(object sender, MouseEventArgs e) // 키워드 설정 클릭하자마자 강조와 함께 새로운 폼 띄움
         {
-            pnlNav.Height = makeKeyword.Height;
-            pnlNav.Top = makeKeyword.Top;
-            pnlNav.Left = makeKeyword.Left;
-            makeKeyword.BackColor = Color.FromArgb(37, 75, 76);
+            pnlNav.Height = btnMakeKeyword.Height;
+            pnlNav.Top = btnMakeKeyword.Top;
+            pnlNav.Left = btnMakeKeyword.Left;
+            btnMakeKeyword.BackColor = Color.FromArgb(37, 75, 76);
             Form_Title.Text = "KEYWORD";
             OpenChildForm(new makeKey(), sender);         
         }
@@ -100,7 +101,7 @@ namespace OssKeyWordAlarm
             pnlNav.Top = recordAlarm.Top;
             pnlNav.Left = recordAlarm.Left;
             recordAlarm.BackColor = Color.FromArgb(37, 75, 76);
-            makeKeyword.BackColor = Color.FromArgb(24, 30, 54);
+            btnMakeKeyword.BackColor = Color.FromArgb(24, 30, 54);
             Form_Title.Text = "ALARM LIST";
             OpenChildForm(new Forms.recordAlar(), sender);
         }
@@ -111,7 +112,7 @@ namespace OssKeyWordAlarm
             pnlNav.Top = addLink.Top;
             pnlNav.Left = addLink.Left;
             addLink.BackColor = Color.FromArgb(37, 75, 76);
-            makeKeyword.BackColor = Color.FromArgb(24, 30, 54);
+            btnMakeKeyword.BackColor = Color.FromArgb(24, 30, 54);
             Form_Title.Text = "ADD LINK";
             OpenChildForm(new Forms.addLin(), sender);
         }
@@ -122,7 +123,7 @@ namespace OssKeyWordAlarm
             pnlNav.Top = changeAlarm.Top;
             pnlNav.Left = changeAlarm.Left;
             changeAlarm.BackColor = Color.FromArgb(37, 75, 76);
-            makeKeyword.BackColor = Color.FromArgb(24, 30, 54);
+            btnMakeKeyword.BackColor = Color.FromArgb(24, 30, 54);
             Form_Title.Text = "CHANGE ALARM";
             OpenChildForm(new Forms.changeAlar(), sender);
 
@@ -151,11 +152,6 @@ namespace OssKeyWordAlarm
         private void testButton_Click(object sender, EventArgs e) //임시 알림용 버튼
         {
             showDialog();
-        }
-
-        private void Multi_Panel_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }
