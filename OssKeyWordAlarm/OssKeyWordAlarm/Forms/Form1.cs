@@ -36,6 +36,7 @@ namespace OssKeyWordAlarm
             pnlNav.Top = makeKeyword.Top;
             pnlNav.Left = makeKeyword.Left;
             makeKeyword.BackColor = Color.FromArgb(37, 75, 76);
+ 
         }
 
         public void example()
@@ -103,6 +104,9 @@ namespace OssKeyWordAlarm
             makeKeyword.BackColor = Color.FromArgb(37, 75, 76);
             TitleBox.Text = "KEYWORD";
             OpenChildForm(new makeKey(), sender);
+           
+            TitleBox.BringToFront();
+            
         }
 
         private void recordAlarm_MouseDown(object sender, MouseEventArgs e)
@@ -112,8 +116,10 @@ namespace OssKeyWordAlarm
             pnlNav.Left = recordAlarm.Left;
             recordAlarm.BackColor = Color.FromArgb(37, 75, 76);
             makeKeyword.BackColor = Color.FromArgb(24, 30, 54);
-            TitleBox.Text = "KEYWORD";
+            TitleBox.Text = "ALARM LIST";
             OpenChildForm(new Forms.recordAlar(), sender);
+            TitleBox.BringToFront();
+            JustForWindow.BringToFront();
         }
 
         private void addLink_MouseDown(object sender, MouseEventArgs e)
@@ -123,8 +129,10 @@ namespace OssKeyWordAlarm
             pnlNav.Left = addLink.Left;
             addLink.BackColor = Color.FromArgb(37, 75, 76);
             makeKeyword.BackColor = Color.FromArgb(24, 30, 54);
-            TitleBox.Text = "KEYWORD";
+            TitleBox.Text = "ADD LINK";
             OpenChildForm(new Forms.addLin(), sender);
+            TitleBox.BringToFront();
+            JustForWindow.BringToFront();
         }
 
         private void changeAlarm_MouseDown(object sender, MouseEventArgs e)
@@ -134,8 +142,10 @@ namespace OssKeyWordAlarm
             pnlNav.Left = changeAlarm.Left;
             changeAlarm.BackColor = Color.FromArgb(37, 75, 76);
             makeKeyword.BackColor = Color.FromArgb(24, 30, 54);
-            TitleBox.Text = "KEYWORD";
+            TitleBox.Text = "CHANGE ALARM";
             OpenChildForm(new Forms.changeAlar(), sender);
+            TitleBox.BringToFront();
+            JustForWindow.BringToFront();
         }
 
         private void Program_Exit_Click(object sender, EventArgs e)
@@ -150,13 +160,25 @@ namespace OssKeyWordAlarm
 
         private void Exit_Button_Click(object sender, EventArgs e)
         {
-
             Application.Exit();
         }
 
         private void TitleBox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void Maximize_Click(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Normal)
+                WindowState = FormWindowState.Maximized;
+            else
+                WindowState = FormWindowState.Normal;
+        }
+
+        private void Minimize_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
         }
     }
 }
