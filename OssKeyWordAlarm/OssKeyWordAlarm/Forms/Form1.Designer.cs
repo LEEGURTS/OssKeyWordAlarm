@@ -31,24 +31,24 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlNav = new System.Windows.Forms.Panel();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TitleBox = new System.Windows.Forms.TextBox();
+            this.JustForWindow = new System.Windows.Forms.Panel();
+            this.Minimize = new System.Windows.Forms.Button();
+            this.Exit_Button = new System.Windows.Forms.Button();
+            this.Maximize = new System.Windows.Forms.Button();
             this.makeKeyword = new System.Windows.Forms.Button();
             this.changeAlarm = new System.Windows.Forms.Button();
             this.recordAlarm = new System.Windows.Forms.Button();
             this.addLink = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Multi_Panel = new System.Windows.Forms.Panel();
-            this.TitleBox = new System.Windows.Forms.TextBox();
-            this.Minimize = new System.Windows.Forms.Button();
-            this.Maximize = new System.Windows.Forms.Button();
-            this.Exit_Button = new System.Windows.Forms.Button();
-            this.JustForWindow = new System.Windows.Forms.Panel();
             this.testtxt = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
+            this.JustForWindow.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.Multi_Panel.SuspendLayout();
-            this.JustForWindow.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -75,6 +75,96 @@
             this.pnlNav.Name = "pnlNav";
             this.pnlNav.Size = new System.Drawing.Size(3, 60);
             this.pnlNav.TabIndex = 1;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Font = new System.Drawing.Font("나눔고딕", 8F);
+            this.textBox2.ForeColor = System.Drawing.Color.White;
+            this.textBox2.Location = new System.Drawing.Point(28, 132);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(127, 13);
+            this.textBox2.TabIndex = 8;
+            this.textBox2.Text = "광운대학교 공지사항 알리미";
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBox1.ForeColor = System.Drawing.Color.White;
+            this.textBox1.Location = new System.Drawing.Point(60, 107);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(69, 15);
+            this.textBox1.TabIndex = 2;
+            this.textBox1.Text = "KW ALARM";
+            // 
+            // TitleBox
+            // 
+            this.TitleBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.TitleBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TitleBox.Font = new System.Drawing.Font("본고딕 Heavy", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TitleBox.ForeColor = System.Drawing.SystemColors.Window;
+            this.TitleBox.Location = new System.Drawing.Point(27, 15);
+            this.TitleBox.Name = "TitleBox";
+            this.TitleBox.Size = new System.Drawing.Size(593, 31);
+            this.TitleBox.TabIndex = 2;
+            this.TitleBox.Text = "Title";
+            this.TitleBox.TextChanged += new System.EventHandler(this.TitleBox_TextChanged);
+            // 
+            // JustForWindow
+            // 
+            this.JustForWindow.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.JustForWindow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.JustForWindow.Controls.Add(this.Minimize);
+            this.JustForWindow.Controls.Add(this.Exit_Button);
+            this.JustForWindow.Controls.Add(this.TitleBox);
+            this.JustForWindow.Controls.Add(this.Maximize);
+            this.JustForWindow.Location = new System.Drawing.Point(180, 0);
+            this.JustForWindow.Name = "JustForWindow";
+            this.JustForWindow.Size = new System.Drawing.Size(776, 60);
+            this.JustForWindow.TabIndex = 3;
+            // 
+            // Minimize
+            // 
+            this.Minimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Minimize.FlatAppearance.BorderSize = 0;
+            this.Minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Minimize.Image = global::OssKeyWordAlarm.Properties.Resources.minus_24px;
+            this.Minimize.Location = new System.Drawing.Point(670, 18);
+            this.Minimize.Name = "Minimize";
+            this.Minimize.Size = new System.Drawing.Size(27, 23);
+            this.Minimize.TabIndex = 5;
+            this.Minimize.UseVisualStyleBackColor = true;
+            this.Minimize.Click += new System.EventHandler(this.Minimize_Click);
+            // 
+            // Exit_Button
+            // 
+            this.Exit_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Exit_Button.FlatAppearance.BorderSize = 0;
+            this.Exit_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Exit_Button.Image = global::OssKeyWordAlarm.Properties.Resources.power_off_button_25px;
+            this.Exit_Button.Location = new System.Drawing.Point(737, 15);
+            this.Exit_Button.Name = "Exit_Button";
+            this.Exit_Button.Size = new System.Drawing.Size(27, 28);
+            this.Exit_Button.TabIndex = 3;
+            this.Exit_Button.UseVisualStyleBackColor = true;
+            this.Exit_Button.Click += new System.EventHandler(this.Exit_Button_Click);
+            // 
+            // Maximize
+            // 
+            this.Maximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Maximize.FlatAppearance.BorderSize = 0;
+            this.Maximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Maximize.Image = global::OssKeyWordAlarm.Properties.Resources.icons8_application_window_24px;
+            this.Maximize.Location = new System.Drawing.Point(703, 18);
+            this.Maximize.Name = "Maximize";
+            this.Maximize.Size = new System.Drawing.Size(28, 23);
+            this.Maximize.TabIndex = 4;
+            this.Maximize.UseVisualStyleBackColor = true;
+            this.Maximize.Click += new System.EventHandler(this.Maximize_Click);
             // 
             // makeKeyword
             // 
@@ -160,30 +250,6 @@
             this.addLink.Leave += new System.EventHandler(this.addLink_Leave);
             this.addLink.MouseDown += new System.Windows.Forms.MouseEventHandler(this.addLink_MouseDown);
             // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("나눔고딕", 8F);
-            this.textBox2.ForeColor = System.Drawing.Color.White;
-            this.textBox2.Location = new System.Drawing.Point(28, 132);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(127, 13);
-            this.textBox2.TabIndex = 8;
-            this.textBox2.Text = "광운대학교 공지사항 알리미";
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBox1.ForeColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(60, 107);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(69, 15);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.Text = "KW ALARM";
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Enabled = false;
@@ -201,78 +267,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Multi_Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Multi_Panel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Multi_Panel.BackgroundImage")));
+            this.Multi_Panel.BackgroundImage = global::OssKeyWordAlarm.Properties.Resources._181026_11_Hoyeon_0182;
             this.Multi_Panel.Controls.Add(this.testtxt);
             this.Multi_Panel.Location = new System.Drawing.Point(180, 60);
             this.Multi_Panel.Name = "Multi_Panel";
             this.Multi_Panel.Size = new System.Drawing.Size(770, 489);
             this.Multi_Panel.TabIndex = 7;
-            // 
-            // TitleBox
-            // 
-            this.TitleBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.TitleBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TitleBox.Font = new System.Drawing.Font("본고딕 Heavy", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TitleBox.ForeColor = System.Drawing.SystemColors.Window;
-            this.TitleBox.Location = new System.Drawing.Point(27, 15);
-            this.TitleBox.Name = "TitleBox";
-            this.TitleBox.Size = new System.Drawing.Size(593, 31);
-            this.TitleBox.TabIndex = 2;
-            this.TitleBox.Text = "Title";
-            this.TitleBox.TextChanged += new System.EventHandler(this.TitleBox_TextChanged);
-            // 
-            // Minimize
-            // 
-            this.Minimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Minimize.FlatAppearance.BorderSize = 0;
-            this.Minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Minimize.Image = global::OssKeyWordAlarm.Properties.Resources.minus_24px;
-            this.Minimize.Location = new System.Drawing.Point(670, 18);
-            this.Minimize.Name = "Minimize";
-            this.Minimize.Size = new System.Drawing.Size(27, 23);
-            this.Minimize.TabIndex = 5;
-            this.Minimize.UseVisualStyleBackColor = true;
-            this.Minimize.Click += new System.EventHandler(this.Minimize_Click);
-            // 
-            // Maximize
-            // 
-            this.Maximize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Maximize.FlatAppearance.BorderSize = 0;
-            this.Maximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Maximize.Image = global::OssKeyWordAlarm.Properties.Resources.icons8_application_window_24px;
-            this.Maximize.Location = new System.Drawing.Point(703, 18);
-            this.Maximize.Name = "Maximize";
-            this.Maximize.Size = new System.Drawing.Size(28, 23);
-            this.Maximize.TabIndex = 4;
-            this.Maximize.UseVisualStyleBackColor = true;
-            this.Maximize.Click += new System.EventHandler(this.Maximize_Click);
-            // 
-            // Exit_Button
-            // 
-            this.Exit_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Exit_Button.FlatAppearance.BorderSize = 0;
-            this.Exit_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Exit_Button.Image = global::OssKeyWordAlarm.Properties.Resources.power_off_button_25px;
-            this.Exit_Button.Location = new System.Drawing.Point(737, 15);
-            this.Exit_Button.Name = "Exit_Button";
-            this.Exit_Button.Size = new System.Drawing.Size(27, 28);
-            this.Exit_Button.TabIndex = 3;
-            this.Exit_Button.UseVisualStyleBackColor = true;
-            this.Exit_Button.Click += new System.EventHandler(this.Exit_Button_Click);
-            // 
-            // JustForWindow
-            // 
-            this.JustForWindow.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.JustForWindow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.JustForWindow.Controls.Add(this.Minimize);
-            this.JustForWindow.Controls.Add(this.Exit_Button);
-            this.JustForWindow.Controls.Add(this.TitleBox);
-            this.JustForWindow.Controls.Add(this.Maximize);
-            this.JustForWindow.Location = new System.Drawing.Point(180, 0);
-            this.JustForWindow.Name = "JustForWindow";
-            this.JustForWindow.Size = new System.Drawing.Size(776, 60);
-            this.JustForWindow.TabIndex = 3;
             // 
             // testtxt
             // 
@@ -300,11 +300,11 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.JustForWindow.ResumeLayout(false);
+            this.JustForWindow.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.Multi_Panel.ResumeLayout(false);
             this.Multi_Panel.PerformLayout();
-            this.JustForWindow.ResumeLayout(false);
-            this.JustForWindow.PerformLayout();
             this.ResumeLayout(false);
 
         }
