@@ -36,8 +36,26 @@ namespace OssKeyWordAlarm
             pnlNav.Top = makeKeyword.Top;
             pnlNav.Left = makeKeyword.Left;
             Form_Title.Text = "KEYWORD";
-            makeKeyword.BackColor = Color.FromArgb(37, 75, 76); //초기 강조선 설정
- 
+            makeKeyword.BackColor = Color.FromArgb(46, 51, 73); //초기 강조선 설정
+            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+
+        }    
+        private Point MouseDownLocation; //마우스 위치
+        private void Panel_Drag_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                MouseDownLocation = e.Location;
+            }
+        }
+
+        private void Panel_Drag_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                Left = e.X + Left - MouseDownLocation.X;
+                Top = e.Y + Top - MouseDownLocation.Y;
+            }
         }
         private void showDialog() //알람울림
         {
@@ -89,7 +107,7 @@ namespace OssKeyWordAlarm
             pnlNav.Height = makeKeyword.Height;
             pnlNav.Top = makeKeyword.Top;
             pnlNav.Left = makeKeyword.Left;
-            makeKeyword.BackColor = Color.FromArgb(37, 75, 76);
+            makeKeyword.BackColor = Color.FromArgb(46, 51, 73);
             Form_Title.Text = "KEYWORD";
             OpenChildForm(new makeKey(), sender);         
         }
@@ -99,7 +117,7 @@ namespace OssKeyWordAlarm
             pnlNav.Height = recordAlarm.Height;
             pnlNav.Top = recordAlarm.Top;
             pnlNav.Left = recordAlarm.Left;
-            recordAlarm.BackColor = Color.FromArgb(37, 75, 76);
+            recordAlarm.BackColor = Color.FromArgb(46, 51, 73);
             makeKeyword.BackColor = Color.FromArgb(24, 30, 54);
             Form_Title.Text = "ALARM LIST";
             OpenChildForm(new Forms.recordAlar(), sender);
@@ -110,7 +128,7 @@ namespace OssKeyWordAlarm
             pnlNav.Height = addLink.Height;
             pnlNav.Top = addLink.Top;
             pnlNav.Left = addLink.Left;
-            addLink.BackColor = Color.FromArgb(37, 75, 76);
+            addLink.BackColor = Color.FromArgb(46, 51, 73);
             makeKeyword.BackColor = Color.FromArgb(24, 30, 54);
             Form_Title.Text = "ADD LINK";
             OpenChildForm(new Forms.addLin(), sender);
@@ -121,7 +139,7 @@ namespace OssKeyWordAlarm
             pnlNav.Height = changeAlarm.Height;
             pnlNav.Top = changeAlarm.Top;
             pnlNav.Left = changeAlarm.Left;
-            changeAlarm.BackColor = Color.FromArgb(37, 75, 76);
+            changeAlarm.BackColor = Color.FromArgb(46, 51, 73);
             makeKeyword.BackColor = Color.FromArgb(24, 30, 54);
             Form_Title.Text = "CHANGE ALARM";
             OpenChildForm(new Forms.changeAlar(), sender);
@@ -137,10 +155,18 @@ namespace OssKeyWordAlarm
 
         private void Maximize_Click(object sender, EventArgs e) //확대버튼
         {
+
             if (WindowState == FormWindowState.Normal)
+            {           
                 WindowState = FormWindowState.Maximized;
+                Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 0, 0));
+            }
             else
+            {
                 WindowState = FormWindowState.Normal;
+                Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            }
+               
         }
 
         private void Minimize_Click(object sender, EventArgs e) //축소 버튼
@@ -153,7 +179,7 @@ namespace OssKeyWordAlarm
             showDialog();
         }
 
-        private void Multi_Panel_Paint(object sender, PaintEventArgs e)
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

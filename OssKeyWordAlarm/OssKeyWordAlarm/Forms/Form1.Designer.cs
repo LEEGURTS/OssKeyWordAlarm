@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,8 +44,8 @@
             this.Minimize = new System.Windows.Forms.Button();
             this.Exit_Button = new System.Windows.Forms.Button();
             this.Maximize = new System.Windows.Forms.Button();
-            this.Multi_Panel = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
+            this.Multi_Panel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.JustForWindow.SuspendLayout();
@@ -67,6 +68,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(180, 550);
             this.panel1.TabIndex = 1;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label2
             // 
@@ -201,17 +203,19 @@
             this.JustForWindow.Controls.Add(this.Minimize);
             this.JustForWindow.Controls.Add(this.Exit_Button);
             this.JustForWindow.Controls.Add(this.Maximize);
-            this.JustForWindow.Location = new System.Drawing.Point(180, 0);
+            this.JustForWindow.Location = new System.Drawing.Point(0, 0);
             this.JustForWindow.Name = "JustForWindow";
-            this.JustForWindow.Size = new System.Drawing.Size(776, 60);
+            this.JustForWindow.Size = new System.Drawing.Size(956, 60);
             this.JustForWindow.TabIndex = 3;
+            this.JustForWindow.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Panel_Drag_MouseDown);
+            this.JustForWindow.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Panel_Drag_MouseMove);
             // 
             // Form_Title
             // 
             this.Form_Title.AutoSize = true;
             this.Form_Title.Font = new System.Drawing.Font("아리따-돋움4.0(OTF)-Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Form_Title.ForeColor = System.Drawing.Color.White;
-            this.Form_Title.Location = new System.Drawing.Point(27, 20);
+            this.Form_Title.Location = new System.Drawing.Point(202, 20);
             this.Form_Title.Name = "Form_Title";
             this.Form_Title.Size = new System.Drawing.Size(111, 21);
             this.Form_Title.TabIndex = 6;
@@ -223,7 +227,7 @@
             this.Minimize.FlatAppearance.BorderSize = 0;
             this.Minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Minimize.Image = global::OssKeyWordAlarm.Properties.Resources.minus_24px;
-            this.Minimize.Location = new System.Drawing.Point(670, 18);
+            this.Minimize.Location = new System.Drawing.Point(850, 18);
             this.Minimize.Name = "Minimize";
             this.Minimize.Size = new System.Drawing.Size(27, 23);
             this.Minimize.TabIndex = 5;
@@ -236,7 +240,7 @@
             this.Exit_Button.FlatAppearance.BorderSize = 0;
             this.Exit_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Exit_Button.Image = global::OssKeyWordAlarm.Properties.Resources.power_off_button_25px;
-            this.Exit_Button.Location = new System.Drawing.Point(737, 15);
+            this.Exit_Button.Location = new System.Drawing.Point(917, 15);
             this.Exit_Button.Name = "Exit_Button";
             this.Exit_Button.Size = new System.Drawing.Size(27, 28);
             this.Exit_Button.TabIndex = 3;
@@ -249,26 +253,12 @@
             this.Maximize.FlatAppearance.BorderSize = 0;
             this.Maximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Maximize.Image = global::OssKeyWordAlarm.Properties.Resources.icons8_application_window_24px;
-            this.Maximize.Location = new System.Drawing.Point(703, 18);
+            this.Maximize.Location = new System.Drawing.Point(883, 18);
             this.Maximize.Name = "Maximize";
             this.Maximize.Size = new System.Drawing.Size(28, 23);
             this.Maximize.TabIndex = 4;
             this.Maximize.UseVisualStyleBackColor = true;
             this.Maximize.Click += new System.EventHandler(this.Maximize_Click);
-            // 
-            // Multi_Panel
-            // 
-            this.Multi_Panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Multi_Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.Multi_Panel.BackgroundImage = global::OssKeyWordAlarm.Properties.Resources._181026_11_Hoyeon_0182;
-            this.Multi_Panel.Controls.Add(this.button1);
-            this.Multi_Panel.Location = new System.Drawing.Point(180, 60);
-            this.Multi_Panel.Name = "Multi_Panel";
-            this.Multi_Panel.Size = new System.Drawing.Size(770, 489);
-            this.Multi_Panel.TabIndex = 7;
-            this.Multi_Panel.Paint += new System.Windows.Forms.PaintEventHandler(this.Multi_Panel_Paint);
             // 
             // button1
             // 
@@ -280,14 +270,28 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.testButton_Click);
             // 
+            // Multi_Panel
+            // 
+            this.Multi_Panel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Multi_Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.Multi_Panel.Controls.Add(this.button1);
+            this.Multi_Panel.Location = new System.Drawing.Point(180, 60);
+            this.Multi_Panel.Name = "Multi_Panel";
+            this.Multi_Panel.Size = new System.Drawing.Size(770, 489);
+            this.Multi_Panel.TabIndex = 7;
+            // 
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(950, 550);
-            this.Controls.Add(this.JustForWindow);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Multi_Panel);
+            this.Controls.Add(this.JustForWindow);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(130)))), ((int)(((byte)(138)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -316,12 +320,12 @@
         private System.Windows.Forms.Button Exit_Button;
         private System.Windows.Forms.Button Maximize;
         private System.Windows.Forms.Button Minimize;
-        private System.Windows.Forms.Panel Multi_Panel;
         private System.Windows.Forms.Panel JustForWindow;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label Form_Title;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel Multi_Panel;
     }
 }
 
