@@ -36,7 +36,8 @@ namespace OssKeyWordAlarm
             pnlNav.Left = btnMakeKeyword.Left;
             Form_Title.Text = "KEYWORD";
             btnMakeKeyword.BackColor = Color.FromArgb(46, 51, 73); //초기 강조선 설정
-            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20)); //테두리를 원형으로 설정               
+            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20)); //테두리를 원형으로 설정
+            html_parsing();
         }    
         private Point MouseDownLocation; //마우스 위치
         private void Panel_Drag_MouseDown(object sender, MouseEventArgs e) //마우스 위치 전달
@@ -181,6 +182,29 @@ namespace OssKeyWordAlarm
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        // user가 키워드 알람을 허용해놓은 url들만 들어가서 가장 상단의 글 번호를 출력
+        public void html_parsing()
+        {
+            foreach(KeyValuePair<string,bool> pair in user.Urls)
+            {
+                if (pair.Value)
+                {
+                    string target_url = pair.Key;
+                    HtmlWeb target_web = new HtmlWeb();
+                    var target_doc = target_web.Load(target_url);
+
+                    var node = target_doc.DocumentNode.SelectNodes("//body//div//p[contains(@class, 'info')]");
+
+                    foreach(var i in node)
+                    {
+                        Char[] delimiters = { '|', ' ', ' ', ' ', '|', ' ', ' '};
+                        var temp = i.InnerText.Split(delimiters);
+                        Console.WriteLine(temp[5]);
+                    }
+                }
+            }
         }
     }
 }
