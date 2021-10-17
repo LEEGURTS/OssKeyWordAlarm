@@ -31,7 +31,7 @@ namespace OssKeyWordAlarm
         {
             this.Keyword_TextBox = new System.Windows.Forms.TextBox();
             this.keyWord_listBox = new System.Windows.Forms.ListBox();
-            this.btnRemove_keyWord = new System.Windows.Forms.Button();
+            this.btnCheck = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Keyword_TextBox
@@ -57,15 +57,16 @@ namespace OssKeyWordAlarm
             this.keyWord_listBox.Size = new System.Drawing.Size(330, 264);
             this.keyWord_listBox.TabIndex = 2;
             // 
-            // btnRemove_keyWord
+            // btnCheck
             // 
-            this.btnRemove_keyWord.Location = new System.Drawing.Point(559, 207);
-            this.btnRemove_keyWord.Name = "btnRemove_keyWord";
-            this.btnRemove_keyWord.Size = new System.Drawing.Size(149, 106);
-            this.btnRemove_keyWord.TabIndex = 3;
-            this.btnRemove_keyWord.Text = "button1";
-            this.btnRemove_keyWord.UseVisualStyleBackColor = true;
-            this.btnRemove_keyWord.Click += new System.EventHandler(this.btnRemove_keyWord_Click);
+            this.btnCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCheck.Location = new System.Drawing.Point(618, 318);
+            this.btnCheck.Name = "btnCheck";
+            this.btnCheck.Size = new System.Drawing.Size(75, 23);
+            this.btnCheck.TabIndex = 4;
+            this.btnCheck.Text = "btnCheck";
+            this.btnCheck.UseVisualStyleBackColor = true;
+            this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
             // 
             // makeKey
             // 
@@ -73,7 +74,7 @@ namespace OssKeyWordAlarm
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(770, 489);
-            this.Controls.Add(this.btnRemove_keyWord);
+            this.Controls.Add(this.btnCheck);
             this.Controls.Add(this.keyWord_listBox);
             this.Controls.Add(this.Keyword_TextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -89,6 +90,6 @@ namespace OssKeyWordAlarm
 
         private System.Windows.Forms.TextBox Keyword_TextBox;
         private System.Windows.Forms.ListBox keyWord_listBox;
-        private System.Windows.Forms.Button btnRemove_keyWord;
+        private System.Windows.Forms.Button btnCheck;
     }
 }
