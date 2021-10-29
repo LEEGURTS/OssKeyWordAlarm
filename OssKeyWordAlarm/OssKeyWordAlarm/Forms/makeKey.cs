@@ -79,7 +79,7 @@ namespace OssKeyWordAlarm
             {
                 keyWord_listBox.Items.Add(result[i]);
             }// textBox에서는 "\r\n"로 개행을 해야 됨 
-
+            //바꿈
             SR.Close();
         }
 
