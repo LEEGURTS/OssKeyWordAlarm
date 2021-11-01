@@ -122,4 +122,38 @@ namespace OssKeyWordAlarm
             set { urls = value; }
         }
     }
+
+    //불러온 글에 대한 클래스입니다.
+    // 이 클래스는 해당 글에 대한 주소(url), DUID, 글 내용(content)가 들어있습니다.
+    class Article
+    {
+        public Article(string new_url, int new_duid, string new_content)
+        {
+            url = new_url;
+            duid = new_duid;
+            content = new_content;
+        }
+
+        private string url;
+        private int duid;
+        private string content;
+
+        public string Url
+        {
+            get { return url; }
+            set { url = value; }
+        }
+
+        public int Duid
+        {
+            get { return duid; }
+            set { duid = value; }
+        }
+
+        public string Content
+        {
+            get { return content; }
+            set { content = value; }
+        }
+    }
 }

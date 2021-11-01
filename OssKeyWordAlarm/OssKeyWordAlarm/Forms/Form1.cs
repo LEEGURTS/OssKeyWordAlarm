@@ -10,17 +10,18 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using HtmlAgilityPack;
 using System.Xml;
-
+using System.Globalization;
 
 namespace OssKeyWordAlarm
 {
-    public partial class Form1: Form
+    public partial class Form1 : Form
     {
         User user = new User();
+        HashSet<Article> articles = new HashSet<Article>();
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
         private static extern IntPtr CreateRoundRectRgn
-            (
+        (
         int nLeftRect,
         int nTopRect,
         int nRightRect,
@@ -38,7 +39,7 @@ namespace OssKeyWordAlarm
             btnMakeKeyword.BackColor = Color.FromArgb(46, 51, 73); //초기 강조선 설정
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20)); //테두리를 원형으로 설정
             html_parsing();
-        }    
+        }
         private Point MouseDownLocation; //마우스 위치
         private void Panel_Drag_MouseDown(object sender, MouseEventArgs e) //마우스 위치 전달
         {
@@ -59,18 +60,18 @@ namespace OssKeyWordAlarm
         Forms.addLin newaddLink = new Forms.addLin(); //폼 적용
         Forms.changeAlar newchangeAlert = new Forms.changeAlar(); //폼 적용
         Forms.recordAlar newrecordAlert = new Forms.recordAlar(); //폼 적용
-        
+
         private void showDialog() //알람울림
         {
             Forms.Alert art = new Forms.Alert();
-            art.Show();           
+            art.Show();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
         }
-        
+
         private void OpenChildForm(Form childForm, object btnSender) //새로운 폼 형성 함수
         {
             childForm.TopLevel = false;
@@ -86,7 +87,7 @@ namespace OssKeyWordAlarm
         }
         private void makeKeyword_Leave(object sender, EventArgs e) //키워드 설정 나올때
         {
-            btnMakeKeyword.BackColor = Color.FromArgb(24,30,54);
+            btnMakeKeyword.BackColor = Color.FromArgb(24, 30, 54);
         }
 
         private void addLink_Leave(object sender, EventArgs e) //링크 추가 나올때
@@ -111,7 +112,7 @@ namespace OssKeyWordAlarm
             pnlNav.Left = btnMakeKeyword.Left;
             btnMakeKeyword.BackColor = Color.FromArgb(46, 51, 73);
             Form_Title.Text = "KEYWORD";
-            OpenChildForm(newkey, sender);         
+            OpenChildForm(newkey, sender);
         }
 
         private void recordAlarm_MouseDown(object sender, MouseEventArgs e) //위와 같음
@@ -158,7 +159,7 @@ namespace OssKeyWordAlarm
         {
 
             if (WindowState == FormWindowState.Normal)
-            {           
+            {
                 WindowState = FormWindowState.Maximized;
                 Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 0, 0));
             }
@@ -167,7 +168,7 @@ namespace OssKeyWordAlarm
                 WindowState = FormWindowState.Normal;
                 Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
             }
-               
+
         }
 
         private void Minimize_Click(object sender, EventArgs e) //축소 버튼
@@ -187,22 +188,28 @@ namespace OssKeyWordAlarm
         // user가 키워드 알람을 허용해놓은 url들만 들어가서 가장 상단의 글 번호를 출력
         public void html_parsing()
         {
-            foreach(KeyValuePair<string,bool> pair in user.Urls)
+            foreach (KeyValuePair<string, bool> pair in user.Urls)
             {
                 if (pair.Value)
                 {
                     string target_url = pair.Key;
                     HtmlWeb target_web = new HtmlWeb();
-                    var target_doc = target_web.Load(target_url);
-
-                    var node = target_doc.DocumentNode.SelectNodes("//body//div//p[contains(@class, 'info')]");
-
-                    foreach(var i in node)
+                    for (int page_num = 1; page_num <= 100; page_num++)
                     {
-                        Char[] delimiters = { '|', ' ', ' ', ' ', '|', ' ', ' '};
-                        var temp = i.InnerText.Split(delimiters);
-                        Console.WriteLine(temp[5]);
+                        string now_target_url = target_url + "?MaxRows=10&tpage=" + page_num.ToString() + "&searchKey=1&searchVal=&srCategoryId=";
+                        var target_doc = target_web.Load(now_target_url);
+
+                        var node = target_doc.DocumentNode.SelectNodes("//body//div//div//div//div//div//div//div//div//li//div//a[@href]");
+                        foreach (HtmlNode link in node)
+                        {
+                            string hrefValue = link.GetAttributeValue("href", string.Empty);
+                            Console.WriteLine(hrefValue);
+                            string[] separatingStrings = { "DUID=","&tpage=" };
+                            string[] words = hrefValue.Split(separatingStrings,System.StringSplitOptions.RemoveEmptyEntries);
+                            articles.Add(new Article(hrefValue, Int32.Parse(words[1]), "hi"));
+                        }
                     }
+
                 }
             }
         }
