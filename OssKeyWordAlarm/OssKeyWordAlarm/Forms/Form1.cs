@@ -11,6 +11,7 @@ using System.Runtime.InteropServices;
 using HtmlAgilityPack;
 using System.Xml;
 using System.Threading;
+using System.Security.Permissions;
 
 namespace OssKeyWordAlarm
 {
@@ -39,9 +40,7 @@ namespace OssKeyWordAlarm
             Form_Title.Text = "KEYWORD";
             btnMakeKeyword.BackColor = Color.FromArgb(46, 51, 73); //초기 강조선 설정
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20)); //테두리를 원형으로 설정
-            html_parsing();
-            Thread t = new Thread(new ThreadStart(ThreadProc));
-            t.Start();
+            init_parsing();
         }
 
         public void ThreadProc()
@@ -49,6 +48,7 @@ namespace OssKeyWordAlarm
             while (true)
             {
                 new_article_detecting();
+                Thread.Sleep(100);
             }
         }
 
@@ -187,9 +187,12 @@ namespace OssKeyWordAlarm
         {
             showDialog();
         }
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        
+        public void init_parsing()
         {
-
+            html_parsing();
+            Thread t = new Thread(new ThreadStart(ThreadProc));
+            t.Start();
         }
 
         // user가 키워드 알람을 허용해놓은 url들만 들어가서 가장 상단의 글 번호를 출력
