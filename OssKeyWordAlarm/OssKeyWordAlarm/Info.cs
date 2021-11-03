@@ -125,7 +125,7 @@ namespace OssKeyWordAlarm
 
     //불러온 글에 대한 클래스입니다.
     // 이 클래스는 해당 글에 대한 주소(url), DUID, 글 내용(content)가 들어있습니다.
-    class Article
+    class Article : IEquatable<Article>
     {
         public Article(string new_url, int new_duid, string new_content)
         {
@@ -137,6 +137,21 @@ namespace OssKeyWordAlarm
         private string url;
         private int duid;
         private string content;
+
+        public override int GetHashCode()
+        {
+            return url.Length * 37 + duid * 11 + content.Length * 13;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Article && Equals((Article)obj);
+        }
+
+        public bool Equals(Article a)
+        {
+            return url == a.url;
+        }
 
         public string Url
         {

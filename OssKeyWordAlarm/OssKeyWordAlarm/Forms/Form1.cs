@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using HtmlAgilityPack;
 using System.Xml;
-using System.Globalization;
+using System.Threading;
 
 namespace OssKeyWordAlarm
 {
@@ -29,6 +29,7 @@ namespace OssKeyWordAlarm
         int nWidthEllipse,
         int nHeightEllipse);
 
+
         public Form1()
         {
             InitializeComponent();
@@ -39,7 +40,18 @@ namespace OssKeyWordAlarm
             btnMakeKeyword.BackColor = Color.FromArgb(46, 51, 73); //초기 강조선 설정
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20)); //테두리를 원형으로 설정
             html_parsing();
+            Thread t = new Thread(new ThreadStart(ThreadProc));
+            t.Start();
         }
+
+        public void ThreadProc()
+        {
+            while (true)
+            {
+                new_article_detecting();
+            }
+        }
+
         private Point MouseDownLocation; //마우스 위치
         private void Panel_Drag_MouseDown(object sender, MouseEventArgs e) //마우스 위치 전달
         {
@@ -65,11 +77,6 @@ namespace OssKeyWordAlarm
         {
             Forms.Alert art = new Forms.Alert();
             art.Show();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void OpenChildForm(Form childForm, object btnSender) //새로운 폼 형성 함수
@@ -194,7 +201,7 @@ namespace OssKeyWordAlarm
                 {
                     string target_url = pair.Key;
                     HtmlWeb target_web = new HtmlWeb();
-                    for (int page_num = 1; page_num <= 100; page_num++)
+                    for (int page_num = 1; page_num <= 1; page_num++)
                     {
                         string now_target_url = target_url + "?MaxRows=10&tpage=" + page_num.ToString() + "&searchKey=1&searchVal=&srCategoryId=";
                         var target_doc = target_web.Load(now_target_url);
@@ -203,13 +210,45 @@ namespace OssKeyWordAlarm
                         foreach (HtmlNode link in node)
                         {
                             string hrefValue = link.GetAttributeValue("href", string.Empty);
-                            Console.WriteLine(hrefValue);
-                            string[] separatingStrings = { "DUID=","&tpage=" };
-                            string[] words = hrefValue.Split(separatingStrings,System.StringSplitOptions.RemoveEmptyEntries);
-                            articles.Add(new Article(hrefValue, Int32.Parse(words[1]), "hi"));
+                            //Console.WriteLine(hrefValue);
+                            string[] separatingStrings = { "DUID=", "&tpage=" };
+                            string[] words = hrefValue.Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
+
+                            articles.Add(new Article(hrefValue, Int32.Parse(words[1]), "content"));
+
                         }
                     }
+                }
+            }
+        }
 
+        public void new_article_detecting()
+        {
+            foreach (KeyValuePair<string, bool> pair in user.Urls)
+            {
+                if (pair.Value)
+                {
+                    string target_url = pair.Key;
+                    HtmlWeb target_web = new HtmlWeb();
+                    for (int page_num = 1; page_num <= 1; page_num++)
+                    {
+                        string now_target_url = target_url + "?MaxRows=10&tpage=" + page_num.ToString() + "&searchKey=1&searchVal=&srCategoryId=";
+                        var target_doc = target_web.Load(now_target_url);
+
+                        var node = target_doc.DocumentNode.SelectNodes("//body//div//div//div//div//div//div//div//div//li//div//a[@href]");
+                        foreach (HtmlNode link in node)
+                        {
+                            string hrefValue = link.GetAttributeValue("href", string.Empty);
+                            //Console.WriteLine(hrefValue);
+                            string[] separatingStrings = { "DUID=", "&tpage=" };
+                            string[] words = hrefValue.Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
+                            if (!articles.Contains(new Article(hrefValue, Int32.Parse(words[1]), "content")))
+                            {
+                                articles.Add(new Article(hrefValue, Int32.Parse(words[1]), "content"));
+                                Console.WriteLine("new article detected : " + hrefValue);
+                            }
+                        }
+                    }
                 }
             }
         }
