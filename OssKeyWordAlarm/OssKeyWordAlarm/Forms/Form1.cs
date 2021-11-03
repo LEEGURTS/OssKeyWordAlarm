@@ -207,15 +207,20 @@ namespace OssKeyWordAlarm
                         var target_doc = target_web.Load(now_target_url);
 
                         var node = target_doc.DocumentNode.SelectNodes("//body//div//div//div//div//div//div//div//div//li//div//a[@href]");
+                        var date_node = target_doc.DocumentNode.SelectNodes("//body//div//p[contains(@class, 'info')]");
+                        int index = 0;
                         foreach (HtmlNode link in node)
                         {
                             string hrefValue = link.GetAttributeValue("href", string.Empty);
                             //Console.WriteLine(hrefValue);
                             string[] separatingStrings = { "DUID=", "&tpage=" };
                             string[] words = hrefValue.Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
-
-                            articles.Add(new Article(hrefValue, Int32.Parse(words[1]), "content"));
-
+                            Char[] delimiters = { '|', ' ', ' ', ' ', '|', ' ', ' ' };
+                            string date = date_node[index].InnerText.Split(delimiters)[9];
+                            articles.Add(new Article(hrefValue, Int32.Parse(words[1]), "content",date));
+                            Console.WriteLine(hrefValue);
+                            Console.WriteLine(date);
+                            index++;
                         }
                     }
                 }
@@ -236,17 +241,23 @@ namespace OssKeyWordAlarm
                         var target_doc = target_web.Load(now_target_url);
 
                         var node = target_doc.DocumentNode.SelectNodes("//body//div//div//div//div//div//div//div//div//li//div//a[@href]");
+                        var date_node = target_doc.DocumentNode.SelectNodes("//body//div//p[contains(@class, 'info')]");
+                        int index = 0;
+
                         foreach (HtmlNode link in node)
                         {
                             string hrefValue = link.GetAttributeValue("href", string.Empty);
                             //Console.WriteLine(hrefValue);
                             string[] separatingStrings = { "DUID=", "&tpage=" };
                             string[] words = hrefValue.Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
-                            if (!articles.Contains(new Article(hrefValue, Int32.Parse(words[1]), "content")))
+                            Char[] delimiters = { '|', ' ', ' ', ' ', '|', ' ', ' ' };
+                            string date = date_node[index].InnerText.Split(delimiters)[9];
+                            if (!articles.Contains(new Article(hrefValue, Int32.Parse(words[1]), "content",date)))
                             {
-                                articles.Add(new Article(hrefValue, Int32.Parse(words[1]), "content"));
+                                articles.Add(new Article(hrefValue, Int32.Parse(words[1]), "content",date));
                                 Console.WriteLine("new article detected : " + hrefValue);
                             }
+                            index++;
                         }
                     }
                 }
