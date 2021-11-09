@@ -40,7 +40,7 @@ namespace OssKeyWordAlarm
             this.Keyword_TextBox.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.Keyword_TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Keyword_TextBox.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Keyword_TextBox.Location = new System.Drawing.Point(540, 438);
+            this.Keyword_TextBox.Location = new System.Drawing.Point(521, 116);
             this.Keyword_TextBox.Name = "Keyword_TextBox";
             this.Keyword_TextBox.Size = new System.Drawing.Size(200, 19);
             this.Keyword_TextBox.TabIndex = 1;
@@ -70,8 +70,7 @@ namespace OssKeyWordAlarm
             // 
             // makeKey
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(770, 489);
             this.Controls.Add(this.btnCheck);

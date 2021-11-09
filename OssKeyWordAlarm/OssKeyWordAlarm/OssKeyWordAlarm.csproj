@@ -169,5 +169,44 @@
   <ItemGroup>
     <None Include="Resources\Bamboo.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\놀이터.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\물방울.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\삐비동 알람소리.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\상승.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\알림음.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\야.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bamboo_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\voice_recognition_60px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\playground_60px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\siren_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cloud_60px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\water_60px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BamBooIcon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

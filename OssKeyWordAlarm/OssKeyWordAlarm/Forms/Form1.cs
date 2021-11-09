@@ -32,13 +32,11 @@ namespace OssKeyWordAlarm
         public Form1()
         {
             InitializeComponent();
-            pnlNav.Height = btnMakeKeyword.Height;
-            pnlNav.Top = btnMakeKeyword.Top;
-            pnlNav.Left = btnMakeKeyword.Left;
+            makeKeyword_MouseDown(null, null);
             Form_Title.Text = "KEYWORD";
             btnMakeKeyword.BackColor = Color.FromArgb(46, 51, 73); //초기 강조선 설정
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20)); //테두리를 원형으로 설정
-            html_parsing();
+            //html_parsing();
         }
         private Point MouseDownLocation; //마우스 위치
         private void Panel_Drag_MouseDown(object sender, MouseEventArgs e) //마우스 위치 전달
@@ -61,9 +59,10 @@ namespace OssKeyWordAlarm
         Forms.changeAlar newchangeAlert = new Forms.changeAlar(); //폼 적용
         Forms.recordAlar newrecordAlert = new Forms.recordAlar(); //폼 적용
 
-        private void showDialog() //알람울림
+        public static void showDialog(string str) //알람울림
         {
             Forms.Alert art = new Forms.Alert();
+            art.chText("테스트");
             art.Show();
         }
 
@@ -75,75 +74,61 @@ namespace OssKeyWordAlarm
         private void OpenChildForm(Form childForm, object btnSender) //새로운 폼 형성 함수
         {
             childForm.TopLevel = false;
-            childForm.Height = this.Height;
-            childForm.Width = this.Width;
-            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Location = Multi_Panel.Location;
             childForm.Dock = DockStyle.Fill; //위에는 차일드 폼에 관한 초기값 형성
             Multi_Panel.Controls.Add(childForm); //차일드 폼에 관한 컨트롤 권한 부여
             Multi_Panel.Tag = childForm;
+            //childForm.StartPosition = FormStartPosition.Manual;
+            childForm.Size = Multi_Panel.Size;
             childForm.BringToFront();
-            childForm.Show(); //출력
-            Multi_Panel.Text = childForm.Text;
+            childForm.Show(); //출력    
         }
-        private void makeKeyword_Leave(object sender, EventArgs e) //키워드 설정 나올때
-        {
-            btnMakeKeyword.BackColor = Color.FromArgb(24, 30, 54);
-        }
-
-        private void addLink_Leave(object sender, EventArgs e) //링크 추가 나올때
-        {
-            addLink.BackColor = Color.FromArgb(24, 30, 54);
-        }
-
-        private void recordAlarm_Leave(object sender, EventArgs e) //알람기록 나올때
-        {
-            recordAlarm.BackColor = Color.FromArgb(24, 30, 54);
-        }
-
-        private void changeAlarm_Leave(object sender, EventArgs e) //알람소리 바꾸기에서 나올때
-        {
-            changeAlarm.BackColor = Color.FromArgb(24, 30, 54);
-        }
+       
 
         private void makeKeyword_MouseDown(object sender, MouseEventArgs e) // 키워드 설정 클릭하자마자 강조와 함께 새로운 폼 띄움
         {
-            pnlNav.Height = btnMakeKeyword.Height;
-            pnlNav.Top = btnMakeKeyword.Top;
-            pnlNav.Left = btnMakeKeyword.Left;
+            pnlNav.Location = btnMakeKeyword.Location;
             btnMakeKeyword.BackColor = Color.FromArgb(46, 51, 73);
+            addLink.BackColor = Color.FromArgb(24, 30, 54);
+            recordAlarm.BackColor = Color.FromArgb(24, 30, 54);
+            changeAlarm.BackColor = Color.FromArgb(24, 30, 54);
             Form_Title.Text = "KEYWORD";
             OpenChildForm(newkey, sender);
         }
 
         private void recordAlarm_MouseDown(object sender, MouseEventArgs e) //위와 같음
         {
-            pnlNav.Height = recordAlarm.Height;
-            pnlNav.Top = recordAlarm.Top;
-            pnlNav.Left = recordAlarm.Left;
+            pnlNav.Location = recordAlarm.Location;
             recordAlarm.BackColor = Color.FromArgb(46, 51, 73);
             btnMakeKeyword.BackColor = Color.FromArgb(24, 30, 54);
+            addLink.BackColor = Color.FromArgb(24, 30, 54);
+            changeAlarm.BackColor = Color.FromArgb(24, 30, 54);
             Form_Title.Text = "ALARM LIST";
             OpenChildForm(newrecordAlert, sender);
         }
 
         private void addLink_MouseDown(object sender, MouseEventArgs e) //위와 같음
         {
-            pnlNav.Height = addLink.Height;
-            pnlNav.Top = addLink.Top;
-            pnlNav.Left = addLink.Left;
+            pnlNav.Location = addLink.Location;
             addLink.BackColor = Color.FromArgb(46, 51, 73);
             btnMakeKeyword.BackColor = Color.FromArgb(24, 30, 54);
+
+            btnMakeKeyword.BackColor = Color.FromArgb(24, 30, 54);
+            recordAlarm.BackColor = Color.FromArgb(24, 30, 54);
+            changeAlarm.BackColor = Color.FromArgb(24, 30, 54);
             Form_Title.Text = "ADD LINK";
             OpenChildForm(newaddLink, sender);
         }
 
         private void changeAlarm_MouseDown(object sender, MouseEventArgs e) //위와 같음
         {
-            pnlNav.Height = changeAlarm.Height;
-            pnlNav.Top = changeAlarm.Top;
-            pnlNav.Left = changeAlarm.Left;
+            pnlNav.Location = changeAlarm.Location;
             changeAlarm.BackColor = Color.FromArgb(46, 51, 73);
             btnMakeKeyword.BackColor = Color.FromArgb(24, 30, 54);
+
+            btnMakeKeyword.BackColor = Color.FromArgb(24, 30, 54);
+            addLink.BackColor = Color.FromArgb(24, 30, 54);
+            recordAlarm.BackColor = Color.FromArgb(24, 30, 54);
             Form_Title.Text = "CHANGE ALARM";
             OpenChildForm(newchangeAlert, sender);
         }
@@ -174,11 +159,6 @@ namespace OssKeyWordAlarm
         private void Minimize_Click(object sender, EventArgs e) //축소 버튼
         {
             WindowState = FormWindowState.Minimized;
-        }
-
-        private void testButton_Click(object sender, EventArgs e) //임시 알림용 버튼
-        {
-            showDialog();
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -212,6 +192,11 @@ namespace OssKeyWordAlarm
 
                 }
             }
+        }
+
+        private void Multi_Panel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
