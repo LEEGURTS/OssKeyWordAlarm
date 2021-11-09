@@ -10,7 +10,8 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using HtmlAgilityPack;
 using System.Xml;
-using System.Globalization;
+using System.Threading;
+using System.Security.Permissions;
 
 namespace OssKeyWordAlarm
 {
@@ -29,6 +30,7 @@ namespace OssKeyWordAlarm
         int nWidthEllipse,
         int nHeightEllipse);
 
+
         public Form1()
         {
             InitializeComponent();
@@ -36,8 +38,18 @@ namespace OssKeyWordAlarm
             Form_Title.Text = "KEYWORD";
             btnMakeKeyword.BackColor = Color.FromArgb(46, 51, 73); //초기 강조선 설정
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20)); //테두리를 원형으로 설정
-            //html_parsing();
+            init_parsing();
         }
+
+        public void ThreadProc()
+        {
+            while (true)
+            {
+                new_article_detecting();
+                Thread.Sleep(100);
+            }
+        }
+
         private Point MouseDownLocation; //마우스 위치
         private void Panel_Drag_MouseDown(object sender, MouseEventArgs e) //마우스 위치 전달
         {
@@ -64,11 +76,6 @@ namespace OssKeyWordAlarm
             Forms.Alert art = new Forms.Alert();
             art.chText("테스트");
             art.Show();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void OpenChildForm(Form childForm, object btnSender) //새로운 폼 형성 함수
@@ -162,7 +169,18 @@ namespace OssKeyWordAlarm
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
+        }
 
+        private void testButton_Click(object sender, EventArgs e) //임시 알림용 버튼
+        {
+            showDialog();
+        }
+        
+        public void init_parsing()
+        {
+            html_parsing();
+            Thread t = new Thread(new ThreadStart(ThreadProc));
+            t.Start();
         }
 
         // user가 키워드 알람을 허용해놓은 url들만 들어가서 가장 상단의 글 번호를 출력
@@ -174,22 +192,65 @@ namespace OssKeyWordAlarm
                 {
                     string target_url = pair.Key;
                     HtmlWeb target_web = new HtmlWeb();
-                    for (int page_num = 1; page_num <= 100; page_num++)
+                    for (int page_num = 1; page_num <= 1; page_num++)
                     {
                         string now_target_url = target_url + "?MaxRows=10&tpage=" + page_num.ToString() + "&searchKey=1&searchVal=&srCategoryId=";
                         var target_doc = target_web.Load(now_target_url);
 
                         var node = target_doc.DocumentNode.SelectNodes("//body//div//div//div//div//div//div//div//div//li//div//a[@href]");
+                        var date_node = target_doc.DocumentNode.SelectNodes("//body//div//p[contains(@class, 'info')]");
+                        int index = 0;
                         foreach (HtmlNode link in node)
                         {
                             string hrefValue = link.GetAttributeValue("href", string.Empty);
+                            //Console.WriteLine(hrefValue);
+                            string[] separatingStrings = { "DUID=", "&tpage=" };
+                            string[] words = hrefValue.Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
+                            Char[] delimiters = { '|', ' ', ' ', ' ', '|', ' ', ' ' };
+                            string date = date_node[index].InnerText.Split(delimiters)[9];
+                            articles.Add(new Article(hrefValue, Int32.Parse(words[1]), "content",date));
                             Console.WriteLine(hrefValue);
-                            string[] separatingStrings = { "DUID=","&tpage=" };
-                            string[] words = hrefValue.Split(separatingStrings,System.StringSplitOptions.RemoveEmptyEntries);
-                            articles.Add(new Article(hrefValue, Int32.Parse(words[1]), "hi"));
+                            Console.WriteLine(date);
+                            index++;
                         }
                     }
+                }
+            }
+        }
 
+        public void new_article_detecting()
+        {
+            foreach (KeyValuePair<string, bool> pair in user.Urls)
+            {
+                if (pair.Value)
+                {
+                    string target_url = pair.Key;
+                    HtmlWeb target_web = new HtmlWeb();
+                    for (int page_num = 1; page_num <= 1; page_num++)
+                    {
+                        string now_target_url = target_url + "?MaxRows=10&tpage=" + page_num.ToString() + "&searchKey=1&searchVal=&srCategoryId=";
+                        var target_doc = target_web.Load(now_target_url);
+
+                        var node = target_doc.DocumentNode.SelectNodes("//body//div//div//div//div//div//div//div//div//li//div//a[@href]");
+                        var date_node = target_doc.DocumentNode.SelectNodes("//body//div//p[contains(@class, 'info')]");
+                        int index = 0;
+
+                        foreach (HtmlNode link in node)
+                        {
+                            string hrefValue = link.GetAttributeValue("href", string.Empty);
+                            //Console.WriteLine(hrefValue);
+                            string[] separatingStrings = { "DUID=", "&tpage=" };
+                            string[] words = hrefValue.Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
+                            Char[] delimiters = { '|', ' ', ' ', ' ', '|', ' ', ' ' };
+                            string date = date_node[index].InnerText.Split(delimiters)[9];
+                            if (!articles.Contains(new Article(hrefValue, Int32.Parse(words[1]), "content",date)))
+                            {
+                                articles.Add(new Article(hrefValue, Int32.Parse(words[1]), "content",date));
+                                Console.WriteLine("new article detected : " + hrefValue);
+                            }
+                            index++;
+                        }
+                    }
                 }
             }
         }
