@@ -52,11 +52,10 @@ namespace OssKeyWordAlarm.Forms
             // testTxt
             // 
             this.testTxt.AutoSize = true;
-            this.testTxt.Location = new System.Drawing.Point(278, 52);
+            this.testTxt.Location = new System.Drawing.Point(12, 55);
             this.testTxt.Name = "testTxt";
-            this.testTxt.Size = new System.Drawing.Size(129, 16);
+            this.testTxt.Size = new System.Drawing.Size(0, 16);
             this.testTxt.TabIndex = 0;
-            this.testTxt.Text = "테스트문구입니다.";
             // 
             // Alert
             // 
