@@ -12,6 +12,7 @@ using HtmlAgilityPack;
 using System.Xml;
 using System.Threading;
 using System.Security.Permissions;
+using System.IO;
 
 namespace OssKeyWordAlarm
 {
@@ -45,8 +46,9 @@ namespace OssKeyWordAlarm
         {
             while (true)
             {
-                new_article_detecting();
-                Thread.Sleep(100);
+                //new_article_detecting();        
+                Thread.Sleep(1000);
+                html_parsing();
             }
         }
 
@@ -74,7 +76,7 @@ namespace OssKeyWordAlarm
         public static void showDialog(string str) //알람울림
         {
             Forms.Alert art = new Forms.Alert();
-            art.chText("테스트");
+            art.chText(str);
             art.Show();
         }
 
@@ -167,14 +169,6 @@ namespace OssKeyWordAlarm
         {
             WindowState = FormWindowState.Minimized;
         }
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void testButton_Click(object sender, EventArgs e) //임시 알림용 버튼
-        {
-            showDialog();
-        }
         
         public void init_parsing()
         {
@@ -186,34 +180,43 @@ namespace OssKeyWordAlarm
         // user가 키워드 알람을 허용해놓은 url들만 들어가서 가장 상단의 글 번호를 출력
         public void html_parsing()
         {
+            string[] saving_str = new string[78];
+            string[] Title = new string[78];
+
             foreach (KeyValuePair<string, bool> pair in user.Urls)
             {
                 if (pair.Value)
                 {
                     string target_url = pair.Key;
                     HtmlWeb target_web = new HtmlWeb();
+                    char[] delimiterChars = { '=', '&' };
                     for (int page_num = 1; page_num <= 1; page_num++)
                     {
                         string now_target_url = target_url + "?MaxRows=10&tpage=" + page_num.ToString() + "&searchKey=1&searchVal=&srCategoryId=";
                         var target_doc = target_web.Load(now_target_url);
-
                         var node = target_doc.DocumentNode.SelectNodes("//body//div//div//div//div//div//div//div//div//li//div//a[@href]");
                         var date_node = target_doc.DocumentNode.SelectNodes("//body//div//p[contains(@class, 'info')]");
                         int index = 0;
                         foreach (HtmlNode link in node)
                         {
                             string hrefValue = link.GetAttributeValue("href", string.Empty);
+                            string duid_str = hrefValue.Split(delimiterChars)[3];// duid
                             //Console.WriteLine(hrefValue);
                             string[] separatingStrings = { "DUID=", "&tpage=" };
                             string[] words = hrefValue.Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
                             Char[] delimiters = { '|', ' ', ' ', ' ', '|', ' ', ' ' };
                             string date = date_node[index].InnerText.Split(delimiters)[9];
-                            articles.Add(new Article(hrefValue, Int32.Parse(words[1]), "content",date));
-                            Console.WriteLine(hrefValue);
-                            Console.WriteLine(date);
+                            articles.Add(new Article(hrefValue, Int32.Parse(words[1]), "content", date));
+                            //Console.WriteLine(hrefValue + date + " " + duid_str);
+                            Title[index] = link.InnerText.Split('\n')[3].Substring(36);
+                            //Console.WriteLine(Title[index]);
+                            if ((hrefValue + date)!=null)
+                                saving_str[index] = hrefValue + date; // 저장 위한 문자열
                             index++;
                         }
                     }
+                    // 파싱 비교-----------------
+                    Check(saving_str, Title);
                 }
             }
         }
@@ -230,7 +233,6 @@ namespace OssKeyWordAlarm
                     {
                         string now_target_url = target_url + "?MaxRows=10&tpage=" + page_num.ToString() + "&searchKey=1&searchVal=&srCategoryId=";
                         var target_doc = target_web.Load(now_target_url);
-
                         var node = target_doc.DocumentNode.SelectNodes("//body//div//div//div//div//div//div//div//div//li//div//a[@href]");
                         var date_node = target_doc.DocumentNode.SelectNodes("//body//div//p[contains(@class, 'info')]");
                         int index = 0;
@@ -255,7 +257,100 @@ namespace OssKeyWordAlarm
             }
         }
 
+        public string file_path(string str) {
+            string dir_url = Environment.CurrentDirectory;
+            string file_name = str;
+            return Path.Combine(dir_url, file_name);
+        }
+
+        public string[] read_parsing(string str) {
+            StreamReader reader = new StreamReader(file_path(str), Encoding.Default);
+            string one_line;
+            string[] before = new string[78];
+            int index2 = 0;
+            while ((one_line = reader.ReadLine()) != null)
+            {
+                before[index2] = one_line;
+                index2++;
+            }
+            reader.Close();
+            return before;
+        }
+
+        public List<string> read_keyword(string str)
+        {
+            StreamReader reader = new StreamReader(file_path(str), Encoding.Default);
+            string one_line;
+            List<string> result = new List<string>();
+
+            while ((one_line = reader.ReadLine()) != null)
+            {
+                result.Add(one_line);
+            }
+            reader.Close();
+            return result;
+        }
+
+        public void Check(string[] str, string[] title) {
+            
+            string[] before = read_parsing("parsing.txt");
+            if (before[0] == null) { 
+                save_parsing(str);
+                before = read_parsing("parsing.txt");
+            } // 처음 생성 시 parsing을 최신화함.
+            
+            if (str[0] == before[0]) { Console.WriteLine("Same!"); }
+            // 새 글이 올라오면 첫 번째 글이 바뀜 -> 첫 번째 글만 비교하면 됨
+            else
+            {
+                int point = -1, index3 = 0;
+                //Console.WriteLine(str.Length+"개");
+                while (point == -1 && index3 <= 77)
+                {
+                    point = Array.IndexOf(str, before[index3]);
+                    //Console.WriteLine(index3+"는"+before[index3]);
+                    index3++;
+                }
+                if (point == -1 && index3 <= 78) {
+                    save_parsing(str);
+                    Console.WriteLine("업데이트");
+                    return;
+                }
+
+                List<string> result = read_keyword("keywords.txt");
+
+                for (int i = 0; i < point; i++)
+                {
+                    for (int k = 0; k < result.Count; k++)
+                    {
+                        if (title[i].IndexOf(result[k]) != -1)
+                        {
+                            Console.WriteLine(title[i]);
+                            Console.WriteLine(result[k]);
+                            showDialog("임시");
+                        }
+                    }
+                    //saving_str[i];//의 제목을 가져오기 + keyWord와 비교하기
+                }
+
+                save_parsing(str);
+                Console.WriteLine("nono!");
+            }
+        }
+
+        public void save_parsing(string[] str) {
+            StreamWriter writer = File.CreateText(file_path("parsing.txt"));// -> 덮어쓰기..?
+                                                                            // AppendText(); -> 이어쓰기
+            foreach (string line in str){ writer.WriteLine(line); }
+            writer.Close();
+        }
+
         private void Multi_Panel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void changeAlarm_Click(object sender, EventArgs e)
         {
 
         }
