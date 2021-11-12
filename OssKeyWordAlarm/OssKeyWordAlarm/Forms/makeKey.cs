@@ -1,17 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
+
 namespace OssKeyWordAlarm
 {
     public partial class makeKey : Form
     {
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+
+        private static extern IntPtr CreateRoundRectRgn
+        (
+        int nLeftRect,
+        int nTopRect,
+        int nRightRect,
+        int nBottomRect,
+        int nWidthEllipse,
+        int nHeightEllipse);
+
         User use = new User();
         public makeKey()
         {
@@ -20,6 +28,11 @@ namespace OssKeyWordAlarm
         }
         private void makeKey_Load(object sender, EventArgs e)
         {
+            pnlText.Region= System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlText.Width,pnlText.Height, 20, 20));
+            keyWord_listBox.Region= System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, keyWord_listBox.Width, keyWord_listBox.Height, 20, 20));
+            Keyword_TextBox.Region= System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Keyword_TextBox.Width, Keyword_TextBox.Height, 5, 5));
+            btnDelete.Region= System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, btnDelete.Width, btnDelete.Height, 10, 10));
+            keyWord_listBox.BringToFront();
             Btn_Load();
         }
 
@@ -128,9 +141,26 @@ namespace OssKeyWordAlarm
             Btn_Check();
         }
 
-        private void keyWord_listBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (keyWord_listBox.SelectedIndex != -1)
+            {
+                keyWord_listBox.Items.RemoveAt(keyWord_listBox.SelectedIndex);
+            }
+        }
 
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (keyWord_listBox.SelectedIndex != -1)
+            {
+                keyWord_listBox.Items[keyWord_listBox.SelectedIndex] = Keyword_TextBox.Text;
+                Keyword_TextBox.Text = "";
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            keyWord_listBox.Items.Clear();
         }
 
         /* 앞으로 구현 할 것
