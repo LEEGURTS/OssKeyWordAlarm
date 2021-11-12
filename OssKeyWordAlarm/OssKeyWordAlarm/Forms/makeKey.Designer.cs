@@ -39,10 +39,10 @@ namespace OssKeyWordAlarm
             this.Keyword_TextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Keyword_TextBox.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.Keyword_TextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Keyword_TextBox.Font = new System.Drawing.Font("G마켓 산스 TTF Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Keyword_TextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Keyword_TextBox.Location = new System.Drawing.Point(521, 116);
             this.Keyword_TextBox.Name = "Keyword_TextBox";
-            this.Keyword_TextBox.Size = new System.Drawing.Size(200, 19);
+            this.Keyword_TextBox.Size = new System.Drawing.Size(200, 23);
             this.Keyword_TextBox.TabIndex = 1;
             this.Keyword_TextBox.Text = "키워드를 입력하세요.";
             this.Keyword_TextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnKeyword_KeyDown);
@@ -51,11 +51,12 @@ namespace OssKeyWordAlarm
             // 
             this.keyWord_listBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.keyWord_listBox.FormattingEnabled = true;
-            this.keyWord_listBox.ItemHeight = 12;
+            this.keyWord_listBox.ItemHeight = 15;
             this.keyWord_listBox.Location = new System.Drawing.Point(66, 94);
             this.keyWord_listBox.Name = "keyWord_listBox";
-            this.keyWord_listBox.Size = new System.Drawing.Size(330, 264);
+            this.keyWord_listBox.Size = new System.Drawing.Size(330, 255);
             this.keyWord_listBox.TabIndex = 2;
+            this.keyWord_listBox.SelectedIndexChanged += new System.EventHandler(this.keyWord_listBox_SelectedIndexChanged);
             // 
             // btnCheck
             // 

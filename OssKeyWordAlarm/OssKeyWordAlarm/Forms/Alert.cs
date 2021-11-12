@@ -20,7 +20,9 @@ namespace OssKeyWordAlarm.Forms
         private void fadeIn(object sender, EventArgs e) //페이드인
         {
             if (Opacity >= 1)
-                timer1.Stop();   //다보이면 함수 종료
+            {
+                timer1.Stop();
+            }//다보이면 함수 종료
             else
                 Opacity += 0.05;
         }
@@ -39,6 +41,7 @@ namespace OssKeyWordAlarm.Forms
 
         private void Alert_Load(object sender, EventArgs e)
         {
+            Console.WriteLine("시작");
             Forms.changeAlar.AlarmSound.Position = 0;
             System.IO.Stream str = Forms.changeAlar.AlarmSound;
             SoundPlayer player;
@@ -52,6 +55,7 @@ namespace OssKeyWordAlarm.Forms
             player.Play();
             Top = Screen.PrimaryScreen.Bounds.Height - 160;
             Left = Screen.PrimaryScreen.Bounds.Width - Width;
+            Console.WriteLine("끝");
         }
         private void timer2_Tick(object sender, EventArgs e)
         {

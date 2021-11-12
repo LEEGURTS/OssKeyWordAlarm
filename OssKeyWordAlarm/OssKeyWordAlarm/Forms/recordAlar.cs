@@ -21,5 +21,15 @@ namespace OssKeyWordAlarm.Forms
         {
 
         }
+
+        private void btn_link_Click(object sender, EventArgs e)
+        {
+            // 사이트
+        }
+
+        private void btn_delete_Click(object sender, EventArgs e)
+        {
+            // 삭제
+        }
     }
 }
