@@ -50,6 +50,7 @@ namespace OssKeyWordAlarm
                 html_parsing();
                 //new_article_detecting();
                 Delay(600000);
+                // 600000 = 10분
             }
         }
 
@@ -293,41 +294,39 @@ namespace OssKeyWordAlarm
             return result;
         }
 
+        // Check : 파싱 비교, 업데이트 함수입니다.
         public void Check(List<string> str, List<string> title) {
-
-            Stopwatch ss = new Stopwatch();
-            ss.Start();
+            // str은 url, title은 글 제목
             List<string> before = read_file("parsing.txt");
             if (before[0] == null) { 
                 save_parsing(str);
                 before = read_file("parsing.txt");
-            } // 처음 생성 시 parsing을 최신화함.
+            } // 1) 처음 생성 시(txt 파일이 비어있다면) parsing을 최신화함.
             
-            if (str[0] == before[0]) { Console.WriteLine("Same!"); }
-            // 새 글이 올라오면 첫 번째 글이 바뀜 -> 첫 번째 글만 비교하면 됨
+            if (str[0] == before[0]) { Console.WriteLine("새 글 없음"); }
+            // 새 글이 올라오면 첫 번째 글이 바뀜 -> 첫 번째 글만 비교하면 됨.
             else
             {
                 int point = -1, index3 = 0;
-                //Console.WriteLine(str.Length+"개");
                 while (point == -1 && index3 <= str.Count)
-                {
+                { // point는 이전 파싱의 index3번째 주소의 현재 파싱 결과에서의 위치
                     point = str.IndexOf(before[index3]);
-                    //Console.WriteLine(index3+"는"+before[index3]);
                     index3++;
                 }
+                
                 if (point == -1 && index3 <= str.Count) {
                     save_parsing(str);
                     Console.WriteLine("업데이트");
                     return;
-                }
+                }// 이전 파싱에서 현재 파싱과 일치하는 것이 없음 -> 업데이트 오랫동안 안됨 -> 현재 파싱 업데이트
 
-                List<string> result = read_file("keywords.txt");
+                List<string> result = read_file("keywords.txt"); // 키워드를 담은 List
                 
                 List<bool> Alert_bool = new List<bool>();
                 for (int i = 0; i < result.Count; i++) {
                     Alert_bool.Add(false);
-                }
-
+                } // 키워드 별로 새 글에서 키워드가 존재하는지 여부 (bool)
+                // ex) result[0]="장학" 이고, 제목에 "장학"이 존재하면 Alert_bool[0]=true
                 for (int i = 0; i < point; i++)
                 {
                     for (int k = 0; k < result.Count; k++)
@@ -340,19 +339,16 @@ namespace OssKeyWordAlarm
                             //showDialog(result[k]);
                         }
                     }
-                    //saving_str[i];//의 제목을 가져오기 + keyWord와 비교하기
-                }
+                }// 키워드가 새 글의 제목에 있는지 확인
 
                 if (Alert_bool.IndexOf(true)!=-1)
                 {
                     showDialog("");
-                }
+                } // 새 글에 키워드가 있으면 알림
 
-                save_parsing(str);
-                Console.WriteLine("nono!");
+                save_parsing(str); // 현재 파싱 결과로 파일에 업데이트
+                Console.WriteLine("새 글 있음!");
             }
-            ss.Stop();
-            Console.WriteLine(ss.ElapsedMilliseconds);
         }
 
         public void save_parsing(List<string> str) {

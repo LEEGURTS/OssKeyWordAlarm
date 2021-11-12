@@ -41,7 +41,7 @@ namespace OssKeyWordAlarm.Forms
 
         private void Alert_Load(object sender, EventArgs e)
         {
-            Console.WriteLine("시작");
+            //Console.WriteLine("시작");
             Forms.changeAlar.AlarmSound.Position = 0;
             System.IO.Stream str = Forms.changeAlar.AlarmSound;
             SoundPlayer player;
@@ -55,7 +55,7 @@ namespace OssKeyWordAlarm.Forms
             player.Play();
             Top = Screen.PrimaryScreen.Bounds.Height - 160;
             Left = Screen.PrimaryScreen.Bounds.Width - Width;
-            Console.WriteLine("끝");
+            //Console.WriteLine("끝");
         }
         private void timer2_Tick(object sender, EventArgs e)
         {
