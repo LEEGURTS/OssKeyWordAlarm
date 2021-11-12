@@ -128,6 +128,11 @@ namespace OssKeyWordAlarm
             Btn_Check();
         }
 
+        private void keyWord_listBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         /* 앞으로 구현 할 것
          * 1. 세이브와 로드 기능을 합치기
          * 설정 폼으로 진입하게 되면 처음에 바로 파일에 저장된 키워드 출력

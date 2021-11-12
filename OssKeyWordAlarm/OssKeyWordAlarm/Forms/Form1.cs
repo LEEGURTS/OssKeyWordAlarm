@@ -12,6 +12,8 @@ using HtmlAgilityPack;
 using System.Xml;
 using System.Threading;
 using System.Security.Permissions;
+using System.IO;
+using System.Diagnostics;
 
 namespace OssKeyWordAlarm
 {
@@ -45,9 +47,24 @@ namespace OssKeyWordAlarm
         {
             while (true)
             {
-                new_article_detecting();
-                Thread.Sleep(100);
+                html_parsing();
+                //new_article_detecting();
+                Delay(600000);
+                // 600000 = 10분
             }
+        }
+
+        private static DateTime Delay(int MS)
+        {
+            DateTime ThisMoment = DateTime.Now;
+            TimeSpan duration = new TimeSpan(0, 0, 0, 0, MS);
+            DateTime AfterWards = ThisMoment.Add(duration);
+            while (AfterWards >= ThisMoment)
+            {
+                System.Windows.Forms.Application.DoEvents();
+                ThisMoment = DateTime.Now;
+            }
+            return DateTime.Now;
         }
 
         private Point MouseDownLocation; //마우스 위치
@@ -74,7 +91,7 @@ namespace OssKeyWordAlarm
         public static void showDialog(string str) //알람울림
         {
             Forms.Alert art = new Forms.Alert();
-            art.chText("테스트");
+            art.chText(str);
             art.Show();
         }
 
@@ -167,53 +184,56 @@ namespace OssKeyWordAlarm
         {
             WindowState = FormWindowState.Minimized;
         }
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void testButton_Click(object sender, EventArgs e) //임시 알림용 버튼
-        {
-            showDialog();
-        }
         
         public void init_parsing()
         {
-            html_parsing();
-            Thread t = new Thread(new ThreadStart(ThreadProc));
-            t.Start();
+                //html_parsing();
+                Thread t = new Thread(new ThreadStart(ThreadProc));
+                t.Start();
         }
 
         // user가 키워드 알람을 허용해놓은 url들만 들어가서 가장 상단의 글 번호를 출력
         public void html_parsing()
         {
+            //string[] saving_str = new string[79]; // 링크
+            //string[] Title = new string[79]; // 링크 제목
+            List<string> saving_str = new List<string>();
+            List<string> Title = new List<string>();
+            // -> list에 넣어 -> 쌓여 -> 삭제 버튼
+            // 
             foreach (KeyValuePair<string, bool> pair in user.Urls)
             {
                 if (pair.Value)
                 {
                     string target_url = pair.Key;
                     HtmlWeb target_web = new HtmlWeb();
+                    char[] delimiterChars = { '=', '&' };
                     for (int page_num = 1; page_num <= 1; page_num++)
                     {
                         string now_target_url = target_url + "?MaxRows=10&tpage=" + page_num.ToString() + "&searchKey=1&searchVal=&srCategoryId=";
                         var target_doc = target_web.Load(now_target_url);
-
                         var node = target_doc.DocumentNode.SelectNodes("//body//div//div//div//div//div//div//div//div//li//div//a[@href]");
                         var date_node = target_doc.DocumentNode.SelectNodes("//body//div//p[contains(@class, 'info')]");
                         int index = 0;
                         foreach (HtmlNode link in node)
                         {
                             string hrefValue = link.GetAttributeValue("href", string.Empty);
+                            //string duid_str = hrefValue.Split(delimiterChars)[3]; // duid
                             //Console.WriteLine(hrefValue);
                             string[] separatingStrings = { "DUID=", "&tpage=" };
                             string[] words = hrefValue.Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
                             Char[] delimiters = { '|', ' ', ' ', ' ', '|', ' ', ' ' };
                             string date = date_node[index].InnerText.Split(delimiters)[9];
-                            articles.Add(new Article(hrefValue, Int32.Parse(words[1]), "content",date));
-                            Console.WriteLine(hrefValue);
-                            Console.WriteLine(date);
+                            articles.Add(new Article(hrefValue, Int32.Parse(words[1]), "content", date));
+                            //Console.WriteLine(hrefValue + date + " " + duid_str);
+                            Title.Add(link.InnerText.Split('\n')[3].Substring(36));
+                            if ((hrefValue + date)!=null)
+                                saving_str.Add(hrefValue + date); // 저장 위한 문자열
                             index++;
                         }
                     }
+                    // 파싱 비교-----------------
+                    Check(saving_str, Title);
                 }
             }
         }
@@ -230,7 +250,6 @@ namespace OssKeyWordAlarm
                     {
                         string now_target_url = target_url + "?MaxRows=10&tpage=" + page_num.ToString() + "&searchKey=1&searchVal=&srCategoryId=";
                         var target_doc = target_web.Load(now_target_url);
-
                         var node = target_doc.DocumentNode.SelectNodes("//body//div//div//div//div//div//div//div//div//li//div//a[@href]");
                         var date_node = target_doc.DocumentNode.SelectNodes("//body//div//p[contains(@class, 'info')]");
                         int index = 0;
@@ -255,7 +274,96 @@ namespace OssKeyWordAlarm
             }
         }
 
+        public string file_path(string str) {
+            string dir_url = Environment.CurrentDirectory;
+            string file_name = str;
+            return Path.Combine(dir_url, file_name);
+        }
+
+        public List<string> read_file(string str)
+        {
+            StreamReader reader = new StreamReader(file_path(str), Encoding.Default);
+            string one_line;
+            List<string> result = new List<string>();
+
+            while ((one_line = reader.ReadLine()) != null)
+            {
+                result.Add(one_line);
+            }
+            reader.Close();
+            return result;
+        }
+
+        // Check : 파싱 비교, 업데이트 함수입니다.
+        public void Check(List<string> str, List<string> title) {
+            // str은 url, title은 글 제목
+            List<string> before = read_file("parsing.txt");
+            if (before[0] == null) { 
+                save_parsing(str);
+                before = read_file("parsing.txt");
+            } // 1) 처음 생성 시(txt 파일이 비어있다면) parsing을 최신화함.
+            
+            if (str[0] == before[0]) { Console.WriteLine("새 글 없음"); }
+            // 새 글이 올라오면 첫 번째 글이 바뀜 -> 첫 번째 글만 비교하면 됨.
+            else
+            {
+                int point = -1, index3 = 0;
+                while (point == -1 && index3 <= str.Count)
+                { // point는 이전 파싱의 index3번째 주소의 현재 파싱 결과에서의 위치
+                    point = str.IndexOf(before[index3]);
+                    index3++;
+                }
+                
+                if (point == -1 && index3 <= str.Count) {
+                    save_parsing(str);
+                    Console.WriteLine("업데이트");
+                    return;
+                }// 이전 파싱에서 현재 파싱과 일치하는 것이 없음 -> 업데이트 오랫동안 안됨 -> 현재 파싱 업데이트
+
+                List<string> result = read_file("keywords.txt"); // 키워드를 담은 List
+                
+                List<bool> Alert_bool = new List<bool>();
+                for (int i = 0; i < result.Count; i++) {
+                    Alert_bool.Add(false);
+                } // 키워드 별로 새 글에서 키워드가 존재하는지 여부 (bool)
+                // ex) result[0]="장학" 이고, 제목에 "장학"이 존재하면 Alert_bool[0]=true
+                for (int i = 0; i < point; i++)
+                {
+                    for (int k = 0; k < result.Count; k++)
+                    {
+                        if (title[i].IndexOf(result[k]) != -1)
+                        {
+                            Console.WriteLine(title[i]);
+                            Console.WriteLine(k);
+                            Alert_bool[k]=true;
+                            //showDialog(result[k]);
+                        }
+                    }
+                }// 키워드가 새 글의 제목에 있는지 확인
+
+                if (Alert_bool.IndexOf(true)!=-1)
+                {
+                    showDialog("");
+                } // 새 글에 키워드가 있으면 알림
+
+                save_parsing(str); // 현재 파싱 결과로 파일에 업데이트
+                Console.WriteLine("새 글 있음!");
+            }
+        }
+
+        public void save_parsing(List<string> str) {
+            StreamWriter writer = File.CreateText(file_path("parsing.txt"));// -> 덮어쓰기..?
+                                                                            // AppendText(); -> 이어쓰기
+            foreach (string line in str){ writer.WriteLine(line); }
+            writer.Close();
+        }
+
         private void Multi_Panel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void changeAlarm_Click(object sender, EventArgs e)
         {
 
         }
