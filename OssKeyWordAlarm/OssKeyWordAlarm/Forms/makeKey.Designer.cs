@@ -32,6 +32,7 @@ namespace OssKeyWordAlarm
             this.Keyword_TextBox = new System.Windows.Forms.TextBox();
             this.keyWord_listBox = new System.Windows.Forms.ListBox();
             this.btnCheck = new System.Windows.Forms.Button();
+
             this.pnlText = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,6 +41,7 @@ namespace OssKeyWordAlarm
             this.btnClear = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.pnlText.SuspendLayout();
+
             this.SuspendLayout();
             // 
             // Keyword_TextBox
@@ -50,9 +52,12 @@ namespace OssKeyWordAlarm
             this.Keyword_TextBox.Font = new System.Drawing.Font("아리따-돋움4.0(OTF)-Medium", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Keyword_TextBox.Location = new System.Drawing.Point(479, 406);
             this.Keyword_TextBox.Name = "Keyword_TextBox";
+
             this.Keyword_TextBox.Size = new System.Drawing.Size(255, 19);
+
             this.Keyword_TextBox.TabIndex = 1;
             this.Keyword_TextBox.Text = "키워드를 입력하세요.";
+            this.Keyword_TextBox.TextChanged += new System.EventHandler(this.Keyword_TextBox_TextChanged);
             this.Keyword_TextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnKeyword_KeyDown);
             // 
             // keyWord_listBox
@@ -62,6 +67,7 @@ namespace OssKeyWordAlarm
             this.keyWord_listBox.Font = new System.Drawing.Font("아리따-돋움4.0(OTF)-Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.keyWord_listBox.ForeColor = System.Drawing.Color.White;
             this.keyWord_listBox.FormattingEnabled = true;
+
             this.keyWord_listBox.ItemHeight = 15;
             this.keyWord_listBox.Location = new System.Drawing.Point(56, 140);
             this.keyWord_listBox.Margin = new System.Windows.Forms.Padding(15);
@@ -80,6 +86,7 @@ namespace OssKeyWordAlarm
             this.btnCheck.UseVisualStyleBackColor = true;
             this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
             // 
+
             // pnlText
             // 
             this.pnlText.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
@@ -172,6 +179,7 @@ namespace OssKeyWordAlarm
             this.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDelete.UseVisualStyleBackColor = false;
+
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // makeKey
@@ -204,6 +212,7 @@ namespace OssKeyWordAlarm
         private System.Windows.Forms.TextBox Keyword_TextBox;
         private System.Windows.Forms.ListBox keyWord_listBox;
         private System.Windows.Forms.Button btnCheck;
+
         private System.Windows.Forms.Panel pnlText;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;

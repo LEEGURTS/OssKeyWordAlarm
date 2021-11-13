@@ -114,6 +114,7 @@
             this.btnMakeKeyword.Text = "키워드 등록";
             this.btnMakeKeyword.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnMakeKeyword.UseVisualStyleBackColor = false;
+            this.btnMakeKeyword.Click += new System.EventHandler(this.btnMakeKeyword_Click);
             this.btnMakeKeyword.MouseDown += new System.Windows.Forms.MouseEventHandler(this.makeKeyword_MouseDown);
             // 
             // changeAlarm
@@ -155,6 +156,7 @@
             this.recordAlarm.Text = "알림 기록";
             this.recordAlarm.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.recordAlarm.UseVisualStyleBackColor = false;
+            this.recordAlarm.Click += new System.EventHandler(this.recordAlarm_Click);
             this.recordAlarm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.recordAlarm_MouseDown);
             // 
             // addLink

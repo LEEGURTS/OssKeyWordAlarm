@@ -298,7 +298,7 @@ namespace OssKeyWordAlarm
         public void Check(List<string> str, List<string> title) {
             // str은 url, title은 글 제목
             List<string> before = read_file("parsing.txt");
-            if (before.Count==0) { 
+            if (before.Count == 0) { 
                 save_parsing(str);
                 before = read_file("parsing.txt");
             } // 1) 처음 생성 시(txt 파일이 비어있다면) parsing을 최신화함.
@@ -364,6 +364,16 @@ namespace OssKeyWordAlarm
         }
 
         private void changeAlarm_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void recordAlarm_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMakeKeyword_Click(object sender, EventArgs e)
         {
 
         }
