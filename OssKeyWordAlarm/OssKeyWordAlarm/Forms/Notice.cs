@@ -49,7 +49,7 @@ namespace OssKeyWordAlarm.Forms
             set
             {
                 _url = value;
-                lblLink.Text = value;
+                lblUrl.Text = value;
             }
         }
 

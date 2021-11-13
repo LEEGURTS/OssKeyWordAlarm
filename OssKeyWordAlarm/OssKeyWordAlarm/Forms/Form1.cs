@@ -233,7 +233,7 @@ namespace OssKeyWordAlarm
                         }
                     }
                     // 파싱 비교-----------------
-                    Check(saving_str, Title);
+                    Check(saving_str, Title);            
                 }
             }
         }

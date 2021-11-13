@@ -30,7 +30,7 @@ namespace OssKeyWordAlarm.Forms
         private void InitializeComponent()
         {
             this.lbltitle = new System.Windows.Forms.Label();
-            this.lblLink = new System.Windows.Forms.Label();
+            this.lblUrl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbltitle
@@ -44,22 +44,22 @@ namespace OssKeyWordAlarm.Forms
             this.lbltitle.TabIndex = 0;
             this.lbltitle.Text = "글 공지 테스트";
             // 
-            // lblLink
+            // lblUrl
             // 
-            this.lblLink.AutoSize = true;
-            this.lblLink.Font = new System.Drawing.Font("아리따-돋움4.0(OTF)-Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lblLink.ForeColor = System.Drawing.Color.White;
-            this.lblLink.Location = new System.Drawing.Point(57, 41);
-            this.lblLink.Name = "lblLink";
-            this.lblLink.Size = new System.Drawing.Size(36, 12);
-            this.lblLink.TabIndex = 1;
-            this.lblLink.Text = "label1";
+            this.lblUrl.AutoSize = true;
+            this.lblUrl.Font = new System.Drawing.Font("아리따-돋움4.0(OTF)-Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lblUrl.ForeColor = System.Drawing.Color.White;
+            this.lblUrl.Location = new System.Drawing.Point(58, 45);
+            this.lblUrl.Name = "lblUrl";
+            this.lblUrl.Size = new System.Drawing.Size(36, 12);
+            this.lblUrl.TabIndex = 1;
+            this.lblUrl.Text = "label1";
             // 
             // Notice
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(65)))), ((int)(((byte)(88)))));
-            this.Controls.Add(this.lblLink);
+            this.Controls.Add(this.lblUrl);
             this.Controls.Add(this.lbltitle);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "Notice";
@@ -73,6 +73,6 @@ namespace OssKeyWordAlarm.Forms
         #endregion
 
         private System.Windows.Forms.Label lbltitle;
-        private System.Windows.Forms.Label lblLink;
+        private System.Windows.Forms.Label lblUrl;
     }
 }

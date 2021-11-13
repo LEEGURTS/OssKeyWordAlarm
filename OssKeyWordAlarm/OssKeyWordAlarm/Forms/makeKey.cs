@@ -141,13 +141,6 @@ namespace OssKeyWordAlarm
             Btn_Check();
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            if (keyWord_listBox.SelectedIndex != -1)
-            {
-                keyWord_listBox.Items.RemoveAt(keyWord_listBox.SelectedIndex);
-            }
-        }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
