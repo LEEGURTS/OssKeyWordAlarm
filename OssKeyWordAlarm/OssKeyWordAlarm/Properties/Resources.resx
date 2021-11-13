@@ -127,11 +127,14 @@
   <data name="minus_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\minus_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="siren_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\siren_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="trash_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\trash_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="playground_60px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\playground_60px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pencil_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pencil_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="broom_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\broom_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="alarm_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\alarm_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,6 +151,12 @@
   <data name="icons8_application_window_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8_application_window_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="playground_60px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\playground_60px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="trash_60px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\trash_60px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="놀이터" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\놀이터.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -157,14 +166,17 @@
   <data name="cloud_60px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cloud_60px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pencil_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pencil_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="siren_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\siren_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="link_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\link_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="상승" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\상승.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="BamBooIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BamBooIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="알림음" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\알림음.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -178,10 +190,13 @@
   <data name="야" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\야.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="edit_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\edit_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Bamboo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Bamboo.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="BamBooIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BamBooIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="edit_32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\edit_32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

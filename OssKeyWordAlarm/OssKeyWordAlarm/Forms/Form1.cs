@@ -53,7 +53,7 @@ namespace OssKeyWordAlarm
                 // 600000 = 10분
             }
         }
-
+        
         private static DateTime Delay(int MS)
         {
             DateTime ThisMoment = DateTime.Now;
@@ -87,12 +87,12 @@ namespace OssKeyWordAlarm
         Forms.addLin newaddLink = new Forms.addLin(); //폼 적용
         Forms.changeAlar newchangeAlert = new Forms.changeAlar(); //폼 적용
         Forms.recordAlar newrecordAlert = new Forms.recordAlar(); //폼 적용
-
         public static void showDialog(string str) //알람울림
         {
             Forms.Alert art = new Forms.Alert();
             art.chText(str);
             art.Show();
+
         }
 
         private void OpenChildForm(Form childForm, object btnSender) //새로운 폼 형성 함수

@@ -102,9 +102,39 @@ namespace OssKeyWordAlarm.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap broom_30px {
+            get {
+                object obj = ResourceManager.GetObject("broom_30px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap cloud_60px {
             get {
                 object obj = ResourceManager.GetObject("cloud_60px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap edit_32px {
+            get {
+                object obj = ResourceManager.GetObject("edit_32px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap edit_50px {
+            get {
+                object obj = ResourceManager.GetObject("edit_50px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -195,6 +225,26 @@ namespace OssKeyWordAlarm.Properties {
         internal static System.Drawing.Bitmap siren_50px {
             get {
                 object obj = ResourceManager.GetObject("siren_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap trash_30px {
+            get {
+                object obj = ResourceManager.GetObject("trash_30px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap trash_60px {
+            get {
+                object obj = ResourceManager.GetObject("trash_60px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

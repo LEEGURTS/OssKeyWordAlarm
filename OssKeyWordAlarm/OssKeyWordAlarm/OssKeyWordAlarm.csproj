@@ -88,6 +88,12 @@
     <Compile Include="Forms\recordAlar.Designer.cs">
       <DependentUpon>recordAlar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Notice.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\Notice.Designer.cs">
+      <DependentUpon>Notice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Info.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -108,6 +114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\recordAlar.resx">
       <DependentUpon>recordAlar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Notice.resx">
+      <DependentUpon>Notice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -207,6 +216,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\BamBooIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash_60px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\broom_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_32px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
