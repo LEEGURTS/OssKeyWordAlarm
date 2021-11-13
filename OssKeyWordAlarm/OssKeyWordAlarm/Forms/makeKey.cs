@@ -34,7 +34,7 @@ namespace OssKeyWordAlarm
         public void Btn_Save()
         {
             // textBox에 입력한 text를 keywords 파일에 저장하는 함수입니다. --------------------------------
-            if (Keyword_TextBox.Text != null)
+            if (Keyword_TextBox.Text != null && !File.ReadAllLines("keywords.txt").Contains(Keyword_TextBox.Text))
             {
                 // txt박스에 있는 모든 txt를 선택
                 Keyword_TextBox.SelectAll();
@@ -46,7 +46,7 @@ namespace OssKeyWordAlarm
                 string path_string = Path.Combine(dir_url, file_name);
 
                 // 입력한 text를 저장
-                System.IO.File.AppendAllText(path_string, Keyword_TextBox.SelectedText + "\n", Encoding.Default);
+                System.IO.File.AppendAllText(path_string, Keyword_TextBox.SelectedText + "\n", Encoding.UTF8);
                 // 이후 텍스트 박스 초기화
                 Keyword_TextBox.Text = null;
 
@@ -135,13 +135,13 @@ namespace OssKeyWordAlarm
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (keyWord_listBox.Items.Count >= 1)
-            {
-                if (keyWord_listBox.SelectedItem != null)
-                {
-                    keyWord_listBox.Items.Remove(keyWord_listBox.SelectedItem);
-                }
+            if (keyWord_listBox.Items.Count >= 1 && keyWord_listBox.SelectedItem != null) {
+                string removeText = keyWord_listBox.SelectedItem.ToString();
+                keyWord_listBox.Items.Remove(keyWord_listBox.SelectedItem);
+                File.WriteAllLines("keywords.txt",
+                    File.ReadAllLines("keywords.txt").Where(l => l != removeText).ToList(), Encoding.UTF8);
             }
+            
             else
             {
                 System.Windows.Forms.MessageBox.Show("No ITEMS Found");
