@@ -19,7 +19,7 @@ namespace OssKeyWordAlarm
 
         public List<string> read_file(string str)
         {
-            StreamReader reader = new StreamReader(file_path(str), Encoding.Default);
+            StreamReader reader = new StreamReader(file_path(str), Encoding.UTF8);
             string one_line;
             List<string> result = new List<string>();
 
@@ -31,6 +31,20 @@ namespace OssKeyWordAlarm
             return result;
         } // 경로를 입력하면 그 파일의 정보를 읽어 리스트에 저장 후 리스트 반환
 
+        public List<string> read_file2(string str)
+        {
+            StreamReader reader = new StreamReader(file_path(str), Encoding.Default);
+            string one_line;
+            List<string> result = new List<string>();
+
+            while ((one_line = reader.ReadLine()) != null)
+            {
+                result.Add(one_line);
+            }
+            reader.Close();
+            return result;
+        }
+        // keyword는 read_file로 읽으면 오류 발생!
         public void save_file(string str, List<string> list1, int mode)
         { // mode 0은 덮어쓰기, mode1은 이어쓰기
             StreamWriter writer;

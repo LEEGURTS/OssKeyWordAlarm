@@ -140,7 +140,7 @@ namespace OssKeyWordAlarm
         {
             Btn_Check();
         }
-
+        /*
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (keyWord_listBox.SelectedIndex != -1)
@@ -148,7 +148,7 @@ namespace OssKeyWordAlarm
                 keyWord_listBox.Items.RemoveAt(keyWord_listBox.SelectedIndex);
             }
         }
-
+        */
         private void btnEdit_Click(object sender, EventArgs e)
         {
             if (keyWord_listBox.SelectedIndex != -1)
@@ -157,6 +157,7 @@ namespace OssKeyWordAlarm
                 Keyword_TextBox.Text = "";
             }
         }
+        
 
         private void btnClear_Click(object sender, EventArgs e)
         {

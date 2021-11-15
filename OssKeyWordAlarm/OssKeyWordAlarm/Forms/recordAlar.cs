@@ -8,8 +8,9 @@ namespace OssKeyWordAlarm.Forms
 {
     public partial class recordAlar : Form
     {
-        public Form1 forms = new Form1();
-        List<Notice> notices=new List<Notice>();
+        List<Notice> notices = new List<Notice>();
+
+        functions_h aaa = new functions_h();
         public List<string> title = new List<string>();
         public List<string> url = new List<string>();
         // Notice 폼의 List -> 시작 시 RecordShow함수로 List를 채움 + 채우자 마자 화면에 출력
@@ -26,16 +27,19 @@ namespace OssKeyWordAlarm.Forms
         public recordAlar()
         {
             InitializeComponent();
+            load_info();
+            RecordShow(title, url);
         }
 
         public recordAlar(Form1 fom)
         {
             InitializeComponent();
-            forms = fom;
-            update_title();
+            //forms = fom;
+            //update_title();
+            load_info();
             RecordShow(title, url);
         }
-
+        /*
         public void update_title() {
             for (int i = 0; i < forms.new_title.Count; i++)
             {
@@ -46,6 +50,12 @@ namespace OssKeyWordAlarm.Forms
             {
                 url.Add(forms.new_url[i]);
             }
+        }
+        */
+
+        public void load_info() {
+            title = aaa.read_file("new_title.txt");
+            url = aaa.read_file("new_url.txt");
         }
 
         public void RecordShow(List<string> name,List<string> url) //제목과 url의 리스트를 삽입시 리스트를 출력해주는 함수.

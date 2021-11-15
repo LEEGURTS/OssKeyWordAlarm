@@ -12,6 +12,7 @@ namespace OssKeyWordAlarm.Forms
 {
     public partial class Notice : UserControl
     {
+        functions_h aaa = new functions_h();
         recordAlar parents;
         public Notice()
         {
@@ -61,8 +62,10 @@ namespace OssKeyWordAlarm.Forms
         private void btn_link_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start(_url);
-            parents.forms.new_title.Remove(_title);
-            parents.forms.new_url.Remove(_url.Substring(12));
+            parents.title.Remove(_title);
+            parents.url.Remove(_url.Substring(12));
+            aaa.save_file("new_title.txt", parents.title,0);
+            aaa.save_file("new_url.txt", parents.url, 0);
             parents.flowLayoutPanel1.Controls.Remove(this);
         }
 

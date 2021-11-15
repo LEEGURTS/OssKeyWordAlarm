@@ -49,6 +49,7 @@ namespace OssKeyWordAlarm
             while (true)
             {
                 html_parsing();
+                newrecordAlert = new Forms.recordAlar();
                 //new_article_detecting();
                 Delay(10000);
                 // 600000 = 10분
@@ -87,7 +88,7 @@ namespace OssKeyWordAlarm
         makeKey newkey = new makeKey(); //폼 작성
         Forms.addLin newaddLink = new Forms.addLin(); //폼 적용
         Forms.changeAlar newchangeAlert = new Forms.changeAlar(); //폼 적용
-        //Forms.recordAlar newrecordAlert = new Forms.recordAlar(this); // 알람저장 폼 위치 이동
+        Forms.recordAlar newrecordAlert = new Forms.recordAlar(); // 알람저장 폼 위치 이동
         public static void showDialog(string str) //알람울림
         {
             Forms.Alert art = new Forms.Alert();
@@ -109,7 +110,6 @@ namespace OssKeyWordAlarm
             childForm.Show(); //출력    
         }
        
-
         private void makeKeyword_MouseDown(object sender, MouseEventArgs e) // 키워드 설정 클릭하자마자 강조와 함께 새로운 폼 띄움
         {
             pnlNav.Location = btnMakeKeyword.Location;
@@ -123,7 +123,6 @@ namespace OssKeyWordAlarm
 
         private void recordAlarm_MouseDown(object sender, MouseEventArgs e) //위와 같음
         {
-            Forms.recordAlar newrecordAlert = new Forms.recordAlar(this);
             pnlNav.Location = recordAlarm.Location;
             recordAlarm.BackColor = Color.FromArgb(46, 51, 73);
             btnMakeKeyword.BackColor = Color.FromArgb(24, 30, 54);
@@ -281,6 +280,7 @@ namespace OssKeyWordAlarm
             List<string> before = fun.read_file("parsing.txt");
             if (before.Count==0) { 
                 fun.save_file("parsing.txt", str, 0);
+                //Console.WriteLine("암것도 없어용");
                 //save_parsing(str);
                 before = fun.read_file("parsing.txt");
             } // 1) 처음 생성 시(txt 파일이 비어있다면) parsing을 최신화함.
@@ -305,7 +305,9 @@ namespace OssKeyWordAlarm
                     return;
                 }// 이전 파싱에서 현재 파싱과 일치하는 것이 없음 -> 업데이트 오랫동안 안됨 -> 현재 파싱 업데이트
 
-                List<string> result = fun.read_file("keywords.txt"); // 키워드를 담은 List
+                new_title.Clear();
+                new_url.Clear();
+                List<string> result = fun.read_file2("keywords.txt"); // 키워드를 담은 List
                 List<bool> Alert_bool = new List<bool>();
                 for (int i = 0; i < result.Count; i++) {
                     Alert_bool.Add(false);
@@ -318,11 +320,14 @@ namespace OssKeyWordAlarm
                         Alert_bool[k] = false; // 초기화
                         if (title[i].IndexOf(result[k]) != -1)
                         {
-                            //Console.WriteLine(title[i]);
+                            Console.WriteLine("*"+title[i]);
+                            Console.WriteLine("**" + result[k]);
+                            Console.WriteLine("진짜잇음?" + title[i].IndexOf(result[k]));
                             Alert_bool[k]=true;
                         }
                     }
                     if (Alert_bool.IndexOf(true)!=-1) {
+                        //Console.WriteLine("새거가 있네");
                         new_title.Add(title[i].Substring(0,title[i].Length-1));
                         new_url.Add(str[i].Substring(0, str[i].Length-10));
                     }
@@ -334,8 +339,10 @@ namespace OssKeyWordAlarm
                 } // 새 글에 키워드가 있으면 알림
                 foreach (string s in new_title)
                 {
-                    Console.WriteLine(s);
+                    //Console.WriteLine(s);
                 }
+                fun.save_file("new_title.txt", new_title, 0);
+                fun.save_file("new_url.txt", new_url, 0);
                 fun.save_file("parsing.txt", str, 0);
                 //Console.WriteLine("새 글 있음!");
             }
@@ -360,9 +367,5 @@ namespace OssKeyWordAlarm
 
         }
 
-        private void btnMakeKeyword_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
