@@ -53,25 +53,19 @@ namespace OssKeyWordAlarm.Forms
             set
             {
                 _url = value;
-                lblLink.Text = value;
             }
         }
 
         #endregion
 
-        private void btn_link_Click(object sender, EventArgs e)
+        private void Notice_MouseClick(object sender, MouseEventArgs e)
         {
             System.Diagnostics.Process.Start(_url);
             parents.title.Remove(_title);
             parents.url.Remove(_url.Substring(12));
-            aaa.save_file("new_title.txt", parents.title,0);
+            aaa.save_file("new_title.txt", parents.title, 0);
             aaa.save_file("new_url.txt", parents.url, 0);
             parents.flowLayoutPanel1.Controls.Remove(this);
-        }
-
-        private void Notice_MouseClick(object sender, MouseEventArgs e)
-        {
-            
         }
        
 
@@ -80,15 +74,22 @@ namespace OssKeyWordAlarm.Forms
 
         }
 
+        private void lbltitle_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(_url);
+            parents.title.Remove(_title);
+            parents.url.Remove(_url.Substring(12));
+            aaa.save_file("new_title.txt", parents.title, 0);
+            aaa.save_file("new_url.txt", parents.url, 0);
+            parents.flowLayoutPanel1.Controls.Remove(this);
+        }
+
         private void lblLink_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void lbltitle_Click(object sender, EventArgs e)
-        {
 
-        }
 
     }
 }
