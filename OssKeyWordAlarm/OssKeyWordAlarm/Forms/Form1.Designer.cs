@@ -73,7 +73,7 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(18, 134);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(157, 15);
+            this.label2.Size = new System.Drawing.Size(172, 18);
             this.label2.TabIndex = 16;
             this.label2.Text = "광운대학교 공지사항 알리미";
             // 
@@ -84,7 +84,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(57, 104);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 15);
+            this.label1.Size = new System.Drawing.Size(83, 18);
             this.label1.TabIndex = 15;
             this.label1.Text = "KW ALART";
             // 
@@ -114,6 +114,7 @@
             this.btnMakeKeyword.Text = "키워드 등록";
             this.btnMakeKeyword.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnMakeKeyword.UseVisualStyleBackColor = false;
+            this.btnMakeKeyword.Click += new System.EventHandler(this.btnMakeKeyword_Click);
             this.btnMakeKeyword.MouseDown += new System.Windows.Forms.MouseEventHandler(this.makeKeyword_MouseDown);
             // 
             // changeAlarm
@@ -211,7 +212,7 @@
             this.Form_Title.ForeColor = System.Drawing.Color.White;
             this.Form_Title.Location = new System.Drawing.Point(202, 20);
             this.Form_Title.Name = "Form_Title";
-            this.Form_Title.Size = new System.Drawing.Size(114, 25);
+            this.Form_Title.Size = new System.Drawing.Size(144, 31);
             this.Form_Title.TabIndex = 6;
             this.Form_Title.Text = "Form_Title";
             // 

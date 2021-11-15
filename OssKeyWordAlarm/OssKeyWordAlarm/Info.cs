@@ -19,6 +19,8 @@ namespace OssKeyWordAlarm
             make_urls();
             make_parsing_txt();
             make_duid_txt();
+            make_new_url_txt();
+            make_new_title_txt();
         }
 
         // keyword.txt를 만드는 함수입니다.
@@ -105,6 +107,28 @@ namespace OssKeyWordAlarm
         {
             string dir_url = Environment.CurrentDirectory;
             string file_name = "parsing.txt";
+            string path_string = Path.Combine(dir_url, file_name);
+            if (!File.Exists(path_string))
+            {
+                FileStream fs = File.Create(path_string);
+                fs.Close();
+            }
+        }
+        public void make_new_title_txt()
+        {
+            string dir_url = Environment.CurrentDirectory;
+            string file_name = "new_title.txt";
+            string path_string = Path.Combine(dir_url, file_name);
+            if (!File.Exists(path_string))
+            {
+                FileStream fs = File.Create(path_string);
+                fs.Close();
+            }
+        }
+        public void make_new_url_txt()
+        {
+            string dir_url = Environment.CurrentDirectory;
+            string file_name = "new_url.txt";
             string path_string = Path.Combine(dir_url, file_name);
             if (!File.Exists(path_string))
             {

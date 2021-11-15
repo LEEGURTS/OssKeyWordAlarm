@@ -20,6 +20,7 @@ namespace OssKeyWordAlarm
     public partial class Form1 : Form
     {
         User user = new User();
+        functions_h fun = new functions_h();
         HashSet<Article> articles = new HashSet<Article>();
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
@@ -49,7 +50,7 @@ namespace OssKeyWordAlarm
             {
                 html_parsing();
                 //new_article_detecting();
-                Delay(600000);
+                Delay(10000);
                 // 600000 = 10분
             }
         }
@@ -86,7 +87,7 @@ namespace OssKeyWordAlarm
         makeKey newkey = new makeKey(); //폼 작성
         Forms.addLin newaddLink = new Forms.addLin(); //폼 적용
         Forms.changeAlar newchangeAlert = new Forms.changeAlar(); //폼 적용
-        Forms.recordAlar newrecordAlert = new Forms.recordAlar(); //폼 적용
+        //Forms.recordAlar newrecordAlert = new Forms.recordAlar(this); // 알람저장 폼 위치 이동
         public static void showDialog(string str) //알람울림
         {
             Forms.Alert art = new Forms.Alert();
@@ -122,6 +123,7 @@ namespace OssKeyWordAlarm
 
         private void recordAlarm_MouseDown(object sender, MouseEventArgs e) //위와 같음
         {
+            Forms.recordAlar newrecordAlert = new Forms.recordAlar(this);
             pnlNav.Location = recordAlarm.Location;
             recordAlarm.BackColor = Color.FromArgb(46, 51, 73);
             btnMakeKeyword.BackColor = Color.FromArgb(24, 30, 54);
@@ -191,12 +193,9 @@ namespace OssKeyWordAlarm
                 Thread t = new Thread(new ThreadStart(ThreadProc));
                 t.Start();
         }
-
         // user가 키워드 알람을 허용해놓은 url들만 들어가서 가장 상단의 글 번호를 출력
         public void html_parsing()
         {
-            //string[] saving_str = new string[79]; // 링크
-            //string[] Title = new string[79]; // 링크 제목
             List<string> saving_str = new List<string>();
             List<string> Title = new List<string>();
             // -> list에 넣어 -> 쌓여 -> 삭제 버튼
@@ -274,36 +273,21 @@ namespace OssKeyWordAlarm
             }
         }
 
-        public string file_path(string str) {
-            string dir_url = Environment.CurrentDirectory;
-            string file_name = str;
-            return Path.Combine(dir_url, file_name);
-        }
-
-        public List<string> read_file(string str)
-        {
-            StreamReader reader = new StreamReader(file_path(str), Encoding.Default);
-            string one_line;
-            List<string> result = new List<string>();
-
-            while ((one_line = reader.ReadLine()) != null)
-            {
-                result.Add(one_line);
-            }
-            reader.Close();
-            return result;
-        }
-
+        public List<string> new_title = new List<string>();
+        public List<string> new_url = new List<string>();
         // Check : 파싱 비교, 업데이트 함수입니다.
         public void Check(List<string> str, List<string> title) {
             // str은 url, title은 글 제목
-            List<string> before = read_file("parsing.txt");
+            List<string> before = fun.read_file("parsing.txt");
             if (before.Count==0) { 
-                save_parsing(str);
-                before = read_file("parsing.txt");
+                fun.save_file("parsing.txt", str, 0);
+                //save_parsing(str);
+                before = fun.read_file("parsing.txt");
             } // 1) 처음 생성 시(txt 파일이 비어있다면) parsing을 최신화함.
             
-            if (str[0] == before[0]) { Console.WriteLine("새 글 없음"); }
+            if (str[0] == before[0]) { 
+                //Console.WriteLine("새 글 없음");
+            }
             // 새 글이 올라오면 첫 번째 글이 바뀜 -> 첫 번째 글만 비교하면 됨.
             else
             {
@@ -315,13 +299,13 @@ namespace OssKeyWordAlarm
                 }
                 
                 if (point == -1 && index3 <= str.Count) {
-                    save_parsing(str);
-                    Console.WriteLine("업데이트");
+                    //save_parsing(str);
+                    fun.save_file("parsing.txt", str, 0);
+                    //Console.WriteLine("업데이트");
                     return;
                 }// 이전 파싱에서 현재 파싱과 일치하는 것이 없음 -> 업데이트 오랫동안 안됨 -> 현재 파싱 업데이트
 
-                List<string> result = read_file("keywords.txt"); // 키워드를 담은 List
-                
+                List<string> result = fun.read_file("keywords.txt"); // 키워드를 담은 List
                 List<bool> Alert_bool = new List<bool>();
                 for (int i = 0; i < result.Count; i++) {
                     Alert_bool.Add(false);
@@ -331,39 +315,42 @@ namespace OssKeyWordAlarm
                 {
                     for (int k = 0; k < result.Count; k++)
                     {
+                        Alert_bool[k] = false; // 초기화
                         if (title[i].IndexOf(result[k]) != -1)
                         {
-                            Console.WriteLine(title[i]);
-                            Console.WriteLine(k);
+                            //Console.WriteLine(title[i]);
                             Alert_bool[k]=true;
-                            //showDialog(result[k]);
                         }
+                    }
+                    if (Alert_bool.IndexOf(true)!=-1) {
+                        new_title.Add(title[i].Substring(0,title[i].Length-1));
+                        new_url.Add(str[i].Substring(0, str[i].Length-10));
                     }
                 }// 키워드가 새 글의 제목에 있는지 확인
 
-                if (Alert_bool.IndexOf(true)!=-1)
+                if (new_title.Count != 0)
                 {
                     showDialog("");
                 } // 새 글에 키워드가 있으면 알림
-
-                save_parsing(str); // 현재 파싱 결과로 파일에 업데이트
-                Console.WriteLine("새 글 있음!");
+                foreach (string s in new_title)
+                {
+                    Console.WriteLine(s);
+                }
+                fun.save_file("parsing.txt", str, 0);
+                //Console.WriteLine("새 글 있음!");
             }
-        }
-
-        public void save_parsing(List<string> str) {
-            StreamWriter writer = File.CreateText(file_path("parsing.txt"));// -> 덮어쓰기..?
-                                                                            // AppendText(); -> 이어쓰기
-            foreach (string line in str){ writer.WriteLine(line); }
-            writer.Close();
         }
 
         private void Multi_Panel_Paint(object sender, PaintEventArgs e)
         {
 
         }
-
         private void changeAlarm_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMakeKeyword_Click(object sender, EventArgs e)
         {
 
         }
