@@ -83,13 +83,5 @@ namespace OssKeyWordAlarm.Forms
             aaa.save_file("new_url.txt", parents.url, 0);
             parents.flowLayoutPanel1.Controls.Remove(this);
         }
-
-        private void lblLink_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-
     }
 }

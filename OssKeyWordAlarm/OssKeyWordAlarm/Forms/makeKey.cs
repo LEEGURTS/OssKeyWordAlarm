@@ -142,6 +142,7 @@ namespace OssKeyWordAlarm
         {
             Btn_Check();
         }
+
         /*
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -151,20 +152,34 @@ namespace OssKeyWordAlarm
             }
         }
         */
+
         private void btnEdit_Click(object sender, EventArgs e)
         {
             if (keyWord_listBox.SelectedIndex != -1)
             {
                 keyWord_listBox.Items[keyWord_listBox.SelectedIndex] = Keyword_TextBox.Text;
+                // 리스트 박스에 선택된 리스트를 textbox에 입력한 글자로 바꿈
                 Keyword_TextBox.Text = "";
+                // 텍스트 박스를 비움
             }
-        }
-        
+        } // listbox에는 그렇게 보이는데 실제로 키워드 리스트가 바뀌는게 아님******************************************
+        /*해야할 일
+         * 1) 키워드가 담긴 리스트에서 선택된 키워드를 textBox에 입력한 키워드로 덮어쓴다
+         * ( 선택된 키워드 삭제 후에 입력한 것을 리스트에 추가해도 됨 )
+         * 2) 바뀐 키워드 리스트를 파일에 덮어쓴다. (functions_h.cs 의 함수들 사용하면 됩니다.)
+         * 3) 키워드 리스트를 리스트박스에 load한다
+         */
 
         private void btnClear_Click(object sender, EventArgs e)
         {
             keyWord_listBox.Items.Clear();
-        }
+            // 리스트박스 내용을 다 비움
+        } //listbox에는 그렇게 보이는데 실제로 키워드 리스트가 바뀌는게 아님******************************************
+        /*  해야할 일
+         *  1) 리스트를 다 비움
+         *  2) 다 비운 리스트를 파일에 덮어씀 ( 파일을 어떻게든 비워야함 )
+         *  3) 리스트박스 내용을 다 비움
+         */
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -177,10 +192,14 @@ namespace OssKeyWordAlarm
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show("No ITEMS Found");
+                System.Windows.Forms.MessageBox.Show("삭제할 KeyWord가 없습니다.");
             }
 
-        }
+        } //listbox에는 그렇게 보이는데 실제로 키워드 리스트가 바뀌는게 아님******************************************
+        /*  해야할 일
+         *  구현했던게 이 브랜치에 없음
+         *  이 브랜치 끌어와서 구현한 내용 추가 후 Ho 브랜치에 다시 푸시
+         */
 
         private void Keyword_TextBox_TextChanged(object sender, EventArgs e)
         {
