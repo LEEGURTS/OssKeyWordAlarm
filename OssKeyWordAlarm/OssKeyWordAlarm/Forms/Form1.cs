@@ -354,5 +354,15 @@ namespace OssKeyWordAlarm
         {
 
         }
+
+        private void recordAlarm_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMakeKeyword_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

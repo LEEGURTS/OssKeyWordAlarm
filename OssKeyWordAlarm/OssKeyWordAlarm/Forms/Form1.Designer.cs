@@ -156,6 +156,7 @@
             this.recordAlarm.Text = "알림 기록";
             this.recordAlarm.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.recordAlarm.UseVisualStyleBackColor = false;
+            this.recordAlarm.Click += new System.EventHandler(this.recordAlarm_Click);
             this.recordAlarm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.recordAlarm_MouseDown);
             // 
             // addLink

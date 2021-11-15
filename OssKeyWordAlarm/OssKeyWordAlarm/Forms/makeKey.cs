@@ -163,5 +163,39 @@ namespace OssKeyWordAlarm
             keyWord_listBox.Items.Clear();
         }
 
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (keyWord_listBox.Items.Count >= 1)
+            {
+                if (keyWord_listBox.SelectedItem != null)
+                {
+                    keyWord_listBox.Items.Remove(keyWord_listBox.SelectedItem);
+                }
+            }
+            else
+            {
+                System.Windows.Forms.MessageBox.Show("No ITEMS Found");
+            }
+
+        }
+
+        private void Keyword_TextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        /* 앞으로 구현 할 것
+         * 1. 세이브와 로드 기능을 합치기
+         * 설정 폼으로 진입하게 되면 처음에 바로 파일에 저장된 키워드 출력
+         * 이후에 키워드 저장 시 바로 키워드 업데이트 되게 하기
+         *
+         * 2. 키워드 삭제
+         * 
+         * 3. 크롤링 결과를 string이라고 가정하고 함수들을 구현 했기 때문에
+         * 이후 크롤링 결과에 따라서 함수들도 바꾸어야 함.
+         * 
+         *
+         *
+         */
     }
 }
