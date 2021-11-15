@@ -86,7 +86,6 @@ namespace OssKeyWordAlarm
             }
         }
         makeKey newkey = new makeKey(); //폼 작성
-        Forms.addLin newaddLink = new Forms.addLin(); //폼 적용
         Forms.changeAlar newchangeAlert = new Forms.changeAlar(); //폼 적용
         Forms.recordAlar newrecordAlert = new Forms.recordAlar(); // 알람저장 폼 위치 이동
         public static void showDialog(string str) //알람울림
@@ -114,7 +113,6 @@ namespace OssKeyWordAlarm
         {
             pnlNav.Location = btnMakeKeyword.Location;
             btnMakeKeyword.BackColor = Color.FromArgb(46, 51, 73);
-            addLink.BackColor = Color.FromArgb(24, 30, 54);
             recordAlarm.BackColor = Color.FromArgb(24, 30, 54);
             changeAlarm.BackColor = Color.FromArgb(24, 30, 54);
             Form_Title.Text = "KEYWORD";
@@ -126,23 +124,9 @@ namespace OssKeyWordAlarm
             pnlNav.Location = recordAlarm.Location;
             recordAlarm.BackColor = Color.FromArgb(46, 51, 73);
             btnMakeKeyword.BackColor = Color.FromArgb(24, 30, 54);
-            addLink.BackColor = Color.FromArgb(24, 30, 54);
             changeAlarm.BackColor = Color.FromArgb(24, 30, 54);
             Form_Title.Text = "ALARM LIST";
             OpenChildForm(newrecordAlert, sender);
-        }
-
-        private void addLink_MouseDown(object sender, MouseEventArgs e) //위와 같음
-        {
-            pnlNav.Location = addLink.Location;
-            addLink.BackColor = Color.FromArgb(46, 51, 73);
-            btnMakeKeyword.BackColor = Color.FromArgb(24, 30, 54);
-
-            btnMakeKeyword.BackColor = Color.FromArgb(24, 30, 54);
-            recordAlarm.BackColor = Color.FromArgb(24, 30, 54);
-            changeAlarm.BackColor = Color.FromArgb(24, 30, 54);
-            Form_Title.Text = "ADD LINK";
-            OpenChildForm(newaddLink, sender);
         }
 
         private void changeAlarm_MouseDown(object sender, MouseEventArgs e) //위와 같음
@@ -152,7 +136,6 @@ namespace OssKeyWordAlarm
             btnMakeKeyword.BackColor = Color.FromArgb(24, 30, 54);
 
             btnMakeKeyword.BackColor = Color.FromArgb(24, 30, 54);
-            addLink.BackColor = Color.FromArgb(24, 30, 54);
             recordAlarm.BackColor = Color.FromArgb(24, 30, 54);
             Form_Title.Text = "CHANGE ALARM";
             OpenChildForm(newchangeAlert, sender);

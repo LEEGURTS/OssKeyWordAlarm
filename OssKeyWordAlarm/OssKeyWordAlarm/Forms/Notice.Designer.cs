@@ -34,11 +34,11 @@ namespace OssKeyWordAlarm.Forms
             // 
             // lbltitle
             // 
-            this.lbltitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lbltitle.Font = new System.Drawing.Font("아리따-돋움4.0(OTF)-Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.lbltitle.ForeColor = System.Drawing.Color.White;
-            this.lbltitle.Location = new System.Drawing.Point(24, 23);
+            this.lbltitle.Location = new System.Drawing.Point(17, 16);
             this.lbltitle.Name = "lbltitle";
-            this.lbltitle.Size = new System.Drawing.Size(453, 25);
+            this.lbltitle.Size = new System.Drawing.Size(483, 45);
             this.lbltitle.TabIndex = 0;
             this.lbltitle.Text = "글 공지 테스트";
             this.lbltitle.Click += new System.EventHandler(this.lbltitle_Click);

@@ -36,7 +36,6 @@
             this.btnMakeKeyword = new System.Windows.Forms.Button();
             this.changeAlarm = new System.Windows.Forms.Button();
             this.recordAlarm = new System.Windows.Forms.Button();
-            this.addLink = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.JustForWindow = new System.Windows.Forms.Panel();
             this.Form_Title = new System.Windows.Forms.Label();
@@ -58,7 +57,6 @@
             this.panel1.Controls.Add(this.btnMakeKeyword);
             this.panel1.Controls.Add(this.changeAlarm);
             this.panel1.Controls.Add(this.recordAlarm);
-            this.panel1.Controls.Add(this.addLink);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -73,7 +71,7 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(18, 134);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(172, 18);
+            this.label2.Size = new System.Drawing.Size(157, 15);
             this.label2.TabIndex = 16;
             this.label2.Text = "광운대학교 공지사항 알리미";
             // 
@@ -84,7 +82,7 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(57, 104);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 18);
+            this.label1.Size = new System.Drawing.Size(66, 15);
             this.label1.TabIndex = 15;
             this.label1.Text = "KW ALART";
             // 
@@ -93,7 +91,7 @@
             this.pnlNav.BackColor = System.Drawing.Color.White;
             this.pnlNav.Location = new System.Drawing.Point(12, 12);
             this.pnlNav.Name = "pnlNav";
-            this.pnlNav.Size = new System.Drawing.Size(3, 60);
+            this.pnlNav.Size = new System.Drawing.Size(3, 80);
             this.pnlNav.TabIndex = 1;
             // 
             // btnMakeKeyword
@@ -105,11 +103,11 @@
             this.btnMakeKeyword.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMakeKeyword.ForeColor = System.Drawing.Color.White;
             this.btnMakeKeyword.Image = global::OssKeyWordAlarm.Properties.Resources.pencil_24px;
-            this.btnMakeKeyword.Location = new System.Drawing.Point(0, 188);
+            this.btnMakeKeyword.Location = new System.Drawing.Point(0, 213);
             this.btnMakeKeyword.Margin = new System.Windows.Forms.Padding(0);
             this.btnMakeKeyword.Name = "btnMakeKeyword";
             this.btnMakeKeyword.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnMakeKeyword.Size = new System.Drawing.Size(180, 60);
+            this.btnMakeKeyword.Size = new System.Drawing.Size(180, 80);
             this.btnMakeKeyword.TabIndex = 14;
             this.btnMakeKeyword.Text = "키워드 등록";
             this.btnMakeKeyword.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -126,11 +124,11 @@
             this.changeAlarm.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.changeAlarm.ForeColor = System.Drawing.Color.White;
             this.changeAlarm.Image = ((System.Drawing.Image)(resources.GetObject("changeAlarm.Image")));
-            this.changeAlarm.Location = new System.Drawing.Point(0, 368);
+            this.changeAlarm.Location = new System.Drawing.Point(0, 373);
             this.changeAlarm.Margin = new System.Windows.Forms.Padding(0);
             this.changeAlarm.Name = "changeAlarm";
             this.changeAlarm.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.changeAlarm.Size = new System.Drawing.Size(180, 60);
+            this.changeAlarm.Size = new System.Drawing.Size(180, 80);
             this.changeAlarm.TabIndex = 12;
             this.changeAlarm.Text = "알림음 변경";
             this.changeAlarm.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -147,37 +145,17 @@
             this.recordAlarm.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.recordAlarm.ForeColor = System.Drawing.Color.White;
             this.recordAlarm.Image = global::OssKeyWordAlarm.Properties.Resources.alarm_30px;
-            this.recordAlarm.Location = new System.Drawing.Point(0, 248);
+            this.recordAlarm.Location = new System.Drawing.Point(0, 293);
             this.recordAlarm.Margin = new System.Windows.Forms.Padding(0);
             this.recordAlarm.Name = "recordAlarm";
             this.recordAlarm.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.recordAlarm.Size = new System.Drawing.Size(180, 60);
+            this.recordAlarm.Size = new System.Drawing.Size(180, 80);
             this.recordAlarm.TabIndex = 11;
             this.recordAlarm.Text = "알림 기록";
             this.recordAlarm.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.recordAlarm.UseVisualStyleBackColor = false;
             this.recordAlarm.Click += new System.EventHandler(this.recordAlarm_Click);
             this.recordAlarm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.recordAlarm_MouseDown);
-            // 
-            // addLink
-            // 
-            this.addLink.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.addLink.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.addLink.FlatAppearance.BorderSize = 0;
-            this.addLink.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addLink.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addLink.ForeColor = System.Drawing.Color.White;
-            this.addLink.Image = global::OssKeyWordAlarm.Properties.Resources.link_30px;
-            this.addLink.Location = new System.Drawing.Point(0, 308);
-            this.addLink.Margin = new System.Windows.Forms.Padding(0);
-            this.addLink.Name = "addLink";
-            this.addLink.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.addLink.Size = new System.Drawing.Size(180, 60);
-            this.addLink.TabIndex = 9;
-            this.addLink.Text = "링크 등록";
-            this.addLink.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.addLink.UseVisualStyleBackColor = false;
-            this.addLink.MouseDown += new System.Windows.Forms.MouseEventHandler(this.addLink_MouseDown);
             // 
             // pictureBox1
             // 
@@ -213,7 +191,7 @@
             this.Form_Title.ForeColor = System.Drawing.Color.White;
             this.Form_Title.Location = new System.Drawing.Point(202, 20);
             this.Form_Title.Name = "Form_Title";
-            this.Form_Title.Size = new System.Drawing.Size(144, 31);
+            this.Form_Title.Size = new System.Drawing.Size(114, 25);
             this.Form_Title.TabIndex = 6;
             this.Form_Title.Text = "Form_Title";
             // 
@@ -297,7 +275,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel pnlNav;
-        private System.Windows.Forms.Button addLink;
         private System.Windows.Forms.Button changeAlarm;
         private System.Windows.Forms.Button recordAlarm;
         private System.Windows.Forms.Button btnMakeKeyword;

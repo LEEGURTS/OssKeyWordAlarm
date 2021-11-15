@@ -32,6 +32,8 @@ namespace OssKeyWordAlarm
             keyWord_listBox.Region= System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, keyWord_listBox.Width, keyWord_listBox.Height, 20, 20));
             Keyword_TextBox.Region= System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Keyword_TextBox.Width, Keyword_TextBox.Height, 5, 5));
             btnDelete.Region= System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, btnDelete.Width, btnDelete.Height, 10, 10));
+            btnClear.Region= System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, btnClear.Width, btnClear.Height, 10, 10));
+            btnEdit.Region= System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, btnEdit.Width, btnEdit.Height, 10, 10));
             keyWord_listBox.BringToFront();
             Btn_Load();
         }

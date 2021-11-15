@@ -29,6 +29,10 @@ namespace OssKeyWordAlarm.Forms
             InitializeComponent();
             load_info();
             RecordShow(title, url);
+            flowLayoutPanel1.Region= System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, flowLayoutPanel1.Width, flowLayoutPanel1.Height, 20, 20));
+            flowLayoutPanel1.VerticalScroll.Enabled = false;
+            flowLayoutPanel1.VerticalScroll.Visible = false;
+            btnRemoveAll.Region= System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, btnRemoveAll.Width, btnRemoveAll.Height, 20, 20));
         }
 
         public recordAlar(Form1 fom)
