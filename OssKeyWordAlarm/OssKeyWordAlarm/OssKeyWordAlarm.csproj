@@ -94,6 +94,7 @@
     <Compile Include="Forms\Notice.Designer.cs">
       <DependentUpon>Notice.cs</DependentUpon>
     </Compile>
+    <Compile Include="functions_h.cs" />
     <Compile Include="Info.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
