@@ -42,6 +42,7 @@ namespace OssKeyWordAlarm.Forms
             this.lbltitle.TabIndex = 0;
             this.lbltitle.Text = "글 공지 테스트";
             this.lbltitle.Click += new System.EventHandler(this.lbltitle_Click);
+
             // 
             // Notice
             // 

@@ -4,6 +4,7 @@ using System.Text;
 using System.IO;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Linq;
 
 namespace OssKeyWordAlarm
 {
@@ -28,12 +29,12 @@ namespace OssKeyWordAlarm
         }
         private void makeKey_Load(object sender, EventArgs e)
         {
-            pnlText.Region= System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlText.Width,pnlText.Height, 20, 20));
-            keyWord_listBox.Region= System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, keyWord_listBox.Width, keyWord_listBox.Height, 20, 20));
-            Keyword_TextBox.Region= System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Keyword_TextBox.Width, Keyword_TextBox.Height, 5, 5));
-            btnDelete.Region= System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, btnDelete.Width, btnDelete.Height, 10, 10));
-            btnClear.Region= System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, btnClear.Width, btnClear.Height, 10, 10));
-            btnEdit.Region= System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, btnEdit.Width, btnEdit.Height, 10, 10));
+            pnlText.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlText.Width, pnlText.Height, 20, 20));
+            keyWord_listBox.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, keyWord_listBox.Width, keyWord_listBox.Height, 20, 20));
+            Keyword_TextBox.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Keyword_TextBox.Width, Keyword_TextBox.Height, 5, 5));
+            btnDelete.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, btnDelete.Width, btnDelete.Height, 10, 10));
+            btnClear.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, btnClear.Width, btnClear.Height, 10, 10));
+            btnEdit.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, btnEdit.Width, btnEdit.Height, 10, 10));
             keyWord_listBox.BringToFront();
             Btn_Load();
         }
@@ -61,7 +62,7 @@ namespace OssKeyWordAlarm
                 string path_string = Path.Combine(dir_url, file_name);
 
                 // 입력한 text를 저장
-                System.IO.File.AppendAllText(path_string, Keyword_TextBox.SelectedText + "\n", Encoding.Default);
+                System.IO.File.AppendAllText(path_string, Keyword_TextBox.SelectedText + "\n", Encoding.UTF8);
                 // 이후 텍스트 박스 초기화
                 Keyword_TextBox.Text = null;
 
@@ -143,16 +144,6 @@ namespace OssKeyWordAlarm
             Btn_Check();
         }
 
-        /*
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            if (keyWord_listBox.SelectedIndex != -1)
-            {
-                keyWord_listBox.Items.RemoveAt(keyWord_listBox.SelectedIndex);
-            }
-        }
-        */
-
         private void btnEdit_Click(object sender, EventArgs e)
         {
             if (keyWord_listBox.SelectedIndex != -1)
@@ -183,13 +174,14 @@ namespace OssKeyWordAlarm
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (keyWord_listBox.Items.Count >= 1)
+            if (keyWord_listBox.Items.Count >= 1 && keyWord_listBox.SelectedItem != null)
             {
-                if (keyWord_listBox.SelectedItem != null)
-                {
-                    keyWord_listBox.Items.Remove(keyWord_listBox.SelectedItem);
-                }
+                string removeText = keyWord_listBox.SelectedItem.ToString();
+                keyWord_listBox.Items.Remove(keyWord_listBox.SelectedItem);
+                File.WriteAllLines("keywords.txt",
+                    File.ReadAllLines("keywords.txt").Where(l => l != removeText).ToList(), Encoding.UTF8);
             }
+
             else
             {
                 System.Windows.Forms.MessageBox.Show("삭제할 KeyWord가 없습니다.");

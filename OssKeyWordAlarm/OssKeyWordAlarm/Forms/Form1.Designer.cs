@@ -112,7 +112,6 @@
             this.btnMakeKeyword.Text = "키워드 등록";
             this.btnMakeKeyword.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnMakeKeyword.UseVisualStyleBackColor = false;
-            this.btnMakeKeyword.Click += new System.EventHandler(this.btnMakeKeyword_Click);
             this.btnMakeKeyword.MouseDown += new System.Windows.Forms.MouseEventHandler(this.makeKeyword_MouseDown);
             // 
             // changeAlarm
@@ -133,7 +132,6 @@
             this.changeAlarm.Text = "알림음 변경";
             this.changeAlarm.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.changeAlarm.UseVisualStyleBackColor = false;
-            this.changeAlarm.Click += new System.EventHandler(this.changeAlarm_Click);
             this.changeAlarm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.changeAlarm_MouseDown);
             // 
             // recordAlarm
@@ -154,7 +152,6 @@
             this.recordAlarm.Text = "알림 기록";
             this.recordAlarm.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.recordAlarm.UseVisualStyleBackColor = false;
-            this.recordAlarm.Click += new System.EventHandler(this.recordAlarm_Click);
             this.recordAlarm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.recordAlarm_MouseDown);
             // 
             // pictureBox1
@@ -245,7 +242,6 @@
             this.Multi_Panel.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Multi_Panel.Size = new System.Drawing.Size(770, 489);
             this.Multi_Panel.TabIndex = 7;
-            this.Multi_Panel.Paint += new System.Windows.Forms.PaintEventHandler(this.Multi_Panel_Paint);
             // 
             // Form1
             // 

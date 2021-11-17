@@ -55,7 +55,7 @@ namespace OssKeyWordAlarm
                 // 600000 = 10분
             }
         }
-        
+
         private static DateTime Delay(int MS)
         {
             DateTime ThisMoment = DateTime.Now;
@@ -108,7 +108,7 @@ namespace OssKeyWordAlarm
             childForm.BringToFront();
             childForm.Show(); //출력    
         }
-       
+
         private void makeKeyword_MouseDown(object sender, MouseEventArgs e) // 키워드 설정 클릭하자마자 강조와 함께 새로운 폼 띄움
         {
             pnlNav.Location = btnMakeKeyword.Location;
@@ -168,12 +168,12 @@ namespace OssKeyWordAlarm
         {
             WindowState = FormWindowState.Minimized;
         }
-        
+
         public void init_parsing()
         {
-                //html_parsing();
-                Thread t = new Thread(new ThreadStart(ThreadProc));
-                t.Start();
+            //html_parsing();
+            Thread t = new Thread(new ThreadStart(ThreadProc));
+            t.Start();
         }
         // user가 키워드 알람을 허용해놓은 url들만 들어가서 가장 상단의 글 번호를 출력
         public void html_parsing()
@@ -208,7 +208,7 @@ namespace OssKeyWordAlarm
                             articles.Add(new Article(hrefValue, Int32.Parse(words[1]), "content", date));
                             //Console.WriteLine(hrefValue + date + " " + duid_str);
                             Title.Add(link.InnerText.Split('\n')[3].Substring(36));
-                            if ((hrefValue + date)!=null)
+                            if ((hrefValue + date) != null)
                                 saving_str.Add(hrefValue + date); // 저장 위한 문자열
                             index++;
                         }
@@ -243,9 +243,9 @@ namespace OssKeyWordAlarm
                             string[] words = hrefValue.Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
                             Char[] delimiters = { '|', ' ', ' ', ' ', '|', ' ', ' ' };
                             string date = date_node[index].InnerText.Split(delimiters)[9];
-                            if (!articles.Contains(new Article(hrefValue, Int32.Parse(words[1]), "content",date)))
+                            if (!articles.Contains(new Article(hrefValue, Int32.Parse(words[1]), "content", date)))
                             {
-                                articles.Add(new Article(hrefValue, Int32.Parse(words[1]), "content",date));
+                                articles.Add(new Article(hrefValue, Int32.Parse(words[1]), "content", date));
                                 Console.WriteLine("new article detected : " + hrefValue);
                             }
                             index++;
@@ -258,17 +258,20 @@ namespace OssKeyWordAlarm
         public List<string> new_title = new List<string>();
         public List<string> new_url = new List<string>();
         // Check : 파싱 비교, 업데이트 함수입니다.
-        public void Check(List<string> str, List<string> title) {
+        public void Check(List<string> str, List<string> title)
+        {
             // str은 url, title은 글 제목
             List<string> before = fun.read_file("parsing.txt");
-            if (before.Count==0) { 
+            if (before.Count == 0)
+            {
                 fun.save_file("parsing.txt", str, 0);
                 //Console.WriteLine("암것도 없어용");
                 //save_parsing(str);
                 before = fun.read_file("parsing.txt");
             } // 1) 처음 생성 시(txt 파일이 비어있다면) parsing을 최신화함.
-            
-            if (str[0] == before[0]) { 
+
+            if (str[0] == before[0])
+            {
                 //Console.WriteLine("새 글 없음");
             }
             // 새 글이 올라오면 첫 번째 글이 바뀜 -> 첫 번째 글만 비교하면 됨.
@@ -280,8 +283,9 @@ namespace OssKeyWordAlarm
                     point = str.IndexOf(before[index3]);
                     index3++;
                 }
-                
-                if (point == -1 && index3 <= str.Count) {
+
+                if (point == -1 && index3 <= str.Count)
+                {
                     //save_parsing(str);
                     fun.save_file("parsing.txt", str, 0);
                     //Console.WriteLine("업데이트");
@@ -292,7 +296,8 @@ namespace OssKeyWordAlarm
                 new_url.Clear();
                 List<string> result = fun.read_file2("keywords.txt"); // 키워드를 담은 List
                 List<bool> Alert_bool = new List<bool>();
-                for (int i = 0; i < result.Count; i++) {
+                for (int i = 0; i < result.Count; i++)
+                {
                     Alert_bool.Add(false);
                 } // 키워드 별로 새 글에서 키워드가 존재하는지 여부 (bool)
                 // ex) result[0]="장학" 이고, 제목에 "장학"이 존재하면 Alert_bool[0]=true
@@ -303,16 +308,17 @@ namespace OssKeyWordAlarm
                         Alert_bool[k] = false; // 초기화
                         if (title[i].IndexOf(result[k]) != -1)
                         {
-                            Console.WriteLine("*"+title[i]);
+                            Console.WriteLine("*" + title[i]);
                             Console.WriteLine("**" + result[k]);
                             Console.WriteLine("진짜잇음?" + title[i].IndexOf(result[k]));
-                            Alert_bool[k]=true;
+                            Alert_bool[k] = true;
                         }
                     }
-                    if (Alert_bool.IndexOf(true)!=-1) {
+                    if (Alert_bool.IndexOf(true) != -1)
+                    {
                         //Console.WriteLine("새거가 있네");
-                        new_title.Add(title[i].Substring(0,title[i].Length-1));
-                        new_url.Add(str[i].Substring(0, str[i].Length-10));
+                        new_title.Add(title[i].Substring(0, title[i].Length - 1));
+                        new_url.Add(str[i].Substring(0, str[i].Length - 10));
                     }
                 }// 키워드가 새 글의 제목에 있는지 확인
 
@@ -329,26 +335,8 @@ namespace OssKeyWordAlarm
                 fun.save_file("parsing.txt", str, 0);
                 //Console.WriteLine("새 글 있음!");
             }
-        }
 
-        private void Multi_Panel_Paint(object sender, PaintEventArgs e)
-        {
 
         }
-        private void changeAlarm_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnMakeKeyword_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void recordAlarm_Click(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }
