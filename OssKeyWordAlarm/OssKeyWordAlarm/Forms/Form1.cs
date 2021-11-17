@@ -38,6 +38,7 @@ namespace OssKeyWordAlarm
         {
             InitializeComponent();
             makeKeyword_MouseDown(null, null);
+            Tray_Icon.Visible = false;
             Form_Title.Text = "KEYWORD";
             btnMakeKeyword.BackColor = Color.FromArgb(46, 51, 73); //초기 강조선 설정
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20)); //테두리를 원형으로 설정
@@ -337,6 +338,22 @@ namespace OssKeyWordAlarm
             }
 
 
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                Hide();
+                Tray_Icon.Visible = true;
+            }
+        }
+
+        private void Tray_Icon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Show();
+            this.WindowState = FormWindowState.Normal;
+            Tray_Icon.Visible = false;
         }
     }
 }

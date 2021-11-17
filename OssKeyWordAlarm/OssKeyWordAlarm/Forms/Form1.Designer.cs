@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,6 +44,7 @@
             this.Exit_Button = new System.Windows.Forms.Button();
             this.Maximize = new System.Windows.Forms.Button();
             this.Multi_Panel = new System.Windows.Forms.Panel();
+            this.Tray_Icon = new System.Windows.Forms.NotifyIcon(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.JustForWindow.SuspendLayout();
@@ -243,6 +245,13 @@
             this.Multi_Panel.Size = new System.Drawing.Size(770, 489);
             this.Multi_Panel.TabIndex = 7;
             // 
+            // Tray_Icon
+            // 
+            this.Tray_Icon.Icon = ((System.Drawing.Icon)(resources.GetObject("Tray_Icon.Icon")));
+            this.Tray_Icon.Text = "KW 공지사항 알리미";
+            this.Tray_Icon.Visible = true;
+            this.Tray_Icon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Tray_Icon_MouseDoubleClick);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -258,6 +267,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Resize += new System.EventHandler(this.Form1_Resize);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -282,6 +292,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label Form_Title;
         private System.Windows.Forms.Panel Multi_Panel;
+        private System.Windows.Forms.NotifyIcon Tray_Icon;
     }
 }
 
