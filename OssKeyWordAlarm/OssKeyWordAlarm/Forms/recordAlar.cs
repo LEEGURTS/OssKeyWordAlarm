@@ -93,8 +93,6 @@ namespace OssKeyWordAlarm.Forms
             //이 문장은 추후 삭제가 필요함.
             List<string> name = new List<string>();
             List<string> url = new List<string>();
-            name.Add("테스트문구입니다. 추가 이용시 recordAlar폼의 Load부분을 삭제해주세요.");
-            url.Add("https://github.com/LEEGURTS/OssKeyWordAlarm");
             RecordShow(name, url);
         }
 
@@ -120,6 +118,7 @@ namespace OssKeyWordAlarm.Forms
             File.WriteAllText(Path.Combine(Environment.CurrentDirectory, "new_url.txt"), String.Empty);
             File.WriteAllText(Path.Combine(Environment.CurrentDirectory, "new_title.txt"), String.Empty);
             flowLayoutPanel1.Controls.Clear();
+            flowLayoutPanel1.Controls.Add(label1);
             load_info();
             RecordShow(title, url);
         }
