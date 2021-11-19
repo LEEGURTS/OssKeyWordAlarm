@@ -111,7 +111,7 @@ namespace OssKeyWordAlarm.Forms
 
         private void btnRemoveAll_Click(object sender, EventArgs e)
         {
-
+             
         }
         // 모든 알림 기록을 지움 ****************************
     }

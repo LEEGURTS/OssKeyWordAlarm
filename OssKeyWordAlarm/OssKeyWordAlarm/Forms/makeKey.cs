@@ -118,7 +118,7 @@ namespace OssKeyWordAlarm
             List<string> result = new List<string>();
             string one_line;
 
-            // List에 키워드(파일 내용)들이 하나씩 저장됨
+            // List에 키워드(파일 내용)들이 하나씩 저장됨 
             while ((one_line = SR.ReadLine()) != null)
             {
                 result.Add(one_line);
