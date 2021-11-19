@@ -26,12 +26,12 @@ namespace OssKeyWordAlarm.Forms
         public Notice(string str)
         {
             lbltitle.Text = str;
-            InitializeComponent();          
+            InitializeComponent();
         }
         #region Properties
         private string _title;
         private string _url;
-        [Category ("MyList")]
+        [Category("MyList")]
         public string title
         {
             get
@@ -45,7 +45,8 @@ namespace OssKeyWordAlarm.Forms
             }
         }
         [Category("MyList")]
-        public string url {
+        public string url
+        {
             get
             {
                 return _url;
@@ -67,7 +68,7 @@ namespace OssKeyWordAlarm.Forms
             aaa.save_file("new_url.txt", parents.url, 0);
             parents.flowLayoutPanel1.Controls.Remove(this);
         }
-       
+
 
         private void Notice_Load(object sender, EventArgs e)
         {
