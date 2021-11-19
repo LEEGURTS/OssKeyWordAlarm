@@ -106,7 +106,7 @@
             this.btnMakeKeyword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnMakeKeyword.FlatAppearance.BorderSize = 0;
             this.btnMakeKeyword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMakeKeyword.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMakeKeyword.Font = new System.Drawing.Font("아리따-돋움4.0(OTF)-Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMakeKeyword.ForeColor = System.Drawing.Color.White;
             this.btnMakeKeyword.Image = global::OssKeyWordAlarm.Properties.Resources.pencil_24px;
             this.btnMakeKeyword.Location = new System.Drawing.Point(0, 213);
@@ -126,7 +126,7 @@
             this.changeAlarm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.changeAlarm.FlatAppearance.BorderSize = 0;
             this.changeAlarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.changeAlarm.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.changeAlarm.Font = new System.Drawing.Font("아리따-돋움4.0(OTF)-Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.changeAlarm.ForeColor = System.Drawing.Color.White;
             this.changeAlarm.Image = ((System.Drawing.Image)(resources.GetObject("changeAlarm.Image")));
             this.changeAlarm.Location = new System.Drawing.Point(0, 373);
@@ -146,7 +146,7 @@
             this.recordAlarm.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.recordAlarm.FlatAppearance.BorderSize = 0;
             this.recordAlarm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.recordAlarm.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.recordAlarm.Font = new System.Drawing.Font("아리따-돋움4.0(OTF)-Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.recordAlarm.ForeColor = System.Drawing.Color.White;
             this.recordAlarm.Image = global::OssKeyWordAlarm.Properties.Resources.alarm_30px;
             this.recordAlarm.Location = new System.Drawing.Point(0, 293);
@@ -263,19 +263,19 @@
             this.보기ToolStripMenuItem,
             this.종료ToolStripMenuItem});
             this.trayIconContextMenuStrip.Name = "trayIconContextMenuStrip";
-            this.trayIconContextMenuStrip.Size = new System.Drawing.Size(181, 70);
+            this.trayIconContextMenuStrip.Size = new System.Drawing.Size(99, 48);
             // 
             // 보기ToolStripMenuItem
             // 
             this.보기ToolStripMenuItem.Name = "보기ToolStripMenuItem";
-            this.보기ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.보기ToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.보기ToolStripMenuItem.Text = "보기";
             this.보기ToolStripMenuItem.Click += new System.EventHandler(this.보기ToolStripMenuItem_Click);
             // 
             // 종료ToolStripMenuItem
             // 
             this.종료ToolStripMenuItem.Name = "종료ToolStripMenuItem";
-            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.종료ToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.종료ToolStripMenuItem.Text = "종료";
             this.종료ToolStripMenuItem.Click += new System.EventHandler(this.종료ToolStripMenuItem_Click);
             // 
@@ -291,6 +291,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(130)))), ((int)(((byte)(138)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "Form1";

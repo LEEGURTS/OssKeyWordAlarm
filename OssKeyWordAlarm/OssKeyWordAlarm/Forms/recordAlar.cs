@@ -38,24 +38,9 @@ namespace OssKeyWordAlarm.Forms
         public recordAlar(Form1 fom)
         {
             InitializeComponent();
-            //forms = fom;
-            //update_title();
             load_info();
             RecordShow(title, url);
         }
-        /*
-        public void update_title() {
-            for (int i = 0; i < forms.new_title.Count; i++)
-            {
-                title.Add(forms.new_title[i]);
-            }
-
-            for (int i = 0; i < forms.new_url.Count; i++)
-            {
-                url.Add(forms.new_url[i]);
-            }
-        }
-        */
 
         public void load_info()
         {
@@ -96,26 +81,8 @@ namespace OssKeyWordAlarm.Forms
             RecordShow(name, url);
         }
 
-        private void btnRemove_Click(object sender, EventArgs e)
-        {
-           // File.WriteAllText(Path.Combine(Environment.CurrentDirectory, "new_url.txt"), String.Empty);
-            //File.WriteAllText(Path.Combine(Environment.CurrentDirectory, "new_title.txt"), String.Empty);
-            //flowLayoutPanel1.Controls.Clear();
-            //load_info();
-            //RecordShow(title, url);
-            //호준아 파이팅 너의 파트를 만들어드렸읍니다
-            //누르면 모든 글 읽은걸로 처리시키면 됨.
-            //함정이었음...
-        }
-
-        private void flowLayoutPanel1_Click(object sender, EventArgs e)
-        {
-            //flowLayoutPanel1.Controls.Remove(notices[0]);
-        }
-
         private void btnRemoveAll_Click(object sender, EventArgs e)
         {
-
             File.WriteAllText(Path.Combine(Environment.CurrentDirectory, "new_url.txt"), String.Empty);
             File.WriteAllText(Path.Combine(Environment.CurrentDirectory, "new_title.txt"), String.Empty);
             flowLayoutPanel1.Controls.Clear();
@@ -124,10 +91,6 @@ namespace OssKeyWordAlarm.Forms
             RecordShow(title, url);
         }
         // 모든 알림 기록을 지움 ****************************
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
         
     }
 }

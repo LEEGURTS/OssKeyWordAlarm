@@ -1,19 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using HtmlAgilityPack;
-using System.Xml;
 using System.Threading;
-using System.Security.Permissions;
-using System.IO;
-using System.Diagnostics;
 
 namespace OssKeyWordAlarm
 {
@@ -43,6 +34,7 @@ namespace OssKeyWordAlarm
             btnMakeKeyword.BackColor = Color.FromArgb(46, 51, 73); //초기 강조선 설정
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20)); //테두리를 원형으로 설정
             init_parsing();
+            Icon = Properties.Resources.icon;
         }
 
         public void ThreadProc()
@@ -51,7 +43,6 @@ namespace OssKeyWordAlarm
             {
                 html_parsing();
                 newrecordAlert = new Forms.recordAlar();
-                //new_article_detecting();
                 Delay(1000);
                 // 600000 = 10분
             }
@@ -96,8 +87,7 @@ namespace OssKeyWordAlarm
             art.Show();
 
         }
-
-        private void OpenChildForm(Form childForm, object btnSender) //새로운 폼 형성 함수
+        private void OpenChildForm(Form childForm) //새로운 폼 형성 함수
         {
             childForm.TopLevel = false;
             childForm.Location = Multi_Panel.Location;
@@ -117,7 +107,7 @@ namespace OssKeyWordAlarm
             recordAlarm.BackColor = Color.FromArgb(24, 30, 54);
             changeAlarm.BackColor = Color.FromArgb(24, 30, 54);
             Form_Title.Text = "KEYWORD";
-            OpenChildForm(newkey, sender);
+            OpenChildForm(newkey);
         }
 
         private void recordAlarm_MouseDown(object sender, MouseEventArgs e) //위와 같음
@@ -127,7 +117,7 @@ namespace OssKeyWordAlarm
             btnMakeKeyword.BackColor = Color.FromArgb(24, 30, 54);
             changeAlarm.BackColor = Color.FromArgb(24, 30, 54);
             Form_Title.Text = "ALARM LIST";
-            OpenChildForm(newrecordAlert, sender);
+            OpenChildForm(newrecordAlert);
         }
 
         private void changeAlarm_MouseDown(object sender, MouseEventArgs e) //위와 같음
@@ -139,7 +129,7 @@ namespace OssKeyWordAlarm
             btnMakeKeyword.BackColor = Color.FromArgb(24, 30, 54);
             recordAlarm.BackColor = Color.FromArgb(24, 30, 54);
             Form_Title.Text = "CHANGE ALARM";
-            OpenChildForm(newchangeAlert, sender);
+            OpenChildForm(newchangeAlert);
         }
 
 
@@ -174,6 +164,7 @@ namespace OssKeyWordAlarm
         public void init_parsing()
         {
             Thread t = new Thread(new ThreadStart(ThreadProc));
+            t.IsBackground = true;
             t.Start();
         }
 
@@ -182,8 +173,6 @@ namespace OssKeyWordAlarm
         {
             List<string> saving_str = new List<string>();
             List<string> Title = new List<string>();
-            // -> list에 넣어 -> 쌓여 -> 삭제 버튼
-            //
             
             foreach (KeyValuePair<string, bool> pair in user.Urls)
             {
@@ -202,14 +191,11 @@ namespace OssKeyWordAlarm
                         foreach (HtmlNode link in node)
                         {
                             string hrefValue = link.GetAttributeValue("href", string.Empty);
-                            //string duid_str = hrefValue.Split(delimiterChars)[3]; // duid
-                            //Console.WriteLine(hrefValue);
                             string[] separatingStrings = { "DUID=", "&tpage=" };
                             string[] words = hrefValue.Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
                             Char[] delimiters = { '|', ' ', ' ', ' ', '|', ' ', ' ' };
                             string date = date_node[index].InnerText.Split(delimiters)[9];
                             articles.Add(new Article(hrefValue, Int32.Parse(words[1]), "content", date));
-                            //Console.WriteLine(hrefValue + date + " " + duid_str);
                             Title.Add(link.InnerText.Split('\n')[3].Substring(36));
                             if ((hrefValue + date) != null)
                                 saving_str.Add(hrefValue + date); // 저장 위한 문자열
@@ -222,45 +208,8 @@ namespace OssKeyWordAlarm
             }
         }
 
-        public void new_article_detecting()
-        {
-            foreach (KeyValuePair<string, bool> pair in user.Urls)
-            {
-                if (pair.Value)
-                {
-                    string target_url = pair.Key;
-                    HtmlWeb target_web = new HtmlWeb();
-                    for (int page_num = 1; page_num <= 1; page_num++)
-                    {
-                        string now_target_url = target_url + "?MaxRows=10&tpage=" + page_num.ToString() + "&searchKey=1&searchVal=&srCategoryId=";
-                        var target_doc = target_web.Load(now_target_url);
-                        var node = target_doc.DocumentNode.SelectNodes("//body//div//div//div//div//div//div//div//div//li//div//a[@href]");
-                        var date_node = target_doc.DocumentNode.SelectNodes("//body//div//p[contains(@class, 'info')]");
-                        int index = 0;
-
-                        foreach (HtmlNode link in node)
-                        {
-                            string hrefValue = link.GetAttributeValue("href", string.Empty);
-                            //Console.WriteLine(hrefValue);
-                            string[] separatingStrings = { "DUID=", "&tpage=" };
-                            string[] words = hrefValue.Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
-                            Char[] delimiters = { '|', ' ', ' ', ' ', '|', ' ', ' ' };
-                            string date = date_node[index].InnerText.Split(delimiters)[9];
-                            if (!articles.Contains(new Article(hrefValue, Int32.Parse(words[1]), "content", date)))
-                            {
-                                articles.Add(new Article(hrefValue, Int32.Parse(words[1]), "content", date));
-                                Console.WriteLine("new article detected : " + hrefValue);
-                            }
-                            index++;
-                        }
-                    }
-                }
-            }
-        }
-
         public List<string> new_title = new List<string>();
         public List<string> new_url = new List<string>();
-        // Check : 파싱 비교, 업데이트 함수입니다.
         public void Check(List<string> str, List<string> title)
         {
             // str은 url, title은 글 제목
@@ -268,14 +217,11 @@ namespace OssKeyWordAlarm
             if (before.Count == 0)
             {
                 fun.save_file("parsing.txt", str, 0);
-                //Console.WriteLine("암것도 없어용");
-                //save_parsing(str);
                 before = fun.read_file("parsing.txt");
             } // 1) 처음 생성 시(txt 파일이 비어있다면) parsing을 최신화함.
 
             if (str[0] == before[0])
             {
-                //Console.WriteLine("새 글 없음");
             }
             // 새 글이 올라오면 첫 번째 글이 바뀜 -> 첫 번째 글만 비교하면 됨.
             else
@@ -289,9 +235,7 @@ namespace OssKeyWordAlarm
 
                 if (point == -1 && index3 <= str.Count)
                 {
-                    //save_parsing(str);
                     fun.save_file("parsing.txt", str, 0);
-                    //Console.WriteLine("업데이트");
                     return;
                 }// 이전 파싱에서 현재 파싱과 일치하는 것이 없음 -> 업데이트 오랫동안 안됨 -> 현재 파싱 업데이트
 
@@ -311,15 +255,11 @@ namespace OssKeyWordAlarm
                         Alert_bool[k] = false; // 초기화
                         if (title[i].IndexOf(result[k]) != -1)
                         {
-                            Console.WriteLine("*" + title[i]);
-                            Console.WriteLine("**" + result[k]);
-                            Console.WriteLine("진짜잇음?" + title[i].IndexOf(result[k]));
                             Alert_bool[k] = true;
                         }
                     }
                     if (Alert_bool.IndexOf(true) != -1)
                     {
-                        //Console.WriteLine("새거가 있네");
                         new_title.Add(title[i].Substring(0, title[i].Length - 1));
                         new_url.Add(str[i].Substring(0, str[i].Length - 10));
                     }
@@ -329,17 +269,10 @@ namespace OssKeyWordAlarm
                 {
                     showDialog("");
                 } // 새 글에 키워드가 있으면 알림
-                foreach (string s in new_title)
-                {
-                    //Console.WriteLine(s);
-                }
                 fun.save_file("new_title.txt", new_title, 0);
                 fun.save_file("new_url.txt", new_url, 0);
-                fun.save_file("parsing.txt", str, 0);
-                //Console.WriteLine("새 글 있음!");
-            }
-             
-
+                fun.save_file("parsing.txt", str, 0);;
+            }          
         }
 
         private void Form1_Resize(object sender, EventArgs e)

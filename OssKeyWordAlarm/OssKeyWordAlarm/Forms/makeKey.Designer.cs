@@ -31,7 +31,6 @@ namespace OssKeyWordAlarm
         {
             this.Keyword_TextBox = new System.Windows.Forms.TextBox();
             this.keyWord_listBox = new System.Windows.Forms.ListBox();
-            this.btnCheck = new System.Windows.Forms.Button();
             this.pnlText = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -69,17 +68,6 @@ namespace OssKeyWordAlarm
             this.keyWord_listBox.Name = "keyWord_listBox";
             this.keyWord_listBox.Size = new System.Drawing.Size(380, 285);
             this.keyWord_listBox.TabIndex = 10;
-            // 
-            // btnCheck
-            // 
-            this.btnCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCheck.Location = new System.Drawing.Point(628, 439);
-            this.btnCheck.Name = "btnCheck";
-            this.btnCheck.Size = new System.Drawing.Size(75, 23);
-            this.btnCheck.TabIndex = 4;
-            this.btnCheck.Text = "btnCheck";
-            this.btnCheck.UseVisualStyleBackColor = true;
-            this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
             // 
             // pnlText
             // 
@@ -186,7 +174,6 @@ namespace OssKeyWordAlarm
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlText);
-            this.Controls.Add(this.btnCheck);
             this.Controls.Add(this.keyWord_listBox);
             this.Controls.Add(this.Keyword_TextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -204,7 +191,6 @@ namespace OssKeyWordAlarm
 
         private System.Windows.Forms.TextBox Keyword_TextBox;
         private System.Windows.Forms.ListBox keyWord_listBox;
-        private System.Windows.Forms.Button btnCheck;
 
         private System.Windows.Forms.Panel pnlText;
         private System.Windows.Forms.Panel panel1;

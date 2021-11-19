@@ -71,8 +71,6 @@ namespace OssKeyWordAlarm.Forms
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(30, 20, 0, 0);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(626, 465);
             this.flowLayoutPanel1.TabIndex = 0;
-            this.flowLayoutPanel1.Click += new System.EventHandler(this.flowLayoutPanel1_Click);
-            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // recordAlar
             // 

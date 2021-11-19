@@ -18,7 +18,6 @@ namespace OssKeyWordAlarm
             make_keyword_txt();
             make_urls();
             make_parsing_txt();
-            make_duid_txt();
             make_new_url_txt();
             make_new_title_txt();
         }
@@ -78,15 +77,13 @@ namespace OssKeyWordAlarm
                 }
                 fs.Close();
             }
-            else
-            {
                 Dictionary<string, bool> result = new Dictionary<string, bool>();
-                StreamReader file = new StreamReader(path_string);
+                StreamReader file2 = new StreamReader(path_string);
                 string one_line;
-                while ((one_line = file.ReadLine()) != null)
+                while ((one_line = file2.ReadLine()) != null)
                 {
                     string one_url = one_line;
-                    one_line = file.ReadLine();
+                    one_line = file2.ReadLine();
                     bool is_tracing;
                     if (one_line.Equals("0"))
                     {
@@ -99,8 +96,7 @@ namespace OssKeyWordAlarm
                     result.Add(one_url,is_tracing);
                 }
                 urls = result;
-                file.Close();
-            }
+                file2.Close();
         }
 
         public void make_parsing_txt()
@@ -137,17 +133,6 @@ namespace OssKeyWordAlarm
             }
         }
 
-        public void make_duid_txt()
-        {
-            string dir_url = Environment.CurrentDirectory;
-            string file_name = "duid.txt";
-            string path_string = Path.Combine(dir_url, file_name);
-            if (!File.Exists(path_string))
-            {
-                FileStream fs = File.Create(path_string);
-                fs.Close();
-            }
-        }
 
         // keywords.txt에 저장되어있는 것들을 담고 있는 변수입니다.
         // 여기에 모든 키워드들이 저장됩니다.
