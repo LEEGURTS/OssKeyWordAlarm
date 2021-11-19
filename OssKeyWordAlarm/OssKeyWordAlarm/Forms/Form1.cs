@@ -38,6 +38,7 @@ namespace OssKeyWordAlarm
         {
             InitializeComponent();
             makeKeyword_MouseDown(null, null);
+            Tray_Icon.Visible = false;
             Form_Title.Text = "KEYWORD";
             btnMakeKeyword.BackColor = Color.FromArgb(46, 51, 73); //초기 강조선 설정
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20)); //테두리를 원형으로 설정
@@ -51,7 +52,7 @@ namespace OssKeyWordAlarm
                 html_parsing();
                 newrecordAlert = new Forms.recordAlar();
                 //new_article_detecting();
-                Delay(10000);
+                Delay(1000);
                 // 600000 = 10분
             }
         }
@@ -145,6 +146,7 @@ namespace OssKeyWordAlarm
 
         private void Exit_Button_Click(object sender, EventArgs e) //프로그램 종료 버튼
         {
+            Tray_Icon.Dispose();
             Application.Exit();
         }
 
@@ -171,17 +173,18 @@ namespace OssKeyWordAlarm
 
         public void init_parsing()
         {
-            //html_parsing();
             Thread t = new Thread(new ThreadStart(ThreadProc));
             t.Start();
         }
+
         // user가 키워드 알람을 허용해놓은 url들만 들어가서 가장 상단의 글 번호를 출력
         public void html_parsing()
         {
             List<string> saving_str = new List<string>();
             List<string> Title = new List<string>();
             // -> list에 넣어 -> 쌓여 -> 삭제 버튼
-            // 
+            //
+            
             foreach (KeyValuePair<string, bool> pair in user.Urls)
             {
                 if (pair.Value)
@@ -337,6 +340,43 @@ namespace OssKeyWordAlarm
             }
              
 
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                Hide();
+                Tray_Icon.Visible = true;
+            }
+        }
+
+        private void Tray_Icon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Show();
+            this.WindowState = FormWindowState.Normal;
+            Tray_Icon.Visible = false;
+        }
+
+        private void Tray_Icon_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Right)
+            {
+                Tray_Icon.ContextMenuStrip = trayIconContextMenuStrip;
+            }
+        }
+
+        private void 보기ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Show();
+            this.WindowState = FormWindowState.Normal;
+            Tray_Icon.Visible = false;
+        }
+
+        private void 종료ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Tray_Icon.Dispose();
+            Application.ExitThread();
         }
     }
 }

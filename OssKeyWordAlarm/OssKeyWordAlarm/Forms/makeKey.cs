@@ -152,6 +152,15 @@ namespace OssKeyWordAlarm
                 // 리스트 박스에 선택된 리스트를 textbox에 입력한 글자로 바꿈
                 Keyword_TextBox.Text = "";
                 // 텍스트 박스를 비움
+                System.IO.StreamWriter SaveFile = new System.IO.StreamWriter("keywords.txt");
+                foreach (var item in keyWord_listBox.Items)
+                { 
+                    SaveFile.WriteLine(item.ToString());
+                }
+                SaveFile.Close();
+                //실행하면 키워드가 모두 지워져버림.
+                //string replaceText = keyWord_listBox.SelectedItem.ToString();
+                //File.WriteAllText("keywords.txt", File.ReadAllText("keywords.txt").Replace(replaceText, "some other text"));
             }
         } // listbox에는 그렇게 보이는데 실제로 키워드 리스트가 바뀌는게 아님******************************************
         /*해야할 일
@@ -164,8 +173,9 @@ namespace OssKeyWordAlarm
         private void btnClear_Click(object sender, EventArgs e)
         {
             keyWord_listBox.Items.Clear();
+            File.WriteAllText(Path.Combine(Environment.CurrentDirectory, "keywords.txt"), String.Empty);
             // 리스트박스 내용을 다 비움
-        } //listbox에는 그렇게 보이는데 실제로 키워드 리스트가 바뀌는게 아님******************************************
+        } 
         /*  해야할 일
          *  1) 리스트를 다 비움
          *  2) 다 비운 리스트를 파일에 덮어씀 ( 파일을 어떻게든 비워야함 )
