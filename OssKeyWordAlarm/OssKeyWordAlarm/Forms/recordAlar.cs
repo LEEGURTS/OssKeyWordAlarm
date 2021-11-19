@@ -115,6 +115,7 @@ namespace OssKeyWordAlarm.Forms
 
         private void btnRemoveAll_Click(object sender, EventArgs e)
         {
+
             File.WriteAllText(Path.Combine(Environment.CurrentDirectory, "new_url.txt"), String.Empty);
             File.WriteAllText(Path.Combine(Environment.CurrentDirectory, "new_title.txt"), String.Empty);
             flowLayoutPanel1.Controls.Clear();

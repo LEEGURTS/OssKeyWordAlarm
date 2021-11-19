@@ -69,7 +69,7 @@ namespace OssKeyWordAlarm
                         file.WriteLine("1");
                     }
                 }
-                finally
+                finally 
                 {
                     if (fs != null)
                     {

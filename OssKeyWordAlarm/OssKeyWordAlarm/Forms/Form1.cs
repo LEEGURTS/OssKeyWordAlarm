@@ -338,7 +338,7 @@ namespace OssKeyWordAlarm
                 fun.save_file("parsing.txt", str, 0);
                 //Console.WriteLine("새 글 있음!");
             }
-
+             
 
         }
 
