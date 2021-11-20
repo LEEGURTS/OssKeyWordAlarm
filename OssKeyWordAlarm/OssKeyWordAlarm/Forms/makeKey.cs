@@ -21,11 +21,12 @@ namespace OssKeyWordAlarm
         int nWidthEllipse,
         int nHeightEllipse);
 
+        functions_h fh = new functions_h();
         User use = new User();
+
         public makeKey()
         {
             InitializeComponent();
-            use.make_keyword_txt();
         }
         private void makeKey_Load(object sender, EventArgs e)
         {
@@ -47,33 +48,30 @@ namespace OssKeyWordAlarm
                 Btn_Load();
             }
         }
+
         public void Btn_Save()
         {
-            // textBox에 입력한 text를 keywords 파일에 저장하는 함수입니다. --------------------------------
             if (Keyword_TextBox.Text != null)
             {
                 // txt박스에 있는 모든 txt를 선택
                 Keyword_TextBox.SelectAll();
                 Keyword_TextBox.Focus();
 
-                // 파일 경로
-                string dir_url = Environment.CurrentDirectory;
-                string file_name = "keywords.txt";
-                string path_string = Path.Combine(dir_url, file_name);
+                // 파일 경로 ( functions_h.cs )
+                string path_string = fh.file_path("keywords.txt");
 
                 // 입력한 text를 저장
                 System.IO.File.AppendAllText(path_string, Keyword_TextBox.SelectedText + "\n", Encoding.UTF8);
+                
                 // 이후 텍스트 박스 초기화
                 Keyword_TextBox.Text = null;
 
             }
 
-        }
+        }// textBox에 입력한 text를 keywords 파일에 저장하는 함수.
 
         public void Btn_Load()
         {
-            // keywords 파일 내용을 textBox2에 불러오기 ------------------------------------
-
             // 텍스트 박스 내용 비우기
             Keyword_TextBox.Text = null;
             keyWord_listBox.Items.Clear();
@@ -90,14 +88,14 @@ namespace OssKeyWordAlarm
                 result.Add(one_line);
             }
 
-            // textBox2에 result List 원소들 출력
+            // listBox에 result List 원소들 출력
             for (int i = 0; i < result.Count; i++)
             {
                 keyWord_listBox.Items.Add(result[i]);
-            }// textBox에서는 "\r\n"로 개행을 해야 됨 
-            //바꿈
+            }
+
             SR.Close();
-        }
+        } // keywords 파일 내용을 listbox에 불러오기
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
@@ -142,12 +140,6 @@ namespace OssKeyWordAlarm
             {
                 System.Windows.Forms.MessageBox.Show("삭제할 KeyWord가 없습니다.");
             }
-
-        }
-
-        private void Keyword_TextBox_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
