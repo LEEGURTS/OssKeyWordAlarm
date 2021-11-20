@@ -9,7 +9,6 @@ namespace OssKeyWordAlarm.Forms
     public partial class recordAlar : Form
     {
         List<Notice> notices = new List<Notice>();
-
         functions_h aaa = new functions_h();
         public List<string> title = new List<string>();
         public List<string> url = new List<string>();
@@ -35,20 +34,13 @@ namespace OssKeyWordAlarm.Forms
             btnRemoveAll.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, btnRemoveAll.Width, btnRemoveAll.Height, 20, 20));
         }
 
-        public recordAlar(Form1 fom)
-        {
-            InitializeComponent();
-            load_info();
-            RecordShow(title, url);
-        }
-
-        public void load_info()
+        public void load_info() // 새 글의 정보를 담은 파일을 읽어 List에 저장
         {
             title = aaa.read_file("new_title.txt");
             url = aaa.read_file("new_url.txt");
         }
 
-        public void RecordShow(List<string> name, List<string> url) //제목과 url의 리스트를 삽입시 리스트를 출력해주는 함수.
+        public void RecordShow(List<string> name, List<string> url) //제목과 url의 리스트를 삽입시 알람 기록을 생성해주는 함수.
         {
             if (notices.Count != 0)
             {

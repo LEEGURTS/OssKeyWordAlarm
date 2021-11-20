@@ -14,20 +14,13 @@ namespace OssKeyWordAlarm.Forms
     {
         functions_h aaa = new functions_h();
         recordAlar parents;
-        public Notice()
-        {
-            InitializeComponent();
-        }
+
         public Notice(recordAlar a)
         {
             InitializeComponent();
             parents = a;
         }
-        public Notice(string str)
-        {
-            lbltitle.Text = str;
-            InitializeComponent();
-        }
+
         #region Properties
         private string _title;
         private string _url;
@@ -59,6 +52,7 @@ namespace OssKeyWordAlarm.Forms
 
         #endregion
 
+        // notice 클릭 시 해당 url로 이동 + notice 제거
         private void Notice_MouseClick(object sender, MouseEventArgs e)
         {
             System.Diagnostics.Process.Start(_url);
@@ -67,12 +61,6 @@ namespace OssKeyWordAlarm.Forms
             aaa.save_file("new_title.txt", parents.title, 0);
             aaa.save_file("new_url.txt", parents.url, 0);
             parents.flowLayoutPanel1.Controls.Remove(this);
-        }
-
-
-        private void Notice_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void lbltitle_Click(object sender, EventArgs e)
