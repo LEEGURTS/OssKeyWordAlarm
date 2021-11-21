@@ -1,6 +1,10 @@
 # OssKeyWordAlarm
 2021년 2-2 오픈소스소프트웨어 9조 웅크린돼지는말이없다 조입니다.
 
+# 설치 ( install )
+- install.zip을 다운로드 받아서 압축해제
+- exe 파일 실행하여 다운로드
+
 # How-To-Use
 1) 키워드 추가
   - 오른쪽 위의 textBox에 키워드를 입력하고 Enter를 입력하면 키워드가 저장됩니다.
