@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.IO;
-using System.Text;
+
 namespace OssKeyWordAlarm.Forms
 {
     public partial class recordAlar : Form

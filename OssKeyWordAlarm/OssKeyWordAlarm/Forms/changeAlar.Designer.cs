@@ -209,7 +209,6 @@ namespace OssKeyWordAlarm.Forms
             this.btnTest.Text = "들어보기";
             this.btnTest.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnTest.UseVisualStyleBackColor = false;
-            this.btnTest.Click += new System.EventHandler(this.btnTest_Click_1);
             // 
             // trackBar1
             // 

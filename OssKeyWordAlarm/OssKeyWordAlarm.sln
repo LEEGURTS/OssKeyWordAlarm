@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.1401
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OssKeyWordAlarm", "OssKeyWordAlarm\OssKeyWordAlarm.csproj", "{5EB2B320-0048-4BE1-A475-BAA23AAF3425}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "KWKeywordAlarmSetup", "KWKeywordAlarmSetup\KWKeywordAlarmSetup.vdproj", "{44FE198A-D11B-42B6-922F-F66ACCB57F29}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{5EB2B320-0048-4BE1-A475-BAA23AAF3425}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EB2B320-0048-4BE1-A475-BAA23AAF3425}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EB2B320-0048-4BE1-A475-BAA23AAF3425}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44FE198A-D11B-42B6-922F-F66ACCB57F29}.Debug|Any CPU.ActiveCfg = Debug
+		{44FE198A-D11B-42B6-922F-F66ACCB57F29}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

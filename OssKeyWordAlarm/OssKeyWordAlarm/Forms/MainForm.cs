@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace OssKeyWordAlarm
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         User user = new User();
         functions_h fun = new functions_h();
@@ -25,7 +25,7 @@ namespace OssKeyWordAlarm
         int nHeightEllipse);
 
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             makeKeyword_MouseDown(null, null);

@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.IO;
-using System.Security;
+
 namespace OssKeyWordAlarm.Forms
 {
     public partial class changeAlar : Form
@@ -71,11 +71,6 @@ namespace OssKeyWordAlarm.Forms
         private void btnWater_Click(object sender, EventArgs e)
         {
             AlarmSound = Properties.Resources.물방울;
-        }
-
-        private void btnTest_Click_1(object sender, EventArgs e)
-        {
-            Form1.showDialog("테스트");
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
