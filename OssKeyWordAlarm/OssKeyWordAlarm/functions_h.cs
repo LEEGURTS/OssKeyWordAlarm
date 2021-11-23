@@ -48,8 +48,13 @@ namespace OssKeyWordAlarm
         public void save_file(string str, List<string> list1, int mode)
         { // mode 0은 덮어쓰기, mode1은 이어쓰기
             StreamWriter writer;
-            if (mode == 0) { writer = File.CreateText(file_path(str)); }
-            else writer = File.AppendText(file_path(str));
+            if (mode == 0)
+            {
+                writer = File.CreateText(file_path(str));
+            }
+            else {
+                writer = File.AppendText(file_path(str));
+            }
             foreach (string line in list1) { writer.WriteLine(line); }
             writer.Close();
         }

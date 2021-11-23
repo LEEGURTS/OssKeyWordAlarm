@@ -105,5 +105,10 @@ namespace OssKeyWordAlarm.Forms
                 waveOutSetVolume(IntPtr.Zero, (uint)0x00000000);
             }
         }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            MainForm.showDialog("테스트 입니다.");
+        }
     }
 }

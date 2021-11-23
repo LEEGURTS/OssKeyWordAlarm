@@ -50,7 +50,7 @@ namespace OssKeyWordAlarm.Forms
             this.btnBBiBBi.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBBiBBi.FlatAppearance.BorderSize = 0;
             this.btnBBiBBi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBBiBBi.Font = new System.Drawing.Font("아리따-돋움4.0(OTF)-SemiBold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnBBiBBi.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnBBiBBi.ForeColor = System.Drawing.Color.White;
             this.btnBBiBBi.Image = global::OssKeyWordAlarm.Properties.Resources.siren_50px;
             this.btnBBiBBi.Location = new System.Drawing.Point(31, 256);
@@ -70,7 +70,7 @@ namespace OssKeyWordAlarm.Forms
             this.btnWater.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnWater.FlatAppearance.BorderSize = 0;
             this.btnWater.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnWater.Font = new System.Drawing.Font("아리따-돋움4.0(OTF)-SemiBold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnWater.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnWater.ForeColor = System.Drawing.Color.White;
             this.btnWater.Image = global::OssKeyWordAlarm.Properties.Resources.water_60px;
             this.btnWater.Location = new System.Drawing.Point(519, 256);
@@ -90,7 +90,7 @@ namespace OssKeyWordAlarm.Forms
             this.btnAscent.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAscent.FlatAppearance.BorderSize = 0;
             this.btnAscent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAscent.Font = new System.Drawing.Font("아리따-돋움4.0(OTF)-SemiBold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnAscent.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnAscent.ForeColor = System.Drawing.Color.White;
             this.btnAscent.Image = global::OssKeyWordAlarm.Properties.Resources.cloud_60px;
             this.btnAscent.Location = new System.Drawing.Point(275, 256);
@@ -109,7 +109,7 @@ namespace OssKeyWordAlarm.Forms
             this.btnPlayground.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPlayground.FlatAppearance.BorderSize = 0;
             this.btnPlayground.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPlayground.Font = new System.Drawing.Font("아리따-돋움4.0(OTF)-SemiBold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnPlayground.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnPlayground.ForeColor = System.Drawing.Color.White;
             this.btnPlayground.Image = global::OssKeyWordAlarm.Properties.Resources.playground_60px;
             this.btnPlayground.Location = new System.Drawing.Point(519, 75);
@@ -128,7 +128,7 @@ namespace OssKeyWordAlarm.Forms
             this.btnYa.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnYa.FlatAppearance.BorderSize = 0;
             this.btnYa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnYa.Font = new System.Drawing.Font("아리따-돋움4.0(OTF)-SemiBold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnYa.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnYa.ForeColor = System.Drawing.Color.White;
             this.btnYa.Image = global::OssKeyWordAlarm.Properties.Resources.voice_recognition_60px;
             this.btnYa.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -148,7 +148,7 @@ namespace OssKeyWordAlarm.Forms
             this.btnBamboo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBamboo.FlatAppearance.BorderSize = 0;
             this.btnBamboo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBamboo.Font = new System.Drawing.Font("아리따-돋움4.0(OTF)-SemiBold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnBamboo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnBamboo.ForeColor = System.Drawing.Color.White;
             this.btnBamboo.Image = global::OssKeyWordAlarm.Properties.Resources.Bamboo_48px;
             this.btnBamboo.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -164,11 +164,11 @@ namespace OssKeyWordAlarm.Forms
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Noto Sans CJK KR Black (TTF)", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(48, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(219, 24);
+            this.label1.Size = new System.Drawing.Size(180, 20);
             this.label1.TabIndex = 7;
             this.label1.Text = "원하시는 알람음을 선택하세요.";
             // 
@@ -179,7 +179,7 @@ namespace OssKeyWordAlarm.Forms
             this.btnLoad.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLoad.FlatAppearance.BorderSize = 0;
             this.btnLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLoad.Font = new System.Drawing.Font("아리따-돋움4.0(OTF)-SemiBold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnLoad.ForeColor = System.Drawing.Color.White;
             this.btnLoad.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnLoad.Location = new System.Drawing.Point(52, 430);
@@ -199,7 +199,7 @@ namespace OssKeyWordAlarm.Forms
             this.btnTest.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.btnTest.FlatAppearance.BorderSize = 0;
             this.btnTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTest.Font = new System.Drawing.Font("아리따-돋움4.0(OTF)-SemiBold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.btnTest.ForeColor = System.Drawing.Color.White;
             this.btnTest.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnTest.Location = new System.Drawing.Point(637, 430);
@@ -209,6 +209,7 @@ namespace OssKeyWordAlarm.Forms
             this.btnTest.Text = "들어보기";
             this.btnTest.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnTest.UseVisualStyleBackColor = false;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
             // trackBar1
             // 
@@ -225,11 +226,11 @@ namespace OssKeyWordAlarm.Forms
             // 
             this.label2.AutoSize = true;
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label2.Font = new System.Drawing.Font("아리따-돋움4.0(OTF)-SemiBold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(359, 462);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 15);
+            this.label2.Size = new System.Drawing.Size(58, 18);
             this.label2.TabIndex = 11;
             this.label2.Text = "Volume";
             // 

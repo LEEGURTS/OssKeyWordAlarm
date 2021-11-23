@@ -178,9 +178,6 @@
     <None Include="Resources\power_off_button_25px.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\181026-11-Hoyeon-0182.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Bamboo.wav" />
   </ItemGroup>
   <ItemGroup>
