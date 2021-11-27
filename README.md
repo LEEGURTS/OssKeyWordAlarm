@@ -4,7 +4,7 @@
 # 설치 ( install )
 - install.zip을 다운로드 받아서 압축해제
 - exe 파일 실행하여 다운로드
-
+- install.zip 로 설치후 문제 발생시 Installer_applications.zip의 setup.exe를 이용하여 설치
 # How-To-Use
 1) 키워드 추가
   - 오른쪽 위의 textBox에 키워드를 입력하고 Enter를 입력하면 키워드가 저장됩니다.
